@@ -100,7 +100,6 @@ function openTopic(topicId) {
     modalIcon.textContent = topic.icon;
     modalTitle.textContent = topic.title;
 
-    // Render both tabs
     renderLessonTab(topicId);
     renderExerciseTab(topicId);
 
@@ -124,28 +123,31 @@ function renderLessonTab(topicId) {
     // Lesson content
     html += topic.content;
 
-    // Lesson PDFs
+    // Lesson PDFs with preview
     if (lessonPDFs.length > 0) {
         html += `<div style="margin-top:2rem; padding-top:1.5rem; border-top:1px solid var(--border);">`;
         html += `<h3>📁 ឯកសារមេរៀន</h3>`;
-        html += `<div class="pdf-list">`;
-        lessonPDFs.forEach(pdf => {
+        lessonPDFs.forEach((pdf, index) => {
             html += `
-                <div class="pdf-item">
-                    <div class="pdf-info">
-                        <span class="pdf-icon">📖</span>
-                        <div>
+                <div class="pdf-card">
+                    <div class="pdf-card-header">
+                        <div class="pdf-info">
+                            <span class="pdf-icon">📖</span>
                             <span class="pdf-name">${pdf.name}</span>
                         </div>
+                        <div class="pdf-actions">
+                            <button class="pdf-btn pdf-btn-view" onclick="viewPDF('${pdf.path}', '${pdf.name}')">មើល</button>
+                            <a class="pdf-btn pdf-btn-download" href="${pdf.path}" download="${pdf.name}" style="text-decoration:none;">ទាញយក</a>
+                            <button class="pdf-btn pdf-btn-preview" onclick="togglePreview('lesson-preview-${topicId}-${index}')">Preview</button>
+                        </div>
                     </div>
-                    <div class="pdf-actions">
-                        <button class="pdf-btn pdf-btn-view" onclick="viewPDF('${pdf.path}', '${pdf.name}')">មើល</button>
-                        <a class="pdf-btn pdf-btn-download" href="${pdf.path}" download="${pdf.name}" style="text-decoration:none;">ទាញយក</a>
+                    <div class="pdf-preview hidden" id="lesson-preview-${topicId}-${index}">
+                        <iframe src="${pdf.path}" frameborder="0"></iframe>
                     </div>
                 </div>
             `;
         });
-        html += `</div></div>`;
+        html += `</div>`;
     }
 
     modalBody.innerHTML = html;
@@ -159,24 +161,26 @@ function renderExerciseTab(topicId) {
     let html = '';
 
     if (exercisePDFs.length > 0) {
-        html += `<div class="pdf-list">`;
-        exercisePDFs.forEach(pdf => {
+        exercisePDFs.forEach((pdf, index) => {
             html += `
-                <div class="pdf-item">
-                    <div class="pdf-info">
-                        <span class="pdf-icon">✏️</span>
-                        <div>
+                <div class="pdf-card">
+                    <div class="pdf-card-header">
+                        <div class="pdf-info">
+                            <span class="pdf-icon">✏️</span>
                             <span class="pdf-name">${pdf.name}</span>
                         </div>
+                        <div class="pdf-actions">
+                            <button class="pdf-btn pdf-btn-view" onclick="viewPDF('${pdf.path}', '${pdf.name}')">មើល</button>
+                            <a class="pdf-btn pdf-btn-download" href="${pdf.path}" download="${pdf.name}" style="text-decoration:none;">ទាញយក</a>
+                            <button class="pdf-btn pdf-btn-preview" onclick="togglePreview('exercise-preview-${topicId}-${index}')">Preview</button>
+                        </div>
                     </div>
-                    <div class="pdf-actions">
-                        <button class="pdf-btn pdf-btn-view" onclick="viewPDF('${pdf.path}', '${pdf.name}')">មើល</button>
-                        <a class="pdf-btn pdf-btn-download" href="${pdf.path}" download="${pdf.name}" style="text-decoration:none;">ទាញយក</a>
+                    <div class="pdf-preview hidden" id="exercise-preview-${topicId}-${index}">
+                        <iframe src="${pdf.path}" frameborder="0"></iframe>
                     </div>
                 </div>
             `;
         });
-        html += `</div>`;
     } else {
         html += `
             <div class="pdf-viewer">
@@ -189,6 +193,14 @@ function renderExerciseTab(topicId) {
     }
 
     exerciseBody.innerHTML = html;
+}
+
+// ===== Toggle Preview =====
+function togglePreview(id) {
+    const preview = document.getElementById(id);
+    if (preview) {
+        preview.classList.toggle('hidden');
+    }
 }
 
 // ===== View PDF =====
