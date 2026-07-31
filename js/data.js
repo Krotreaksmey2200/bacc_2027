@@ -409,11 +409,11 @@ const TOPICS = [
         `
     },
     {
-        id: 9,
+        id: 12,
         title: "អាំងតេក្រាលកំណត់និងបម្រើបម្រាស់",
         icon: "📏",
-        iconPath: "icons/09.png",
-        tag: "មុខទី៩",
+        iconPath: "icons/12.png",
+        tag: "មុខទី១២",
         semester: 2,
         description: "អាំងតេក្រាលកំណត់ និងអនុវត្តន៍ (ផ្ទៃក្រឡា និងប្រវែងសរសៃរ)",
         pdfs: [],
@@ -542,11 +542,11 @@ const TOPICS = [
         `
     },
     {
-        id: 12,
+        id: 9,
         title: "ធរណីមាត្រវិភាគក្នុងលំហ",
         icon: "🌐",
-        iconPath: "icons/12.png",
-        tag: "មុខទី១២",
+        iconPath: "icons/09.png",
+        tag: "មុខទី៩",
         semester: 1,
         description: "ចំណុច សរសៃរ រង្វាល់ និងប្លង់ក្នុងលំហ",
         pdfs: [],
