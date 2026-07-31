@@ -648,63 +648,6 @@ a {
     color: white;
 }
 
-/* ===== Upload Section ===== */
-.upload-area {
-    border: 2px dashed var(--border);
-    border-radius: var(--radius);
-    padding: 2rem;
-    text-align: center;
-    margin-bottom: 1.5rem;
-    transition: var(--transition);
-    cursor: pointer;
-}
-
-.upload-area:hover {
-    border-color: var(--primary);
-    background: rgba(37, 99, 235, 0.05);
-}
-
-.upload-area.dragover {
-    border-color: var(--primary);
-    background: rgba(37, 99, 235, 0.1);
-}
-
-.upload-icon {
-    font-size: 3rem;
-    margin-bottom: 0.8rem;
-    display: block;
-}
-
-.upload-text {
-    font-size: 0.95rem;
-    color: var(--text-secondary);
-    margin-bottom: 0.5rem;
-}
-
-.upload-hint {
-    font-size: 0.8rem;
-    color: var(--text-light);
-}
-
-.upload-btn {
-    display: inline-block;
-    margin-top: 1rem;
-    padding: 0.6rem 1.5rem;
-    background: var(--primary);
-    color: white;
-    border: none;
-    border-radius: 8px;
-    font-size: 0.9rem;
-    font-weight: 600;
-    font-family: inherit;
-    cursor: pointer;
-    transition: var(--transition);
-}
-
-.upload-btn:hover {
-    background: var(--primary-dark);
-}
-
 /* ===== PDF List ===== */
 .pdf-list {
     margin-top: 1rem;

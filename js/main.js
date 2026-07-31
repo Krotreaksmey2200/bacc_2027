@@ -119,8 +119,11 @@ function openTopic(topicId) {
 
     modalIcon.textContent = topic.icon;
     modalTitle.textContent = topic.title;
+
+    // Lesson Tab - Clean content only
     modalBody.innerHTML = topic.content;
 
+    // Exercise Tab - PDFs only
     renderExerciseTab(topicId);
 
     switchTab('lesson');
@@ -136,34 +139,24 @@ function openTopic(topicId) {
 // ===== Render Exercise Tab =====
 function renderExerciseTab(topicId) {
     const topic = TOPICS.find(t => t.id === topicId);
-    const topicExercises = EXERCISES.filter(e => e.topicId === topicId);
-    const savedPDFs = uploadedPDFs[topicId] || [];
-    const pdfFolder = PDF_FOLDERS[topicId];
     const repoPDFs = topic?.pdfs || [];
 
     let html = '';
 
-    // Repository PDFs Section
-    html += `<h3>📁 ឯកសារក្នុង Git Repository</h3>`;
-    html += `<p style="font-size:0.85rem; color:var(--text-secondary);">ដាក់ឯកសារ PDF ក្នុង folder <code>${pdfFolder}</code> ដើម្បីឱ្យបង្ហាញនៅទីនេះ</p>`;
-
-    // Show PDFs from repository
     if (repoPDFs.length > 0) {
         html += `<div class="pdf-list">`;
         repoPDFs.forEach(pdf => {
-            const typeLabel = pdf.type === 'lesson' ? '📖 មេរៀន' : '✏️ លំហាត់';
             html += `
                 <div class="pdf-item">
                     <div class="pdf-info">
                         <span class="pdf-icon">📄</span>
                         <div>
-                            <span class="pdf-name">${pdf.name}</span><br>
-                            <span class="pdf-size">${typeLabel}</span>
+                            <span class="pdf-name">${pdf.name}</span>
                         </div>
                     </div>
                     <div class="pdf-actions">
                         <button class="pdf-btn pdf-btn-view" onclick="viewRepoPDF('${pdf.path}', '${pdf.name}')">មើល</button>
-                        <a class="pdf-btn pdf-btn-view" href="${pdf.path}" download style="text-decoration:none;">⬇️ ទាញយក</a>
+                        <a class="pdf-btn pdf-btn-view" href="${pdf.path}" download style="text-decoration:none;">ទាញយក</a>
                     </div>
                 </div>
             `;
@@ -173,173 +166,14 @@ function renderExerciseTab(topicId) {
         html += `
             <div class="pdf-viewer">
                 <div class="pdf-viewer-empty">
-                    <span class="empty-icon">📂</span>
-                    <p>មិនទាន់មានឯកសារ PDF នៅឡើយទេ</p>
-                    <p style="font-size:0.8rem; margin-top:0.5rem;">ដាក់ឯកសារ PDF ក្នុង folder <code>${pdfFolder}</code></p>
+                    <span class="empty-icon">📄</span>
+                    <p>មិនទាន់មានឯកសារ PDF</p>
                 </div>
             </div>
         `;
     }
 
-    // Upload Area
-    html += `<h3>📤 បញ្ចូលឯកសារ PDF ថ្មី</h3>`;
-    html += `
-        <div class="upload-area" id="uploadArea" onclick="document.getElementById('pdfInput').click()">
-            <span class="upload-icon">📄</span>
-            <p class="upload-text">ចុចដើម្បីបញ្ចូលឯកសារ PDF</p>
-            <p class="upload-hint">ឬអូសនិងទម្លាក់ឯកសារ PDF នៅទីនេះ</p>
-            <button class="upload-btn" type="button">ជ្រើសរើសឯកសារ</button>
-        </div>
-        <input type="file" id="pdfInput" accept=".pdf" multiple style="display:none" onchange="handleFileUpload(event)">
-    `;
-
-    // Uploaded PDFs List
-    if (savedPDFs.length > 0) {
-        html += `<h3>📁 ឯកសារដែលបានបញ្ចូល (${savedPDFs.length})</h3>`;
-        html += `<div class="pdf-list">`;
-        savedPDFs.forEach((pdf, index) => {
-            html += `
-                <div class="pdf-item">
-                    <div class="pdf-info">
-                        <span class="pdf-icon">📄</span>
-                        <div>
-                            <span class="pdf-name">${pdf.name}</span><br>
-                            <span class="pdf-size">${formatFileSize(pdf.size)}</span>
-                        </div>
-                    </div>
-                    <div class="pdf-actions">
-                        <button class="pdf-btn pdf-btn-view" onclick="viewPDF(${topicId}, ${index})">មើល</button>
-                        <button class="pdf-btn pdf-btn-delete" onclick="deletePDF(${topicId}, ${index})">លុប</button>
-                    </div>
-                </div>
-            `;
-        });
-        html += `</div>`;
-    }
-
-    // Built-in Exercises
-    if (topicExercises.length > 0) {
-        html += `<h3 style="margin-top:1.5rem;">✏️ លំហាត់អនុវត្តន៍ (${topicExercises.length})</h3>`;
-        topicExercises.forEach(exercise => {
-            const badgeClass = exercise.difficulty === 'easy' ? 'badge-easy' :
-                              exercise.difficulty === 'medium' ? 'badge-medium' : 'badge-hard';
-            const difficultyLabel = exercise.difficulty === 'easy' ? 'ងាយ' :
-                                   exercise.difficulty === 'medium' ? 'មធ្យម' : 'ពិបាក';
-
-            html += `
-                <div class="exercise-card" style="margin-bottom:0.8rem;">
-                    <div class="exercise-card-header">
-                        <span class="exercise-badge ${badgeClass}">${difficultyLabel}</span>
-                        <h4>${exercise.title}</h4>
-                    </div>
-                    <div class="exercise-math">${exercise.problem}</div>
-                </div>
-            `;
-        });
-    }
-
     exerciseBody.innerHTML = html;
-
-    // Setup drag & drop
-    setupDragDrop();
-}
-
-// ===== Setup Drag & Drop =====
-function setupDragDrop() {
-    const uploadArea = document.getElementById('uploadArea');
-    if (!uploadArea) return;
-
-    uploadArea.addEventListener('dragover', (e) => {
-        e.preventDefault();
-        uploadArea.classList.add('dragover');
-    });
-
-    uploadArea.addEventListener('dragleave', () => {
-        uploadArea.classList.remove('dragover');
-    });
-
-    uploadArea.addEventListener('drop', (e) => {
-        e.preventDefault();
-        uploadArea.classList.remove('dragover');
-        const files = e.dataTransfer.files;
-        processFiles(files);
-    });
-}
-
-// ===== View Repository PDF =====
-function viewRepoPDF(path, name) {
-    pdfFullscreenTitle.textContent = name;
-    pdfFullscreenFrame.src = path;
-    pdfFullscreen.classList.remove('hidden');
-}
-
-// ===== Handle File Upload =====
-function handleFileUpload(event) {
-    const files = event.target.files;
-    processFiles(files);
-    event.target.value = '';
-}
-
-function processFiles(files) {
-    if (!currentTopicId) return;
-
-    Array.from(files).forEach(file => {
-        if (file.type !== 'application/pdf') {
-            alert('សូមជ្រើសរើសតែឯកសារ PDF ប៉ុណ្ណោះ!');
-            return;
-        }
-
-        const reader = new FileReader();
-        reader.onload = function(e) {
-            if (!uploadedPDFs[currentTopicId]) {
-                uploadedPDFs[currentTopicId] = [];
-            }
-
-            uploadedPDFs[currentTopicId].push({
-                name: file.name,
-                size: file.size,
-                data: e.target.result
-            });
-
-            localStorage.setItem('uploadedPDFs', JSON.stringify(uploadedPDFs));
-            renderExerciseTab(currentTopicId);
-        };
-        reader.readAsDataURL(file);
-    });
-}
-
-// ===== View PDF (Fullscreen) =====
-function viewPDF(topicId, index) {
-    const pdf = uploadedPDFs[topicId]?.[index];
-    if (!pdf) return;
-
-    pdfFullscreenTitle.textContent = pdf.name;
-    pdfFullscreenFrame.src = pdf.data;
-    pdfFullscreen.classList.remove('hidden');
-}
-
-// ===== Close PDF Fullscreen =====
-function closePdfFullscreen() {
-    pdfFullscreen.classList.add('hidden');
-    pdfFullscreenFrame.src = '';
-}
-
-// ===== Delete PDF =====
-function deletePDF(topicId, index) {
-    if (!confirm('តើអ្នកពិតជាចង់លុបឯកសារនេះមែនទេ?')) return;
-
-    if (uploadedPDFs[topicId]) {
-        uploadedPDFs[topicId].splice(index, 1);
-        localStorage.setItem('uploadedPDFs', JSON.stringify(uploadedPDFs));
-        renderExerciseTab(topicId);
-    }
-}
-
-// ===== Format File Size =====
-function formatFileSize(bytes) {
-    if (bytes < 1024) return bytes + ' B';
-    if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
-    return (bytes / (1024 * 1024)).toFixed(1) + ' MB';
 }
 
 // ===== Close Modal =====
