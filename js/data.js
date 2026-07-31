@@ -258,7 +258,7 @@ const TOPICS = [
         title: "អនុគមន៍អ៊ិចស្ប៉ូណង់ស្យែល",
         icon: "📉",
         tag: "មុខទី៦",
-        semester: 1,
+        semester: 2,
         description: "អនុគមន៍ eˣ និងអនុវត្តន៍របស់វា",
         pdfs: [],
         content: `
@@ -306,7 +306,7 @@ const TOPICS = [
         title: "អនុគមន៍លោការីត",
         icon: "📐",
         tag: "មុខទី៧",
-        semester: 1,
+        semester: 2,
         description: "អនុគមន៍ ln(x) និង logₐ(x)",
         pdfs: [],
         content: `
@@ -356,7 +356,7 @@ const TOPICS = [
         title: "អាំងតេក្រាលមិនកំណត់",
         icon: "∫",
         tag: "មុខទី៨",
-        semester: 2,
+        semester: 1,
         description: "ប្រភេទអាំងតេក្រាល និងរូបមន្ត",
         pdfs: [],
         content: `
@@ -535,7 +535,7 @@ const TOPICS = [
         title: "ធរណីមាត្រវិភាគក្នុងលំហ",
         icon: "🌐",
         tag: "មុខទី១២",
-        semester: 2,
+        semester: 1,
         description: "ចំណុច សរសៃរ រង្វាល់ និងប្លង់ក្នុងលំហ",
         pdfs: [],
         description: "ចំណុច សរសៃរ រង្វាល់ និងប្លង់ក្នុងលំហ",
