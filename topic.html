@@ -828,10 +828,15 @@
             // Load practies content
             practiesTab.innerHTML = loadPractiesContent(topic);
             
-            // Typeset MathJax
-            if (window.MathJax) {
-                MathJax.typesetPromise([lessonTab]).catch(err => console.log('MathJax error:', err));
+            // Typeset MathJax (with retry if not loaded yet)
+            function typesetAll() {
+                if (window.MathJax && MathJax.typesetPromise) {
+                    MathJax.typesetPromise([lessonTab, exerciseTab, practiesTab]).catch(err => console.log('MathJax error:', err));
+                } else {
+                    setTimeout(typesetAll, 200);
+                }
             }
+            typesetAll();
         }
         
         // Switch Tab
@@ -851,6 +856,9 @@
                 lessonTab.classList.add('active');
             } else if (tab === 'exercise') {
                 exerciseTab.classList.add('active');
+                if (window.MathJax) {
+                    MathJax.typesetPromise([exerciseTab]).catch(err => console.log('MathJax error:', err));
+                }
             } else {
                 practiesTab.classList.add('active');
             }
