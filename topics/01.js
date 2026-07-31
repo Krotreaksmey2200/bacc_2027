@@ -7,8 +7,69 @@ const TOPIC_01 = {
     semester: 1,
     description: "ស្គាល់ និងប្រើប្រាស់កុំផ្លិច រូបមន្ត និងអនុវត្តន៍",
     pdfs: [
-        { name: "complex number.pdf", path: "pdfs/01_កុំផ្លិច/lession/complex number.pdf", type: "lesson" },
-        { name: "លំហាត់ចំនួនកុំផ្លិច ២០២៧.pdf", path: "pdfs/01_កុំផ្លិច/practies/លំហាត់ចំនួនកុំផ្លិច ២០២៧.pdf", type: "exercise" }
+        { name: "complex number.pdf", path: "pdfs/01_កុំផ្លិច/lession/complex number.pdf", type: "lesson" }
+    ],
+    exercises: [
+        {
+            id: 1,
+            question: "រក Re(z) និង Im(z) សម្រាប់ $$z = 5 - 3i$$",
+            hint: "Re(z) គឺផ្នែកពិត និង Im(z) គឺផ្នែកអាចន្លាស់",
+            answer: "$$\\text{Re}(z) = 5$$ និង $$\\text{Im}(z) = -3$$"
+        },
+        {
+            id: 2,
+            question: "គណនា $$z_1 + z_2$$ សម្រាប់ $$z_1 = 3 + 2i$$ និង $$z_2 = 1 - 4i$$",
+            hint: "បូកផ្នែកពិតជាមួយផ្នែកពិត និងផ្នែកអាចន្លាស់ជាមួយផ្នែកអាចន្លាស់",
+            answer: "$$z_1 + z_2 = (3+1) + (2-4)i = 4 - 2i$$"
+        },
+        {
+            id: 3,
+            question: "គណនា $$z_1 \\cdot z_2$$ សម្រាប់ $$z_1 = 2 + i$$ និង $$z_2 = 3 - 2i$$",
+            hint: "ប្រើក្បួន FOIL: $$(a+bi)(c+di) = (ac-bd) + (ad+bc)i$$",
+            answer: "$$z_1 \\cdot z_2 = (2 \\cdot 3 - 1 \\cdot (-2)) + (2 \\cdot (-2) + 1 \\cdot 3)i = (6+2) + (-4+3)i = 8 - i$$"
+        },
+        {
+            id: 4,
+            question: "គណនា $$\\frac{4 + 2i}{1 + i}$$",
+            hint: "គុណលេខក្បាល និងលេខក្រោមដោយ conjugate របស់អាគុដម",
+            answer: "$$\\frac{4 + 2i}{1 + i} = \\frac{(4+2i)(1-i)}{(1+i)(1-i)} = \\frac{4-4i+2i-2i^2}{1+1} = \\frac{4-2i+2}{2} = \\frac{6-2i}{2} = 3 - i$$"
+        },
+        {
+            id: 5,
+            question: "រក $$|z|$$ សម្រាប់ $$z = 6 - 8i$$",
+            hint: "ប្រើរូបមន្ត $$|z| = \\sqrt{a^2 + b^2}$$",
+            answer: "$$|z| = \\sqrt{6^2 + (-8)^2} = \\sqrt{36 + 64} = \\sqrt{100} = 10$$"
+        },
+        {
+            id: 6,
+            question: "រក $$\\bar{z}$$ (conjugate) សម្រាប់ $$z = -2 + 5i$$",
+            hint: "Conjugate របស់ $$z = a + bi$$ គឺ $$\\bar{z} = a - bi$$",
+            answer: "$$\\bar{z} = -2 - 5i$$"
+        },
+        {
+            id: 7,
+            question: "បង្ហាញថា $$i^{100} = 1$$",
+            hint: "រកវដ្តរបស់ i: $$i^1=i, i^2=-1, i^3=-i, i^4=1$$",
+            answer: "$$i^{100} = (i^4)^{25} = 1^{25} = 1$$"
+        },
+        {
+            id: 8,
+            question: "គណនា $$(3 + 4i) + (2 - i) - (1 + 2i)$$",
+            hint: "បូក/ដកផ្នែកពិត និងផ្នែកអាចន្លាស់ដាច់ដោយឡែក",
+            answer: "$$(3+2-1) + (4-1-2)i = 4 + i$$"
+        },
+        {
+            id: 9,
+            question: "រក $$z$$ ប្រសិនបើ $$z \\cdot (2 + i) = 5 + 5i$$",
+            hint: "ចែក $$z = \\frac{5+5i}{2+i}$$",
+            answer: "$$z = \\frac{(5+5i)(2-i)}{(2+i)(2-i)} = \\frac{10-5i+10i-5i^2}{4+1} = \\frac{10+5i+5}{5} = \\frac{15+5i}{5} = 3 + i$$"
+        },
+        {
+            id: 10,
+            question: "បង្ហាញថា $$z \\cdot \\bar{z} = |z|^2$$ សម្រាប់ $$z = a + bi$$",
+            hint: "គុណ $$z$$ ជាមួយ $$\\bar{z}$$ ដោយប្រើក្បួន FOIL",
+            answer: "$$z \\cdot \\bar{z} = (a+bi)(a-bi) = a^2 - (bi)^2 = a^2 - b^2i^2 = a^2 + b^2 = |z|^2$$"
+        }
     ],
     content: `
         <h3>១. និយមន័យ</h3>

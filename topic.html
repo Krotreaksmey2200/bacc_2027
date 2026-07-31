@@ -491,6 +491,177 @@
             .pdf-preview iframe {
                 height: 350px;
             }
+            
+            .exercise-item {
+                padding: 1rem;
+            }
+            
+            .exercise-number {
+                width: 32px;
+                height: 32px;
+                font-size: 0.9rem;
+            }
+            
+            .show-answer-btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+        
+        /* ===== Exercises Styles ===== */
+        .exercises-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .exercise-item {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 1.5rem;
+            transition: all 0.2s ease;
+        }
+        
+        .exercise-item:hover {
+            border-color: var(--primary);
+            box-shadow: var(--shadow);
+        }
+        
+        .exercise-header {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 1rem;
+        }
+        
+        .exercise-number {
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border-radius: 50%;
+            font-weight: 700;
+            font-size: 1rem;
+        }
+        
+        .exercise-label {
+            font-family: 'Battambang', serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .exercise-question {
+            font-size: 1.05rem;
+            color: var(--text);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background: var(--bg-card);
+            border-radius: 12px;
+            border-left: 4px solid var(--primary);
+        }
+        
+        .exercise-hint {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            padding: 0.8rem 1rem;
+            background: rgba(245, 158, 11, 0.05);
+            border: 1px solid rgba(245, 158, 11, 0.2);
+            border-radius: 10px;
+            margin-bottom: 1rem;
+        }
+        
+        .show-answer-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.8rem 1.5rem;
+            background: linear-gradient(135deg, var(--success), var(--accent));
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
+        }
+        
+        .show-answer-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
+        }
+        
+        .show-answer-btn.active {
+            background: linear-gradient(135deg, var(--danger), var(--warning));
+            box-shadow: 0 2px 8px rgba(239, 68, 68, 0.3);
+        }
+        
+        .show-answer-btn .btn-icon {
+            font-size: 1.1rem;
+        }
+        
+        .exercise-answer {
+            display: none;
+            margin-top: 1rem;
+            padding: 1.2rem;
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.05), rgba(6, 182, 212, 0.05));
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            border-radius: 12px;
+            animation: slideDown 0.3s ease;
+        }
+        
+        .exercise-answer.show {
+            display: block;
+        }
+        
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .answer-label {
+            font-family: 'Battambang', serif;
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--success);
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .answer-label::before {
+            content: '✓';
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 24px;
+            height: 24px;
+            background: var(--success);
+            color: white;
+            border-radius: 50%;
+            font-size: 0.8rem;
+        }
+        
+        .answer-content {
+            font-size: 1rem;
+            color: var(--text);
+            line-height: 1.8;
+            padding: 1rem;
+            background: var(--bg-card);
+            border-radius: 10px;
         }
     </style>
 </head>
@@ -615,37 +786,7 @@
             lessonTab.innerHTML = lessonHTML;
             
             // Load exercise content
-            const exercisePDFs = (topic.pdfs || []).filter(p => p.type === 'exercise');
-            let exerciseHTML = '';
-            
-            if (exercisePDFs.length > 0) {
-                exercisePDFs.forEach((pdf, index) => {
-                    exerciseHTML += `
-                        <div class="pdf-card">
-                            <div class="pdf-card-header">
-                                <div class="pdf-info">
-                                    <span class="pdf-icon">✏️</span>
-                                    <span class="pdf-name">${pdf.name}</span>
-                                </div>
-                                <div class="pdf-actions">
-                                    <a class="pdf-btn pdf-btn-download" href="${pdf.path}" download="${pdf.name}" style="text-decoration:none;">⬇️ ទាញយក</a>
-                                </div>
-                            </div>
-                            <div class="pdf-preview">
-                                <iframe src="${pdf.path}" frameborder="0"></iframe>
-                            </div>
-                        </div>
-                    `;
-                });
-            } else {
-                exerciseHTML = `
-                    <div class="empty-state">
-                        <span class="empty-state-icon">📄</span>
-                        <p>មិនទាន់មានឯកសារលំហាត់</p>
-                    </div>
-                `;
-            }
-            exerciseTab.innerHTML = exerciseHTML;
+            exerciseTab.innerHTML = loadExerciseContent(topic);
             
             // Typeset MathJax
             if (window.MathJax) {
@@ -673,9 +814,72 @@
             }
         }
         
+        // Load Exercise Content
+        function loadExerciseContent(topic) {
+            const exercises = topic.exercises || [];
+            
+            if (exercises.length === 0) {
+                return `
+                    <div class="empty-state">
+                        <span class="empty-state-icon">📝</span>
+                        <p>មិនទាន់មានលំហាត់អនុវត្តន៍</p>
+                    </div>
+                `;
+            }
+            
+            let html = '<div class="exercises-container">';
+            
+            exercises.forEach((exercise, index) => {
+                html += `
+                    <div class="exercise-item">
+                        <div class="exercise-header">
+                            <span class="exercise-number">${index + 1}</span>
+                            <span class="exercise-label">លំហាត់ទី ${index + 1}</span>
+                        </div>
+                        <div class="exercise-question">
+                            ${exercise.question}
+                        </div>
+                        ${exercise.hint ? `<div class="exercise-hint">💡 ${exercise.hint}</div>` : ''}
+                        <button class="show-answer-btn" onclick="toggleAnswer('answer-${topic.id}-${exercise.id}')">
+                            <span class="btn-icon">👁️</span>
+                            <span class="btn-text">បង្ហាញចម្លើយ</span>
+                        </button>
+                        <div class="exercise-answer" id="answer-${topic.id}-${exercise.id}">
+                            <div class="answer-label">ចម្លើយ៖</div>
+                            <div class="answer-content">${exercise.answer}</div>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            html += '</div>';
+            return html;
+        }
+        
         // Go Back
         function goBack() {
             window.location.href = 'index.html';
+        }
+        
+        // Toggle Answer
+        function toggleAnswer(id) {
+            const answerEl = document.getElementById(id);
+            const btn = answerEl.previousElementSibling;
+            
+            if (answerEl.classList.contains('show')) {
+                answerEl.classList.remove('show');
+                btn.classList.remove('active');
+                btn.querySelector('.btn-text').textContent = 'បង្ហាញចម្លើយ';
+            } else {
+                answerEl.classList.add('show');
+                btn.classList.add('active');
+                btn.querySelector('.btn-text').textContent = 'លាក់ចម្លើយ';
+                
+                // Typeset MathJax for the answer
+                if (window.MathJax) {
+                    MathJax.typesetPromise([answerEl]).catch(err => console.log('MathJax error:', err));
+                }
+            }
         }
     </script>
 </body>
