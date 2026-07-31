@@ -663,6 +663,13 @@
             background: var(--bg-card);
             border-radius: 10px;
         }
+        
+        /* ===== Practies Styles ===== */
+        .practies-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
     </style>
 </head>
 <body>
@@ -682,6 +689,7 @@
                 <div class="tab-nav">
                     <button class="tab-btn active" onclick="switchTab('lesson')">📖 មេរៀន</button>
                     <button class="tab-btn" onclick="switchTab('exercise')">✏️ លំហាត់</button>
+                    <button class="tab-btn" onclick="switchTab('practies')">📁 ឯកសារលំហាត់</button>
                 </div>
                 
                 <div id="lessonTab" class="tab-content active">
@@ -690,6 +698,10 @@
                 
                 <div id="exerciseTab" class="tab-content">
                     <!-- Exercise content will be loaded here -->
+                </div>
+                
+                <div id="practiesTab" class="tab-content">
+                    <!-- Practies PDF content will be loaded here -->
                 </div>
             </div>
         </main>
@@ -727,6 +739,7 @@
         const topicTitle = document.getElementById('topicTitle');
         const lessonTab = document.getElementById('lessonTab');
         const exerciseTab = document.getElementById('exerciseTab');
+        const practiesTab = document.getElementById('practiesTab');
         
         // Initialize
         document.addEventListener('DOMContentLoaded', () => {
@@ -788,6 +801,9 @@
             // Load exercise content
             exerciseTab.innerHTML = loadExerciseContent(topic);
             
+            // Load practies content
+            practiesTab.innerHTML = loadPractiesContent(topic);
+            
             // Typeset MathJax
             if (window.MathJax) {
                 MathJax.typesetPromise([lessonTab]).catch(err => console.log('MathJax error:', err));
@@ -809,8 +825,10 @@
             
             if (tab === 'lesson') {
                 lessonTab.classList.add('active');
-            } else {
+            } else if (tab === 'exercise') {
                 exerciseTab.classList.add('active');
+            } else {
+                practiesTab.classList.add('active');
             }
         }
         
@@ -847,6 +865,44 @@
                         <div class="exercise-answer" id="answer-${topic.id}-${exercise.id}">
                             <div class="answer-label">ចម្លើយ៖</div>
                             <div class="answer-content">${exercise.answer}</div>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            html += '</div>';
+            return html;
+        }
+        
+        // Load Practies Content
+        function loadPractiesContent(topic) {
+            const practiesPDFs = (topic.pdfs || []).filter(p => p.type === 'exercise');
+            
+            if (practiesPDFs.length === 0) {
+                return `
+                    <div class="empty-state">
+                        <span class="empty-state-icon">📄</span>
+                        <p>មិនទាន់មានឯកសារលំហាត់</p>
+                    </div>
+                `;
+            }
+            
+            let html = '<div class="practies-container">';
+            
+            practiesPDFs.forEach((pdf, index) => {
+                html += `
+                    <div class="pdf-card">
+                        <div class="pdf-card-header">
+                            <div class="pdf-info">
+                                <span class="pdf-icon">📄</span>
+                                <span class="pdf-name">${pdf.name}</span>
+                            </div>
+                            <div class="pdf-actions">
+                                <a class="pdf-btn pdf-btn-download" href="${pdf.path}" download="${pdf.name}" style="text-decoration:none;">⬇️ ទាញយក</a>
+                            </div>
+                        </div>
+                        <div class="pdf-preview">
+                            <iframe src="${pdf.path}" frameborder="0"></iframe>
                         </div>
                     </div>
                 `;
