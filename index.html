@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>គណិតវិទ្យា ថ្នាក់ទី១២ - ត្រៀមប្រឡងបាក់ឌុប ២០២៧</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Battambang:wght@300;400;500;600;700;800;900&family=Noto+Sans+Khmer:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <span class="logo-icon">📐</span>
+                <div>
+                    <h1>គណិតវិទ្យា ថ្នាក់ទី១២</h1>
+                    <p class="subtitle">ត្រៀមប្រឡងសញ្ញាបត្របាក់ឌុប ២០២៧</p>
+                </div>
+            </div>
+            <nav class="nav-links">
+                <a href="#topics" class="nav-link">មេរៀន</a>
+                <a href="#exercises" class="nav-link">លំហាត់</a>
+                <a href="#about" class="nav-link">អំពី</a>
+                <button id="themeToggle" class="theme-toggle" title="ប្ដូរពណ៌">🌙</button>
+            </nav>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h2>ស្វាគមន៍មកកាន់វេទិការៀនគណិតវិទ្យា</h2>
+            <p>មេរៀនគណិតវិទ្យាថ្នាក់ទី១២ សម្រាប់ត្រៀមប្រឡងសញ្ញាបត្របាក់ឌុប ឆ្នាំសិក្សា ២០២៦-២០២៧</p>
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="ស្វែងរកមេរៀន..." />
+                <button id="searchBtn" class="search-btn">🔍</button>
+            </div>
+            <div class="stats">
+                <div class="stat-item">
+                    <span class="stat-number">15</span>
+                    <span class="stat-label">ប្រធានបទ</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">200+</span>
+                    <span class="stat-label">លំហាត់</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">∞</span>
+                    <span class="stat-label">ឱកាសសិក្សា</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <main class="main-content">
+        <section id="topics" class="topics-section">
+            <h2 class="section-title">📚 ប្រធានបទមេរៀនទាំងអស់</h2>
+            <p class="section-desc">ជ្រើសរើសប្រធានបទដើម្បីចាប់ផ្ដើមសិក្សា</p>
+
+            <div class="topics-grid" id="topicsGrid">
+                <!-- Topics will be loaded dynamically -->
+            </div>
+        </section>
+
+        <section id="exercises" class="exercises-section">
+            <h2 class="section-title">✏️ លំហាត់សិក្សា</h2>
+            <p class="section-desc">ជ្រើសរើសប្រធានបទដើម្បីធ្វើលំហាត់</p>
+            <div class="exercise-filter" id="exerciseFilter">
+                <button class="filter-btn active" data-topic="all">ទាំងអស់</button>
+            </div>
+            <div class="exercises-list" id="exercisesList">
+                <!-- Exercises will be loaded dynamically -->
+            </div>
+        </section>
+
+        <section id="about" class="about-section">
+            <h2 class="section-title">ℹ️ អំពីវេទិកានេះ</h2>
+            <div class="about-content">
+                <div class="about-card">
+                    <h3>🎯 គោលបំណង</h3>
+                    <p>ជួយសិស្សានុសិស្សថ្នាក់ទី១២ ឱ្យសិក្សាគណិតវិទ្យាបានយល់ដឹងកាន់តែស៊ីជម្រៅ និងត្រៀមខ្លួនសម្រាប់ការប្រឡងសញ្ញាបត្របាក់ឌុប។</p>
+                </div>
+                <div class="about-card">
+                    <h3>📖 មាតិកា</h3>
+                    <p>មេរៀនទាំងអស់ត្រូវបានរៀបចំតាមកម្មវិធីសិក្សារបស់ក្រសួងអប់រំ យុវជន និងកីឡា នៃព្រះរាជាណាចក្រកម្ពុជា។</p>
+                </div>
+                <div class="about-card">
+                    <h3>💡 របៀបប្រើប្រាស់</h3>
+                    <p>ជ្រើសរើសប្រធានបទដែលអ្នកចង់សិក្សា អានមេរៀន និងព្យាយាមធ្វើលំហាត់អនុវត្តន៍ដោយខ្លួនឯង។</p>
+                </div>
+                <div class="about-card">
+                    <h3>🔗 ការគ្រប់គ្រង</h3>
+                    <p>គេហទំព័រនេះអាចកែប្រែបានសម្រាប់គ្រូបង្រៀន ដើម្បីបន្ថែម ឬកែប្រែមេរៀន និងលំហាត់ថ្មីៗ។</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="topicModal" class="modal hidden">
+        <div class="modal-overlay" id="modalOverlay"></div>
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose">&times;</button>
+            <div class="modal-header">
+                <span class="modal-icon" id="modalIcon"></span>
+                <h2 id="modalTitle"></h2>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- Topic content will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>គណិតវិទ្យា ថ្នាក់ទី១២ - ត្រៀមប្រឡងបាក់ឌុប ២០២៧</p>
+            <p>រៀបចំដោយគ្រូបង្រៀនគណិតវិទ្យា 📐</p>
+            <p class="footer-github">
+                <a href="https://github.com/Krotreaksmey2200/bacc_2027" target="_blank">
+                    📂 GitHub: Krotreaksmey2200/bacc_2027
+                </a>
+            </p>
+        </div>
+    </footer>
+
+    <script src="js/data.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
