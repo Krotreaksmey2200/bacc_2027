@@ -220,8 +220,6 @@ function closePdfFullscreen() {
 function closeModal() {
     topicModal.classList.add('hidden');
     document.body.style.overflow = '';
-    document.body.style.position = '';
-    document.body.style.width = '';
     currentTopicId = null;
 }
 
@@ -247,10 +245,8 @@ function openTopic(topicId) {
 
     topicModal.classList.remove('hidden');
     
-    // Prevent body scroll on mobile
+    // Prevent body scroll - simple approach that works on iOS
     document.body.style.overflow = 'hidden';
-    document.body.style.position = 'fixed';
-    document.body.style.width = '100%';
 
     if (window.MathJax) {
         MathJax.typesetPromise([modalBody]).catch(err => console.log('MathJax error:', err));
@@ -299,9 +295,4 @@ function setupEventListeners() {
             header.style.boxShadow = 'none';
         }
     });
-
-    // iOS touch event handling for modal scroll
-    modalBody.addEventListener('touchmove', function(e) {
-        e.stopPropagation();
-    }, { passive: true });
 }

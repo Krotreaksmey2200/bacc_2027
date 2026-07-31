@@ -455,7 +455,6 @@ a {
     justify-content: center;
     opacity: 1;
     transition: opacity 0.3s ease;
-    overflow: hidden;
 }
 
 .modal.hidden {
@@ -471,7 +470,6 @@ a {
     bottom: 0;
     background: rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(4px);
-    overflow: hidden;
 }
 
 .modal-content {
@@ -482,14 +480,10 @@ a {
     max-width: 800px;
     max-height: 85vh;
     overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-    overscroll-behavior: contain;
     padding: 2rem;
     box-shadow: var(--shadow-xl);
     transform: translateY(0);
     transition: transform 0.3s ease;
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
 }
 
 .modal.hidden .modal-content {
@@ -575,6 +569,7 @@ a {
 /* ===== Modal Body ===== */
 .modal-body {
     padding-right: 0.5rem;
+    -webkit-overflow-scrolling: touch;
 }
 
 .modal-body::-webkit-scrollbar {
@@ -599,7 +594,10 @@ a {
 @supports (-webkit-touch-callout: none) {
     .modal-content {
         -webkit-overflow-scrolling: touch;
-        overscroll-behavior: contain;
+    }
+    
+    .modal-body {
+        -webkit-overflow-scrolling: touch;
     }
 }
 
@@ -1397,6 +1395,7 @@ a {
         max-height: 95vh;
         padding: 1rem;
         border-radius: var(--radius);
+        -webkit-overflow-scrolling: touch;
     }
 
     .modal-icon {
