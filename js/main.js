@@ -224,29 +224,8 @@ function closeModal() {
 
 // ===== Open Topic Modal =====
 function openTopic(topicId) {
-    const topic = TOPICS.find(t => t.id === topicId);
-    if (!topic) return;
-
-    currentTopicId = topicId;
-
-    // Use custom icon if available, otherwise use emoji
-    if (topic.iconPath) {
-        modalIcon.innerHTML = `<img src="${topic.iconPath}" alt="${topic.title}" class="topic-card-img-modal" onerror="this.parentElement.textContent='${topic.icon}'">`;
-    } else {
-        modalIcon.textContent = topic.icon;
-    }
-    modalTitle.textContent = topic.title;
-
-    renderLessonTab(topicId);
-    renderExerciseTab(topicId);
-
-    switchTab('lesson');
-
-    topicModal.classList.remove('hidden');
-
-    if (window.MathJax) {
-        MathJax.typesetPromise([modalBody]).catch(err => console.log('MathJax error:', err));
-    }
+    // Redirect to topic page
+    window.location.href = `topic.html?id=${topicId}`;
 }
 
 // ===== Search =====
