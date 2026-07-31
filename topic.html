@@ -274,7 +274,14 @@
             box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3);
         }
         
-        .pdf-btn-download:hover {
+        .pdf-btn-view {
+            background: linear-gradient(135deg, var(--success), var(--accent));
+            color: white;
+            box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
+        }
+        
+        .pdf-btn-download:hover,
+        .pdf-btn-view:hover {
             transform: translateY(-2px);
             box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4);
         }
@@ -898,6 +905,7 @@
                                 <span class="pdf-name">${pdf.name}</span>
                             </div>
                             <div class="pdf-actions">
+                                <a class="pdf-btn pdf-btn-view" href="${pdf.path}" target="_blank" style="text-decoration:none;">👁️ មើល</a>
                                 <a class="pdf-btn pdf-btn-download" href="${pdf.path}" download="${pdf.name}" style="text-decoration:none;">⬇️ ទាញយក</a>
                             </div>
                         </div>
