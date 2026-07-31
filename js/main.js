@@ -136,12 +136,10 @@ function renderLessonTab(topicId) {
                             <span class="pdf-name">${pdf.name}</span>
                         </div>
                         <div class="pdf-actions">
-                            <button class="pdf-btn pdf-btn-view" onclick="viewPDF('${pdf.path}', '${pdf.name}')">មើល</button>
-                            <a class="pdf-btn pdf-btn-download" href="${pdf.path}" download="${pdf.name}" style="text-decoration:none;">ទាញយក</a>
-                            <button class="pdf-btn pdf-btn-preview" onclick="togglePreview('lesson-preview-${topicId}-${index}')">Preview</button>
+                            <a class="pdf-btn pdf-btn-download" href="${pdf.path}" download="${pdf.name}" style="text-decoration:none;">⬇️ ទាញយក</a>
                         </div>
                     </div>
-                    <div class="pdf-preview hidden" id="lesson-preview-${topicId}-${index}">
+                    <div class="pdf-preview">
                         <iframe src="${pdf.path}" frameborder="0"></iframe>
                     </div>
                 </div>
@@ -170,12 +168,10 @@ function renderExerciseTab(topicId) {
                             <span class="pdf-name">${pdf.name}</span>
                         </div>
                         <div class="pdf-actions">
-                            <button class="pdf-btn pdf-btn-view" onclick="viewPDF('${pdf.path}', '${pdf.name}')">មើល</button>
-                            <a class="pdf-btn pdf-btn-download" href="${pdf.path}" download="${pdf.name}" style="text-decoration:none;">ទាញយក</a>
-                            <button class="pdf-btn pdf-btn-preview" onclick="togglePreview('exercise-preview-${topicId}-${index}')">Preview</button>
+                            <a class="pdf-btn pdf-btn-download" href="${pdf.path}" download="${pdf.name}" style="text-decoration:none;">⬇️ ទាញយក</a>
                         </div>
                     </div>
-                    <div class="pdf-preview hidden" id="exercise-preview-${topicId}-${index}">
+                    <div class="pdf-preview">
                         <iframe src="${pdf.path}" frameborder="0"></iframe>
                     </div>
                 </div>
