@@ -455,6 +455,8 @@ a {
     justify-content: center;
     opacity: 1;
     transition: opacity 0.3s ease;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
 }
 
 .modal.hidden {
@@ -463,7 +465,7 @@ a {
 }
 
 .modal-overlay {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     right: 0;
@@ -480,10 +482,10 @@ a {
     max-width: 800px;
     max-height: 85vh;
     overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
     padding: 2rem;
     box-shadow: var(--shadow-xl);
-    transform: translateY(0);
-    transition: transform 0.3s ease;
+    margin: 1rem auto;
 }
 
 .modal.hidden .modal-content {
@@ -1392,10 +1394,10 @@ a {
 
     .modal-content {
         width: 98%;
-        max-height: 95vh;
+        max-height: 90vh;
         padding: 1rem;
         border-radius: var(--radius);
-        -webkit-overflow-scrolling: touch;
+        margin: 0.5rem auto;
     }
 
     .modal-icon {

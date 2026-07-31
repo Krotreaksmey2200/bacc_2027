@@ -219,7 +219,6 @@ function closePdfFullscreen() {
 // ===== Close Modal =====
 function closeModal() {
     topicModal.classList.add('hidden');
-    document.body.style.overflow = '';
     currentTopicId = null;
 }
 
@@ -244,9 +243,6 @@ function openTopic(topicId) {
     switchTab('lesson');
 
     topicModal.classList.remove('hidden');
-    
-    // Prevent body scroll - simple approach that works on iOS
-    document.body.style.overflow = 'hidden';
 
     if (window.MathJax) {
         MathJax.typesetPromise([modalBody]).catch(err => console.log('MathJax error:', err));
