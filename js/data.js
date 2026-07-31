@@ -5,7 +5,10 @@ const TOPICS = [
         icon: "🔢",
         tag: "មុខទី១",
         description: "ស្គាល់ និងប្រើប្រាស់កុំផ្លិច រូបមន្ត និងអនុវត្តន៍",
-        pdfs: [],
+        pdfs: [
+            { name: "complex number.pdf", path: "pdfs/01_កុំផ្លិច/lession/complex number.pdf", type: "lesson" },
+            { name: "លំហាត់ចំនួនកុំផ្លិច ២០២៧.pdf", path: "pdfs/01_កុំផ្លិច/practies/លំហាត់ចំនួនកុំផ្លិច ២០២៧.pdf", type: "exercise" }
+        ],
         content: `
             <h3>១. និយមន័យ</h3>
             <p>កុំផ្លិច (Complex Number) គឺជាលេខដែលមានរូបភាព <strong>z = a + bi</strong> ដែល a និង b ជាលេខពិត និង i ជាលេខអាចន្លាស់ដែល i² = -1</p>
