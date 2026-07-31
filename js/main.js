@@ -12,12 +12,34 @@ const modalTitle = document.getElementById('modalTitle');
 const modalIcon = document.getElementById('modalIcon');
 const modalBody = document.getElementById('modalBody');
 const exerciseBody = document.getElementById('exerciseBody');
+const pdfFullscreen = document.getElementById('pdfFullscreen');
+const pdfFullscreenFrame = document.getElementById('pdfFullscreenFrame');
+const pdfFullscreenTitle = document.getElementById('pdfFullscreenTitle');
 
 // ===== State =====
 let searchQuery = '';
 let currentTopicId = null;
 let currentTab = 'lesson';
 let uploadedPDFs = JSON.parse(localStorage.getItem('uploadedPDFs') || '{}');
+
+// ===== PDF Folder Mapping =====
+const PDF_FOLDERS = {
+    1: 'pdfs/01_កុំផ្លិច',
+    2: 'pdfs/02_លីមីតអនុគមន៍',
+    3: 'pdfs/03_ភាពជាប់អនុគមន៍',
+    4: 'pdfs/04_ចំណោទបរមា',
+    5: 'pdfs/05_អនុគមន៍សនិទាន',
+    6: 'pdfs/06_អនុគមន៍អ៊ិចស្ប៉ូណង់ស្យែល',
+    7: 'pdfs/07_អនុគមន៍លោការីត',
+    8: 'pdfs/08_អាំងតេក្រាលមិនកំណត់',
+    9: 'pdfs/09_អាំងតេក្រាលកំណត់',
+    10: 'pdfs/10_សមីការឌីផេរ៉ងស្យែលទី១',
+    11: 'pdfs/11_សមីការឌីផេរ៉ងស្យែលទី២',
+    12: 'pdfs/12_ធរណីមាត្រវិភាគក្នុងលំហ',
+    13: 'pdfs/13_ប៉ារ៉ាបូល',
+    14: 'pdfs/14_អេលីប',
+    15: 'pdfs/15_អ៊ីពែប៉ូល'
+};
 
 // ===== Initialize =====
 document.addEventListener('DOMContentLoaded', () => {
@@ -115,10 +137,27 @@ function openTopic(topicId) {
 function renderExerciseTab(topicId) {
     const topicExercises = EXERCISES.filter(e => e.topicId === topicId);
     const savedPDFs = uploadedPDFs[topicId] || [];
+    const pdfFolder = PDF_FOLDERS[topicId];
 
     let html = '';
 
+    // Repository PDFs Section
+    html += `<h3>📁 ឯកសារក្នុង Git Repository</h3>`;
+    html += `<p style="font-size:0.85rem; color:var(--text-secondary);">ដាក់ឯកសារ PDF ក្នុង folder <code>${pdfFolder}</code> ដើម្បីឱ្យបង្ហាញនៅទីនេះ</p>`;
+
+    html += `
+        <div class="pdf-viewer">
+            <div class="pdf-viewer-empty">
+                <span class="empty-icon">📂</span>
+                <p>ដាក់ឯកសារ PDF ក្នុង folder</p>
+                <p style="font-size:0.8rem; margin-top:0.5rem; font-family:monospace; background:var(--bg); padding:0.3rem 0.8rem; border-radius:4px;">${pdfFolder}/</p>
+                <p style="font-size:0.75rem; margin-top:0.8rem;">ឈ្មោះឯកសារដែលគាំទ្រ៖ <strong>merien.pdf</strong> និង <strong>exercises.pdf</strong></p>
+            </div>
+        </div>
+    `;
+
     // Upload Area
+    html += `<h3>📤 បញ្ចូលឯកសារ PDF ថ្មី</h3>`;
     html += `
         <div class="upload-area" id="uploadArea" onclick="document.getElementById('pdfInput').click()">
             <span class="upload-icon">📄</span>
@@ -131,7 +170,7 @@ function renderExerciseTab(topicId) {
 
     // Uploaded PDFs List
     if (savedPDFs.length > 0) {
-        html += `<h4>📁 ឯកសារដែលបានបញ្ចូល (${savedPDFs.length})</h4>`;
+        html += `<h3>📁 ឯកសារដែលបានបញ្ចូល (${savedPDFs.length})</h3>`;
         html += `<div class="pdf-list">`;
         savedPDFs.forEach((pdf, index) => {
             html += `
@@ -151,28 +190,11 @@ function renderExerciseTab(topicId) {
             `;
         });
         html += `</div>`;
-
-        // PDF Viewer
-        html += `
-            <div class="pdf-viewer" id="pdfViewer">
-                <iframe id="pdfFrame" src="" frameborder="0"></iframe>
-            </div>
-        `;
-    } else {
-        html += `
-            <div class="pdf-viewer">
-                <div class="pdf-viewer-empty">
-                    <span class="empty-icon">📄</span>
-                    <p>មិនទាន់មានឯកសារ PDF បញ្ចូលនៅឡើយទេ</p>
-                    <p style="font-size:0.8rem; margin-top:0.5rem;">បញ្ចូលឯកសារ PDF ដើម្បីមើលលំហាត់</p>
-                </div>
-            </div>
-        `;
     }
 
     // Built-in Exercises
     if (topicExercises.length > 0) {
-        html += `<h4 style="margin-top:1.5rem;">✏️ លំហាត់អនុវត្តន៍ (${topicExercises.length})</h4>`;
+        html += `<h3 style="margin-top:1.5rem;">✏️ លំហាត់អនុវត្តន៍ (${topicExercises.length})</h3>`;
         topicExercises.forEach(exercise => {
             const badgeClass = exercise.difficulty === 'easy' ? 'badge-easy' :
                               exercise.difficulty === 'medium' ? 'badge-medium' : 'badge-hard';
@@ -254,15 +276,20 @@ function processFiles(files) {
     });
 }
 
-// ===== View PDF =====
+// ===== View PDF (Fullscreen) =====
 function viewPDF(topicId, index) {
     const pdf = uploadedPDFs[topicId]?.[index];
     if (!pdf) return;
 
-    const pdfFrame = document.getElementById('pdfFrame');
-    if (pdfFrame) {
-        pdfFrame.src = pdf.data;
-    }
+    pdfFullscreenTitle.textContent = pdf.name;
+    pdfFullscreenFrame.src = pdf.data;
+    pdfFullscreen.classList.remove('hidden');
+}
+
+// ===== Close PDF Fullscreen =====
+function closePdfFullscreen() {
+    pdfFullscreen.classList.add('hidden');
+    pdfFullscreenFrame.src = '';
 }
 
 // ===== Delete PDF =====
@@ -308,7 +335,13 @@ function setupEventListeners() {
     modalOverlay.addEventListener('click', closeModal);
 
     document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') closeModal();
+        if (e.key === 'Escape') {
+            if (!pdfFullscreen.classList.contains('hidden')) {
+                closePdfFullscreen();
+            } else {
+                closeModal();
+            }
+        }
     });
 
     searchInput.addEventListener('input', handleSearch);
