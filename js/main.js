@@ -1,7 +1,5 @@
 // ===== DOM Elements =====
 const topicsGrid = document.getElementById('topicsGrid');
-const exercisesList = document.getElementById('exercisesList');
-const exerciseFilter = document.getElementById('exerciseFilter');
 const searchInput = document.getElementById('searchInput');
 const searchBtn = document.getElementById('searchBtn');
 const themeToggle = document.getElementById('themeToggle');
@@ -13,17 +11,18 @@ const modalClose = document.getElementById('modalClose');
 const modalTitle = document.getElementById('modalTitle');
 const modalIcon = document.getElementById('modalIcon');
 const modalBody = document.getElementById('modalBody');
+const exerciseBody = document.getElementById('exerciseBody');
 
 // ===== State =====
-let currentFilter = 'all';
 let searchQuery = '';
+let currentTopicId = null;
+let currentTab = 'lesson';
+let uploadedPDFs = JSON.parse(localStorage.getItem('uploadedPDFs') || '{}');
 
 // ===== Initialize =====
 document.addEventListener('DOMContentLoaded', () => {
     loadTheme();
     renderTopics();
-    renderExercises();
-    renderExerciseFilters();
     setupEventListeners();
 });
 
@@ -72,70 +71,21 @@ function renderTopics(filter = '') {
     `).join('');
 }
 
-// ===== Render Exercise Filters =====
-function renderExerciseFilters() {
-    const topics = [...new Set(EXERCISES.map(e => e.topicId))];
-    exerciseFilter.innerHTML = `
-        <button class="filter-btn active" data-topic="all" onclick="filterExercises('all')">ទាំងអស់</button>
-        ${topics.map(topicId => {
-            const topic = TOPICS.find(t => t.id === topicId);
-            return `<button class="filter-btn" data-topic="${topicId}" onclick="filterExercises(${topicId})">${topic.title}</button>`;
-        }).join('')}
-    `;
-}
+// ===== Switch Tabs =====
+function switchTab(tab) {
+    currentTab = tab;
 
-// ===== Render Exercises =====
-function renderExercises(topicFilter = 'all') {
-    let filtered = EXERCISES;
-
-    if (topicFilter !== 'all') {
-        filtered = filtered.filter(e => e.topicId === parseInt(topicFilter));
-    }
-
-    if (searchQuery) {
-        filtered = filtered.filter(e =>
-            e.title.includes(searchQuery) ||
-            e.problem.includes(searchQuery)
-        );
-    }
-
-    if (filtered.length === 0) {
-        exercisesList.innerHTML = `
-            <div class="no-results">
-                <span class="no-results-icon">✏️</span>
-                <p>រកមិនឃើញលំហាត់ដែលត្រូវនឹងការស្វែងរកទេ</p>
-            </div>
-        `;
-        return;
-    }
-
-    exercisesList.innerHTML = filtered.map(exercise => {
-        const topic = TOPICS.find(t => t.id === exercise.topicId);
-        const badgeClass = exercise.difficulty === 'easy' ? 'badge-easy' :
-                          exercise.difficulty === 'medium' ? 'badge-medium' : 'badge-hard';
-        const difficultyLabel = exercise.difficulty === 'easy' ? 'ងាយ' :
-                               exercise.difficulty === 'medium' ? 'មធ្យម' : 'ពិបាក';
-
-        return `
-            <div class="exercise-card" onclick="openTopic(${exercise.topicId})">
-                <div class="exercise-card-header">
-                    <span class="exercise-badge ${badgeClass}">${difficultyLabel}</span>
-                    <h4>${exercise.title}</h4>
-                </div>
-                <p>${topic.icon} ${topic.title}</p>
-                <div class="exercise-math">${exercise.problem}</div>
-            </div>
-        `;
-    }).join('');
-}
-
-// ===== Filter Exercises =====
-function filterExercises(topicId) {
-    currentFilter = topicId;
-    document.querySelectorAll('.filter-btn').forEach(btn => {
-        btn.classList.toggle('active', btn.getAttribute('data-topic') === topicId.toString());
+    document.querySelectorAll('.modal-tab').forEach(t => {
+        t.classList.toggle('active', t.getAttribute('data-tab') === tab);
     });
-    renderExercises(topicId);
+
+    if (tab === 'lesson') {
+        modalBody.classList.remove('hidden');
+        exerciseBody.classList.add('hidden');
+    } else {
+        modalBody.classList.add('hidden');
+        exerciseBody.classList.remove('hidden');
+    }
 }
 
 // ===== Open Topic Modal =====
@@ -143,9 +93,15 @@ function openTopic(topicId) {
     const topic = TOPICS.find(t => t.id === topicId);
     if (!topic) return;
 
+    currentTopicId = topicId;
+
     modalIcon.textContent = topic.icon;
     modalTitle.textContent = topic.title;
     modalBody.innerHTML = topic.content;
+
+    renderExerciseTab(topicId);
+
+    switchTab('lesson');
 
     topicModal.classList.remove('hidden');
     document.body.style.overflow = 'hidden';
@@ -155,17 +111,189 @@ function openTopic(topicId) {
     }
 }
 
+// ===== Render Exercise Tab =====
+function renderExerciseTab(topicId) {
+    const topicExercises = EXERCISES.filter(e => e.topicId === topicId);
+    const savedPDFs = uploadedPDFs[topicId] || [];
+
+    let html = '';
+
+    // Upload Area
+    html += `
+        <div class="upload-area" id="uploadArea" onclick="document.getElementById('pdfInput').click()">
+            <span class="upload-icon">📄</span>
+            <p class="upload-text">ចុចដើម្បីបញ្ចូលឯកសារ PDF</p>
+            <p class="upload-hint">ឬអូសនិងទម្លាក់ឯកសារ PDF នៅទីនេះ</p>
+            <button class="upload-btn" type="button">ជ្រើសរើសឯកសារ</button>
+        </div>
+        <input type="file" id="pdfInput" accept=".pdf" multiple style="display:none" onchange="handleFileUpload(event)">
+    `;
+
+    // Uploaded PDFs List
+    if (savedPDFs.length > 0) {
+        html += `<h4>📁 ឯកសារដែលបានបញ្ចូល (${savedPDFs.length})</h4>`;
+        html += `<div class="pdf-list">`;
+        savedPDFs.forEach((pdf, index) => {
+            html += `
+                <div class="pdf-item">
+                    <div class="pdf-info">
+                        <span class="pdf-icon">📄</span>
+                        <div>
+                            <span class="pdf-name">${pdf.name}</span><br>
+                            <span class="pdf-size">${formatFileSize(pdf.size)}</span>
+                        </div>
+                    </div>
+                    <div class="pdf-actions">
+                        <button class="pdf-btn pdf-btn-view" onclick="viewPDF(${topicId}, ${index})">មើល</button>
+                        <button class="pdf-btn pdf-btn-delete" onclick="deletePDF(${topicId}, ${index})">លុប</button>
+                    </div>
+                </div>
+            `;
+        });
+        html += `</div>`;
+
+        // PDF Viewer
+        html += `
+            <div class="pdf-viewer" id="pdfViewer">
+                <iframe id="pdfFrame" src="" frameborder="0"></iframe>
+            </div>
+        `;
+    } else {
+        html += `
+            <div class="pdf-viewer">
+                <div class="pdf-viewer-empty">
+                    <span class="empty-icon">📄</span>
+                    <p>មិនទាន់មានឯកសារ PDF បញ្ចូលនៅឡើយទេ</p>
+                    <p style="font-size:0.8rem; margin-top:0.5rem;">បញ្ចូលឯកសារ PDF ដើម្បីមើលលំហាត់</p>
+                </div>
+            </div>
+        `;
+    }
+
+    // Built-in Exercises
+    if (topicExercises.length > 0) {
+        html += `<h4 style="margin-top:1.5rem;">✏️ លំហាត់អនុវត្តន៍ (${topicExercises.length})</h4>`;
+        topicExercises.forEach(exercise => {
+            const badgeClass = exercise.difficulty === 'easy' ? 'badge-easy' :
+                              exercise.difficulty === 'medium' ? 'badge-medium' : 'badge-hard';
+            const difficultyLabel = exercise.difficulty === 'easy' ? 'ងាយ' :
+                                   exercise.difficulty === 'medium' ? 'មធ្យម' : 'ពិបាក';
+
+            html += `
+                <div class="exercise-card" style="margin-bottom:0.8rem;">
+                    <div class="exercise-card-header">
+                        <span class="exercise-badge ${badgeClass}">${difficultyLabel}</span>
+                        <h4>${exercise.title}</h4>
+                    </div>
+                    <div class="exercise-math">${exercise.problem}</div>
+                </div>
+            `;
+        });
+    }
+
+    exerciseBody.innerHTML = html;
+
+    // Setup drag & drop
+    setupDragDrop();
+}
+
+// ===== Setup Drag & Drop =====
+function setupDragDrop() {
+    const uploadArea = document.getElementById('uploadArea');
+    if (!uploadArea) return;
+
+    uploadArea.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        uploadArea.classList.add('dragover');
+    });
+
+    uploadArea.addEventListener('dragleave', () => {
+        uploadArea.classList.remove('dragover');
+    });
+
+    uploadArea.addEventListener('drop', (e) => {
+        e.preventDefault();
+        uploadArea.classList.remove('dragover');
+        const files = e.dataTransfer.files;
+        processFiles(files);
+    });
+}
+
+// ===== Handle File Upload =====
+function handleFileUpload(event) {
+    const files = event.target.files;
+    processFiles(files);
+    event.target.value = '';
+}
+
+function processFiles(files) {
+    if (!currentTopicId) return;
+
+    Array.from(files).forEach(file => {
+        if (file.type !== 'application/pdf') {
+            alert('សូមជ្រើសរើសតែឯកសារ PDF ប៉ុណ្ណោះ!');
+            return;
+        }
+
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            if (!uploadedPDFs[currentTopicId]) {
+                uploadedPDFs[currentTopicId] = [];
+            }
+
+            uploadedPDFs[currentTopicId].push({
+                name: file.name,
+                size: file.size,
+                data: e.target.result
+            });
+
+            localStorage.setItem('uploadedPDFs', JSON.stringify(uploadedPDFs));
+            renderExerciseTab(currentTopicId);
+        };
+        reader.readAsDataURL(file);
+    });
+}
+
+// ===== View PDF =====
+function viewPDF(topicId, index) {
+    const pdf = uploadedPDFs[topicId]?.[index];
+    if (!pdf) return;
+
+    const pdfFrame = document.getElementById('pdfFrame');
+    if (pdfFrame) {
+        pdfFrame.src = pdf.data;
+    }
+}
+
+// ===== Delete PDF =====
+function deletePDF(topicId, index) {
+    if (!confirm('តើអ្នកពិតជាចង់លុបឯកសារនេះមែនទេ?')) return;
+
+    if (uploadedPDFs[topicId]) {
+        uploadedPDFs[topicId].splice(index, 1);
+        localStorage.setItem('uploadedPDFs', JSON.stringify(uploadedPDFs));
+        renderExerciseTab(topicId);
+    }
+}
+
+// ===== Format File Size =====
+function formatFileSize(bytes) {
+    if (bytes < 1024) return bytes + ' B';
+    if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
+    return (bytes / (1024 * 1024)).toFixed(1) + ' MB';
+}
+
 // ===== Close Modal =====
 function closeModal() {
     topicModal.classList.add('hidden');
     document.body.style.overflow = '';
+    currentTopicId = null;
 }
 
 // ===== Search =====
 function handleSearch() {
     searchQuery = searchInput.value.trim();
     renderTopics(searchQuery);
-    renderExercises(currentFilter);
 }
 
 // ===== Event Listeners =====
