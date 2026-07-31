@@ -20,26 +20,6 @@ const pdfFullscreenTitle = document.getElementById('pdfFullscreenTitle');
 let searchQuery = '';
 let currentTopicId = null;
 let currentTab = 'lesson';
-let uploadedPDFs = JSON.parse(localStorage.getItem('uploadedPDFs') || '{}');
-
-// ===== PDF Folder Mapping =====
-const PDF_FOLDERS = {
-    1: 'pdfs/01_កុំផ្លិច',
-    2: 'pdfs/02_លីមីតអនុគមន៍',
-    3: 'pdfs/03_ភាពជាប់អនុគមន៍',
-    4: 'pdfs/04_ចំណោទបរមា',
-    5: 'pdfs/05_អនុគមន៍សនិទាន',
-    6: 'pdfs/06_អនុគមន៍អ៊ិចស្ប៉ូណង់ស្យែល',
-    7: 'pdfs/07_អនុគមន៍លោការីត',
-    8: 'pdfs/08_អាំងតេក្រាលមិនកំណត់',
-    9: 'pdfs/09_អាំងតេក្រាលកំណត់',
-    10: 'pdfs/10_សមីការឌីផេរ៉ងស្យែលទី១',
-    11: 'pdfs/11_សមីការឌីផេរ៉ងស្យែលទី២',
-    12: 'pdfs/12_ធរណីមាត្រវិភាគក្នុងលំហ',
-    13: 'pdfs/13_ប៉ារ៉ាបូល',
-    14: 'pdfs/14_អេលីប',
-    15: 'pdfs/15_អ៊ីពែប៉ូល'
-};
 
 // ===== Initialize =====
 document.addEventListener('DOMContentLoaded', () => {
@@ -120,10 +100,8 @@ function openTopic(topicId) {
     modalIcon.textContent = topic.icon;
     modalTitle.textContent = topic.title;
 
-    // Lesson Tab - Clean content only
-    modalBody.innerHTML = topic.content;
-
-    // Exercise Tab - PDFs only
+    // Render both tabs
+    renderLessonTab(topicId);
     renderExerciseTab(topicId);
 
     switchTab('lesson');
@@ -136,26 +114,63 @@ function openTopic(topicId) {
     }
 }
 
-// ===== Render Exercise Tab =====
-function renderExerciseTab(topicId) {
+// ===== Render Lesson Tab =====
+function renderLessonTab(topicId) {
     const topic = TOPICS.find(t => t.id === topicId);
-    const repoPDFs = topic?.pdfs || [];
+    const lessonPDFs = (topic?.pdfs || []).filter(p => p.type === 'lesson');
 
     let html = '';
 
-    if (repoPDFs.length > 0) {
+    // Lesson content
+    html += topic.content;
+
+    // Lesson PDFs
+    if (lessonPDFs.length > 0) {
+        html += `<div style="margin-top:2rem; padding-top:1.5rem; border-top:1px solid var(--border);">`;
+        html += `<h3>📁 ឯកសារមេរៀន</h3>`;
         html += `<div class="pdf-list">`;
-        repoPDFs.forEach(pdf => {
+        lessonPDFs.forEach(pdf => {
             html += `
                 <div class="pdf-item">
                     <div class="pdf-info">
-                        <span class="pdf-icon">📄</span>
+                        <span class="pdf-icon">📖</span>
                         <div>
                             <span class="pdf-name">${pdf.name}</span>
                         </div>
                     </div>
                     <div class="pdf-actions">
-                        <button class="pdf-btn pdf-btn-view" onclick="viewRepoPDF('${pdf.path}', '${pdf.name}')">មើល</button>
+                        <button class="pdf-btn pdf-btn-view" onclick="viewPDF('${pdf.path}', '${pdf.name}')">មើល</button>
+                        <a class="pdf-btn pdf-btn-download" href="${pdf.path}" download="${pdf.name}" style="text-decoration:none;">ទាញយក</a>
+                    </div>
+                </div>
+            `;
+        });
+        html += `</div></div>`;
+    }
+
+    modalBody.innerHTML = html;
+}
+
+// ===== Render Exercise Tab =====
+function renderExerciseTab(topicId) {
+    const topic = TOPICS.find(t => t.id === topicId);
+    const exercisePDFs = (topic?.pdfs || []).filter(p => p.type === 'exercise');
+
+    let html = '';
+
+    if (exercisePDFs.length > 0) {
+        html += `<div class="pdf-list">`;
+        exercisePDFs.forEach(pdf => {
+            html += `
+                <div class="pdf-item">
+                    <div class="pdf-info">
+                        <span class="pdf-icon">✏️</span>
+                        <div>
+                            <span class="pdf-name">${pdf.name}</span>
+                        </div>
+                    </div>
+                    <div class="pdf-actions">
+                        <button class="pdf-btn pdf-btn-view" onclick="viewPDF('${pdf.path}', '${pdf.name}')">មើល</button>
                         <a class="pdf-btn pdf-btn-download" href="${pdf.path}" download="${pdf.name}" style="text-decoration:none;">ទាញយក</a>
                     </div>
                 </div>
@@ -167,7 +182,7 @@ function renderExerciseTab(topicId) {
             <div class="pdf-viewer">
                 <div class="pdf-viewer-empty">
                     <span class="empty-icon">📄</span>
-                    <p>មិនទាន់មានឯកសារ PDF</p>
+                    <p>មិនទាន់មានឯកសារលំហាត់</p>
                 </div>
             </div>
         `;
@@ -176,8 +191,8 @@ function renderExerciseTab(topicId) {
     exerciseBody.innerHTML = html;
 }
 
-// ===== View Repository PDF =====
-function viewRepoPDF(path, name) {
+// ===== View PDF =====
+function viewPDF(path, name) {
     pdfFullscreenTitle.textContent = name;
     pdfFullscreenFrame.src = path;
     pdfFullscreen.classList.remove('hidden');
