@@ -135,9 +135,11 @@ function openTopic(topicId) {
 
 // ===== Render Exercise Tab =====
 function renderExerciseTab(topicId) {
+    const topic = TOPICS.find(t => t.id === topicId);
     const topicExercises = EXERCISES.filter(e => e.topicId === topicId);
     const savedPDFs = uploadedPDFs[topicId] || [];
     const pdfFolder = PDF_FOLDERS[topicId];
+    const repoPDFs = topic?.pdfs || [];
 
     let html = '';
 
@@ -145,16 +147,39 @@ function renderExerciseTab(topicId) {
     html += `<h3>📁 ឯកសារក្នុង Git Repository</h3>`;
     html += `<p style="font-size:0.85rem; color:var(--text-secondary);">ដាក់ឯកសារ PDF ក្នុង folder <code>${pdfFolder}</code> ដើម្បីឱ្យបង្ហាញនៅទីនេះ</p>`;
 
-    html += `
-        <div class="pdf-viewer">
-            <div class="pdf-viewer-empty">
-                <span class="empty-icon">📂</span>
-                <p>ដាក់ឯកសារ PDF ក្នុង folder</p>
-                <p style="font-size:0.8rem; margin-top:0.5rem; font-family:monospace; background:var(--bg); padding:0.3rem 0.8rem; border-radius:4px;">${pdfFolder}/</p>
-                <p style="font-size:0.75rem; margin-top:0.8rem;">ឈ្មោះឯកសារដែលគាំទ្រ៖ <strong>merien.pdf</strong> និង <strong>exercises.pdf</strong></p>
+    // Show PDFs from repository
+    if (repoPDFs.length > 0) {
+        html += `<div class="pdf-list">`;
+        repoPDFs.forEach(pdf => {
+            const typeLabel = pdf.type === 'lesson' ? '📖 មេរៀន' : '✏️ លំហាត់';
+            html += `
+                <div class="pdf-item">
+                    <div class="pdf-info">
+                        <span class="pdf-icon">📄</span>
+                        <div>
+                            <span class="pdf-name">${pdf.name}</span><br>
+                            <span class="pdf-size">${typeLabel}</span>
+                        </div>
+                    </div>
+                    <div class="pdf-actions">
+                        <button class="pdf-btn pdf-btn-view" onclick="viewRepoPDF('${pdf.path}', '${pdf.name}')">មើល</button>
+                        <a class="pdf-btn pdf-btn-view" href="${pdf.path}" download style="text-decoration:none;">⬇️ ទាញយក</a>
+                    </div>
+                </div>
+            `;
+        });
+        html += `</div>`;
+    } else {
+        html += `
+            <div class="pdf-viewer">
+                <div class="pdf-viewer-empty">
+                    <span class="empty-icon">📂</span>
+                    <p>មិនទាន់មានឯកសារ PDF នៅឡើយទេ</p>
+                    <p style="font-size:0.8rem; margin-top:0.5rem;">ដាក់ឯកសារ PDF ក្នុង folder <code>${pdfFolder}</code></p>
+                </div>
             </div>
-        </div>
-    `;
+        `;
+    }
 
     // Upload Area
     html += `<h3>📤 បញ្ចូលឯកសារ PDF ថ្មី</h3>`;
@@ -239,6 +264,13 @@ function setupDragDrop() {
         const files = e.dataTransfer.files;
         processFiles(files);
     });
+}
+
+// ===== View Repository PDF =====
+function viewRepoPDF(path, name) {
+    pdfFullscreenTitle.textContent = name;
+    pdfFullscreenFrame.src = path;
+    pdfFullscreen.classList.remove('hidden');
 }
 
 // ===== Handle File Upload =====
