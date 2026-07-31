@@ -71,7 +71,7 @@ const TOPICS = [
         tag: "មុខទី២",
         description: "គណនាលីមីតអនុគមន៍ក្នុងច្រើនទម្រង់",
         pdfs: [
-            { name: "limit_2027.pdf", path: "pdfs/02_លីមីតអនុគមន៍/limit_2027.pdf", type: "lesson" }
+            { name: "limit_2027.pdf", path: "pdfs/02_លីមីតអនុគមន៍/lession/limit_2027.pdf", type: "lesson" }
         ],
         content: `
             <h3>១. និយមន័យ</h3>
