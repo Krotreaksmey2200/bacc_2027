@@ -7,7 +7,8 @@ const TOPIC_02 = {
     semester: 1,
     description: "គណនាលីមីតអនុគមន៍ក្នុងច្រើនទម្រង់",
     pdfs: [
-        { name: "limit_2027.pdf", path: "pdfs/02_លីមីតអនុគមន៍/lession/limit_of_function_update.pdf", type: "lesson" }
+        { name: "limit_of_function_update.pdf", path: "pdfs/02_លីមីតអនុគមន៍/lession/limit_of_function_update.pdf", type: "lesson" },
+        { name: "limit_2027.pdf", path: "pdfs/02_លីមីតអនុគមន៍/practies/limit_2027.pdf", type: "exercise" }
     ],
     content: `
             <h3>១. និយមន័យ</h3>
