@@ -481,13 +481,13 @@ a {
     width: 90%;
     max-width: 800px;
     max-height: 85vh;
-    overflow: hidden;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
     padding: 2rem;
     box-shadow: var(--shadow-xl);
     transform: translateY(0);
     transition: transform 0.3s ease;
-    display: flex;
-    flex-direction: column;
     -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
 }
@@ -574,12 +574,7 @@ a {
 
 /* ===== Modal Body ===== */
 .modal-body {
-    flex: 1;
-    overflow-y: auto;
     padding-right: 0.5rem;
-    -webkit-overflow-scrolling: touch;
-    overscroll-behavior: contain;
-    touch-action: pan-y;
 }
 
 .modal-body::-webkit-scrollbar {
@@ -605,12 +600,6 @@ a {
     .modal-content {
         -webkit-overflow-scrolling: touch;
         overscroll-behavior: contain;
-    }
-    
-    .modal-body {
-        -webkit-overflow-scrolling: touch;
-        overscroll-behavior: contain;
-        will-change: transform;
     }
 }
 
