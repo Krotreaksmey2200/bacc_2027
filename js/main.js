@@ -299,4 +299,9 @@ function setupEventListeners() {
             header.style.boxShadow = 'none';
         }
     });
+
+    // iOS touch event handling for modal scroll
+    modalBody.addEventListener('touchmove', function(e) {
+        e.stopPropagation();
+    }, { passive: true });
 }

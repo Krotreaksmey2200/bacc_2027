@@ -488,6 +488,8 @@ a {
     transition: transform 0.3s ease;
     display: flex;
     flex-direction: column;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
 }
 
 .modal.hidden .modal-content {
@@ -575,6 +577,9 @@ a {
     flex: 1;
     overflow-y: auto;
     padding-right: 0.5rem;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+    touch-action: pan-y;
 }
 
 .modal-body::-webkit-scrollbar {
@@ -593,6 +598,20 @@ a {
 
 .modal-body::-webkit-scrollbar-thumb:hover {
     background: var(--text);
+}
+
+/* ===== iOS Fix ===== */
+@supports (-webkit-touch-callout: none) {
+    .modal-content {
+        -webkit-overflow-scrolling: touch;
+        overscroll-behavior: contain;
+    }
+    
+    .modal-body {
+        -webkit-overflow-scrolling: touch;
+        overscroll-behavior: contain;
+        will-change: transform;
+    }
 }
 
 /* ===== Semester Tabs ===== */
