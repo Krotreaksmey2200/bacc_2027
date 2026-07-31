@@ -20,6 +20,7 @@ const pdfFullscreenTitle = document.getElementById('pdfFullscreenTitle');
 let searchQuery = '';
 let currentTopicId = null;
 let currentTab = 'lesson';
+let currentSemester = 1;
 
 // ===== Initialize =====
 document.addEventListener('DOMContentLoaded', () => {
@@ -43,9 +44,25 @@ function toggleTheme() {
     themeToggle.textContent = newTheme === 'dark' ? '☀️' : '🌙';
 }
 
+// ===== Filter by Semester =====
+function filterBySemester(semester) {
+    currentSemester = semester;
+    
+    // Update active tab
+    document.querySelectorAll('.semester-tab').forEach(tab => {
+        tab.classList.toggle('active', parseInt(tab.getAttribute('data-semester')) === semester);
+    });
+    
+    renderTopics(searchQuery);
+}
+
 // ===== Render Topics =====
 function renderTopics(filter = '') {
     const filteredTopics = TOPICS.filter(topic => {
+        // Filter by semester
+        if (topic.semester !== currentSemester) return false;
+        
+        // Filter by search
         if (!filter) return true;
         return topic.title.includes(filter) ||
                topic.description.includes(filter) ||

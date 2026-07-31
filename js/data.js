@@ -4,6 +4,7 @@ const TOPICS = [
         title: "កុំផ្លិច",
         icon: "🔢",
         tag: "មុខទី១",
+        semester: 1,
         description: "ស្គាល់ និងប្រើប្រាស់កុំផ្លិច រូបមន្ត និងអនុវត្តន៍",
         pdfs: [
             { name: "complex number.pdf", path: "pdfs/01_កុំផ្លិច/lession/complex number.pdf", type: "lesson" },
@@ -69,6 +70,7 @@ const TOPICS = [
         title: "លីមីតអនុគមន៍",
         icon: "📈",
         tag: "មុខទី២",
+        semester: 1,
         description: "គណនាលីមីតអនុគមន៍ក្នុងច្រើនទម្រង់",
         pdfs: [
             { name: "limit_2027.pdf", path: "pdfs/02_លីមីតអនុគមន៍/lession/limit_2027.pdf", type: "lesson" }
@@ -118,6 +120,7 @@ const TOPICS = [
         title: "ភាពជាប់អនុគមន៍",
         icon: "🔗",
         tag: "មុខទី៣",
+        semester: 1,
         description: "ស្គាល់ និងពិនិត្យភាពជាប់អនុគមន៍",
         pdfs: [],
         content: `
@@ -160,6 +163,7 @@ const TOPICS = [
         title: "ចំណោទបរមា",
         icon: "⛰️",
         tag: "មុខទី៤",
+        semester: 1,
         description: "រកបរមា អតិបរមា និងតម្លៃអតិបរមា/បរមា",
         pdfs: [],
         content: `
@@ -212,6 +216,7 @@ const TOPICS = [
         title: "អនុគមន៍សនិទាន",
         icon: "📊",
         tag: "មុខទី៥",
+        semester: 1,
         description: "រូបភាព និងលក្ខណៈអនុគមន៍សនិទាន",
         pdfs: [],
         content: `
@@ -253,6 +258,7 @@ const TOPICS = [
         title: "អនុគមន៍អ៊ិចស្ប៉ូណង់ស្យែល",
         icon: "📉",
         tag: "មុខទី៦",
+        semester: 1,
         description: "អនុគមន៍ eˣ និងអនុវត្តន៍របស់វា",
         pdfs: [],
         content: `
@@ -300,6 +306,7 @@ const TOPICS = [
         title: "អនុគមន៍លោការីត",
         icon: "📐",
         tag: "មុខទី៧",
+        semester: 1,
         description: "អនុគមន៍ ln(x) និង logₐ(x)",
         pdfs: [],
         content: `
@@ -349,6 +356,7 @@ const TOPICS = [
         title: "អាំងតេក្រាលមិនកំណត់",
         icon: "∫",
         tag: "មុខទី៨",
+        semester: 2,
         description: "ប្រភេទអាំងតេក្រាល និងរូបមន្ត",
         pdfs: [],
         content: `
@@ -397,6 +405,7 @@ const TOPICS = [
         title: "អាំងតេក្រាលកំណត់និងបម្រើបម្រាស់",
         icon: "📏",
         tag: "មុខទី៩",
+        semester: 2,
         description: "អាំងតេក្រាលកំណត់ និងអនុវត្តន៍ (ផ្ទៃក្រឡា និងប្រវែងសរសៃរ)",
         pdfs: [],
         content: `
@@ -443,6 +452,7 @@ const TOPICS = [
         title: "សមីការឌីផេរ៉ងស្យែលលំដាប់មួយ",
         icon: "🔀",
         tag: "មុខទី១០",
+        semester: 2,
         description: "ដោះស្រាយសមីការឌីផេរ៉ងស្យែលលំដាប់ទី១",
         pdfs: [],
         content: `
@@ -480,6 +490,7 @@ const TOPICS = [
         title: "សមីការឌីផេរ៉ងស្យែលលំដាប់ពីរ",
         icon: "⚡",
         tag: "មុខទី១១",
+        semester: 2,
         description: "ដោះស្រាយសមីការឌីផេរ៉ងស្យែលលំដាប់ទី២",
         pdfs: [],
         content: `
@@ -524,6 +535,7 @@ const TOPICS = [
         title: "ធរណីមាត្រវិភាគក្នុងលំហ",
         icon: "🌐",
         tag: "មុខទី១២",
+        semester: 2,
         description: "ចំណុច សរសៃរ រង្វាល់ និងប្លង់ក្នុងលំហ",
         pdfs: [],
         description: "ចំណុច សរសៃរ រង្វាល់ និងប្លង់ក្នុងលំហ",
@@ -575,6 +587,7 @@ const TOPICS = [
         title: "ប៉ារ៉ាបូល",
         icon: "🔭",
         tag: "មុខទី១៣",
+        semester: 2,
         description: "សមីការ និងលក្ខណៈប៉ារ៉ាបូល",
         pdfs: [],
         description: "សមីការ និងលក្ខណៈប៉ារ៉ាបូល",
@@ -621,6 +634,7 @@ const TOPICS = [
         title: "អេលីប",
         icon: "⭕",
         tag: "មុខទី១៤",
+        semester: 2,
         description: "សមីការ និងលក្ខណៈអេលីប",
         pdfs: [],
         content: `
@@ -671,6 +685,7 @@ const TOPICS = [
         title: "អ៊ីពែប៉ូល",
         icon: "📡",
         tag: "មុខទី១៥",
+        semester: 2,
         description: "សមីការ និងលក្ខណៈអ៊ីពែប៉ូល",
         pdfs: [],
         content: `
@@ -712,6 +727,72 @@ const TOPICS = [
                 <p>a² = 9, b² = 16 → c² = 9 + 16 = 25 → c = 5</p>
                 <p>e = 5/3 ≈ 1.67</p>
                 <p>អ័ក្សអាស៊ីមតូត: y = ±(4/3)x</p>
+            </div>
+        `
+    },
+    {
+        id: 16,
+        title: "លំហាត់សង្ខេបឆមាសទី១",
+        icon: "📝",
+        tag: "ត្រៀមប្រឡង",
+        semester: 3,
+        description: "លំហាត់សង្ខេបសម្រាប់ត្រៀមប្រឡងឆមាសទី១",
+        pdfs: [],
+        content: `
+            <h3>📝 លំហាត់សង្ខេបឆមាសទី១</h3>
+            <p>ផ្ទុកលំហាត់សង្ខេបសម្រាប់ត្រៀមប្រឡងឆមាសទី១</p>
+            <ul>
+                <li>កុំផ្លិច (Complex Numbers)</li>
+                <li>លីមីតអនុគមន៍ (Limits)</li>
+                <li>ភាពជាប់អនុគមន៍ (Continuity)</li>
+                <li>ចំណោទបរមា (Extrema)</li>
+                <li>អនុគមន៍សនិទាន (Exponential)</li>
+                <li>អនុគមន៍អ៊ិចស្ប៉ូណង់ស្យែល (eˣ)</li>
+                <li>អនុគមន៍លោការីត (Logarithmic)</li>
+            </ul>
+        `
+    },
+    {
+        id: 17,
+        title: "លំហាត់សង្ខេបឆមាសទី២",
+        icon: "📝",
+        tag: "ត្រៀមប្រឡង",
+        semester: 3,
+        description: "លំហាត់សង្ខេបសម្រាប់ត្រៀមប្រឡងឆមាសទី២",
+        pdfs: [],
+        content: `
+            <h3>📝 លំហាត់សង្ខេបឆមាសទី២</h3>
+            <p>ផ្ទុកលំហាត់សង្ខេបសម្រាប់ត្រៀមប្រឡងឆមាសទី២</p>
+            <ul>
+                <li>អាំងតេក្រាលមិនកំណត់ (Indefinite Integrals)</li>
+                <li>អាំងតេក្រាលកំណត់ (Definite Integrals)</li>
+                <li>សមីការឌីផេរ៉ងស្យែល (Differential Equations)</li>
+                <li>ធរណីមាត្រវិភាគក្នុងលំហ (3D Geometry)</li>
+                <li>ប៉ារ៉ាបូល (Parabola)</li>
+                <li>អេលីប (Ellipse)</li>
+                <li>អ៊ីពែប៉ូល (Hyperbola)</li>
+            </ul>
+        `
+    },
+    {
+        id: 18,
+        title: "លំហាត់អនុវត្តន៍បាក់ឌុប",
+        icon: "🎯",
+        tag: "ត្រៀមប្រឡង",
+        semester: 3,
+        description: "លំហាត់អនុវត្តន៍ពិតប្រាកដសម្រាប់ប្រឡងបាក់ឌុប",
+        pdfs: [],
+        content: `
+            <h3>🎯 លំហាត់អនុវត្តន៍បាក់ឌុប</h3>
+            <p>លំហាត់អនុវត្តន៍ពិតប្រាកដដែលធ្លាប់ចេញក្នុងការប្រឡងបាក់ឌុប</p>
+            <div class="note-box">
+                <h4>💡 គន្លឹះសម្រាប់ប្រឡង៖</h4>
+                <ul>
+                    <li>អានសំណួរឱ្យបានយល់ច្បាស់</li>
+                    <li>សរសេររូបមន្តឱ្យបានពេញ</li>
+                    <li>គណនាដោយប្រុងប្រយ័ត្ន</li>
+                    <li>ពិនិត្យលទ្ធផ🇱ម្ដងទៀត</li>
+                </ul>
             </div>
         `
     }
