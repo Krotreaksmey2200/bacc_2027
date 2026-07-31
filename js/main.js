@@ -97,7 +97,6 @@ function renderTopics(filter = '') {
         </div>
         `;
     }).join('');
-    `).join('');
 }
 
 // ===== Switch Tabs =====
