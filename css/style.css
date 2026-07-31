@@ -455,6 +455,7 @@ a {
     justify-content: center;
     opacity: 1;
     transition: opacity 0.3s ease;
+    overflow: hidden;
 }
 
 .modal.hidden {
@@ -470,6 +471,7 @@ a {
     bottom: 0;
     background: rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(4px);
+    overflow: hidden;
 }
 
 .modal-content {
@@ -479,11 +481,13 @@ a {
     width: 90%;
     max-width: 800px;
     max-height: 85vh;
-    overflow-y: auto;
+    overflow: hidden;
     padding: 2rem;
     box-shadow: var(--shadow-xl);
     transform: translateY(0);
     transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
 }
 
 .modal.hidden .modal-content {
@@ -564,6 +568,31 @@ a {
 .modal-tab.active {
     background: var(--primary);
     color: white;
+}
+
+/* ===== Modal Body ===== */
+.modal-body {
+    flex: 1;
+    overflow-y: auto;
+    padding-right: 0.5rem;
+}
+
+.modal-body::-webkit-scrollbar {
+    width: 6px;
+}
+
+.modal-body::-webkit-scrollbar-track {
+    background: var(--bg);
+    border-radius: 3px;
+}
+
+.modal-body::-webkit-scrollbar-thumb {
+    background: var(--text-secondary);
+    border-radius: 3px;
+}
+
+.modal-body::-webkit-scrollbar-thumb:hover {
+    background: var(--text);
 }
 
 /* ===== Semester Tabs ===== */

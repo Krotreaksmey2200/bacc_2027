@@ -116,33 +116,6 @@ function switchTab(tab) {
     }
 }
 
-// ===== Open Topic Modal =====
-function openTopic(topicId) {
-    const topic = TOPICS.find(t => t.id === topicId);
-    if (!topic) return;
-
-    currentTopicId = topicId;
-
-    // Use custom icon if available, otherwise use emoji
-    if (topic.iconPath) {
-        modalIcon.innerHTML = `<img src="${topic.iconPath}" alt="${topic.title}" class="topic-card-img-modal" onerror="this.parentElement.textContent='${topic.icon}'">`;
-    } else {
-        modalIcon.textContent = topic.icon;
-    }
-    modalTitle.textContent = topic.title;
-
-    renderLessonTab(topicId);
-    renderExerciseTab(topicId);
-
-    switchTab('lesson');
-
-    topicModal.classList.remove('hidden');
-    document.body.style.overflow = 'hidden';
-
-    if (window.MathJax) {
-        MathJax.typesetPromise([modalBody]).catch(err => console.log('MathJax error:', err));
-    }
-}
 
 // ===== Render Lesson Tab =====
 function renderLessonTab(topicId) {
@@ -247,7 +220,41 @@ function closePdfFullscreen() {
 function closeModal() {
     topicModal.classList.add('hidden');
     document.body.style.overflow = '';
+    document.body.style.position = '';
+    document.body.style.width = '';
     currentTopicId = null;
+}
+
+// ===== Open Topic Modal =====
+function openTopic(topicId) {
+    const topic = TOPICS.find(t => t.id === topicId);
+    if (!topic) return;
+
+    currentTopicId = topicId;
+
+    // Use custom icon if available, otherwise use emoji
+    if (topic.iconPath) {
+        modalIcon.innerHTML = `<img src="${topic.iconPath}" alt="${topic.title}" class="topic-card-img-modal" onerror="this.parentElement.textContent='${topic.icon}'">`;
+    } else {
+        modalIcon.textContent = topic.icon;
+    }
+    modalTitle.textContent = topic.title;
+
+    renderLessonTab(topicId);
+    renderExerciseTab(topicId);
+
+    switchTab('lesson');
+
+    topicModal.classList.remove('hidden');
+    
+    // Prevent body scroll on mobile
+    document.body.style.overflow = 'hidden';
+    document.body.style.position = 'fixed';
+    document.body.style.width = '100%';
+
+    if (window.MathJax) {
+        MathJax.typesetPromise([modalBody]).catch(err => console.log('MathJax error:', err));
+    }
 }
 
 // ===== Search =====
