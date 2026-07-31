@@ -354,6 +354,12 @@ a {
     border-radius: var(--radius);
 }
 
+.topic-card-img-modal {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+}
+
 .topic-card-number {
     display: inline-block;
     background: linear-gradient(135deg, var(--primary), var(--secondary));

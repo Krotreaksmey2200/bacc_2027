@@ -125,7 +125,7 @@ function openTopic(topicId) {
 
     // Use custom icon if available, otherwise use emoji
     if (topic.iconPath) {
-        modalIcon.innerHTML = `<img src="${topic.iconPath}" alt="${topic.title}" style="width:40px;height:40px;object-fit:contain;" onerror="this.parentElement.textContent='${topic.icon}'">`;
+        modalIcon.innerHTML = `<img src="${topic.iconPath}" alt="${topic.title}" class="topic-card-img-modal" onerror="this.parentElement.textContent='${topic.icon}'">`;
     } else {
         modalIcon.textContent = topic.icon;
     }
