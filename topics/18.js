@@ -10,33 +10,33 @@ const TOPIC_18 = {
     exercises: [
         {
             id: 1,
-            question: "គណនា $$\\int_0^{\\pi} \\sin x \\, dx$$",
-            hint: "ប្រើ $$\\int \\sin x \\, dx = -\\cos x + C$$",
-            answer: "$$\\int_0^{\\pi} \\sin x \\, dx = \\left[-\\cos x\\right]_0^{\\pi} = -(-1) - (-1) = 2$$"
+            question: "គណនា \(\\int_0^{\\pi} \\sin x \\, dx\)",
+            hint: "ប្រើ \(\\int \\sin x \\, dx = -\\cos x + C\)",
+            answer: "\(\\int_0^{\\pi} \\sin x \\, dx = \\left[-\\cos x\\right]_0^{\\pi} = -(-1) - (-1) = 2\)"
         },
         {
             id: 2,
-            question: "ដោះស្រាយ $$y'' + 4y = 0$$",
+            question: "ដោះស្រាយ \(y'' + 4y = 0\)",
             hint: "សមីការលក្ខណៈមានឬសស្មុគស្មាញ",
-            answer: "$$r^2 + 4 = 0 \\Rightarrow r = \\pm 2i$$<br>$$y = C_1 \\cos 2x + C_2 \\sin 2x$$"
+            answer: "\(r^2 + 4 = 0 \\Rightarrow r = \\pm 2i\)<br>\(y = C_1 \\cos 2x + C_2 \\sin 2x\)"
         },
         {
             id: 3,
-            question: "រកផ្ទៃក្រឡារវាង $$y = x^2$$ និង $$y = x$$",
+            question: "រកផ្ទៃក្រឡារវាង \(y = x^2\) និង \(y = x\)",
             hint: "រកចំណុចប្រសព្វ រួចអាំងតេក្រាល",
-            answer: "$$x^2 = x \\Rightarrow x = 0, 1$$<br>$$S = \\int_0^1 (x - x^2) \\, dx = \\left[\\frac{x^2}{2} - \\frac{x^3}{3}\\right]_0^1 = \\frac{1}{2} - \\frac{1}{3} = \\frac{1}{6}$$"
+            answer: "\(x^2 = x \\Rightarrow x = 0, 1\)<br>\(S = \\int_0^1 (x - x^2) \\, dx = \\left[\\frac{x^2}{2} - \\frac{x^3}{3}\\right]_0^1 = \\frac{1}{2} - \\frac{1}{3} = \\frac{1}{6}\)"
         },
         {
             id: 4,
-            question: "គណនា $$\\frac{d}{dx}(x^2 e^x)$$",
+            question: "គណនា \(\\frac{d}{dx}(x^2 e^x)\)",
             hint: "ប្រើរូបមន្តគុណវិធី",
-            answer: "$$\\frac{d}{dx}(x^2 e^x) = 2x \\cdot e^x + x^2 \\cdot e^x = e^x(2x + x^2)$$"
+            answer: "\(\\frac{d}{dx}(x^2 e^x) = 2x \\cdot e^x + x^2 \\cdot e^x = e^x(2x + x^2)\)"
         },
         {
             id: 5,
-            question: "បង្ហាញថា $$\\int_1^e \\frac{1}{x} \\, dx = 1$$",
-            hint: "ប្រើ $$\\int \\frac{1}{x} \\, dx = \\ln|x| + C$$",
-            answer: "$$\\int_1^e \\frac{1}{x} \\, dx = \\left[\\ln|x|\\right]_1^e = \\ln e - \\ln 1 = 1 - 0 = 1$$"
+            question: "បង្ហាញថា \(\\int_1^e \\frac{1}{x} \\, dx = 1\)",
+            hint: "ប្រើ \(\\int \\frac{1}{x} \\, dx = \\ln|x| + C\)",
+            answer: "\(\\int_1^e \\frac{1}{x} \\, dx = \\left[\\ln|x|\\right]_1^e = \\ln e - \\ln 1 = 1 - 0 = 1\)"
         }
     ],
     content: `
