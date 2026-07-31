@@ -79,14 +79,24 @@ function renderTopics(filter = '') {
         return;
     }
 
-    topicsGrid.innerHTML = filteredTopics.map(topic => `
+    topicsGrid.innerHTML = filteredTopics.map(topic => {
+        const iconHTML = topic.iconPath 
+            ? `<img src="${topic.iconPath}" alt="${topic.title}" class="topic-card-img" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+               <span class="topic-card-icon" style="display:none;">${topic.icon}</span>`
+            : `<span class="topic-card-icon">${topic.icon}</span>`;
+        
+        return `
         <div class="topic-card" data-topic-id="${topic.id}" onclick="openTopic(${topic.id})">
-            <span class="topic-card-icon">${topic.icon}</span>
+            <div class="topic-card-icon-wrapper">
+                ${iconHTML}
+            </div>
             <span class="topic-card-number">${topic.id}</span>
             <h3>${topic.title}</h3>
             <p>${topic.description}</p>
             <span class="topic-card-tag">${topic.tag}</span>
         </div>
+        `;
+    }).join('');
     `).join('');
 }
 

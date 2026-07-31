@@ -340,6 +340,20 @@ a {
     display: block;
 }
 
+.topic-card-icon-wrapper {
+    margin-bottom: 0.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.topic-card-img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    border-radius: var(--radius);
+}
+
 .topic-card-number {
     display: inline-block;
     background: linear-gradient(135deg, var(--primary), var(--secondary));
