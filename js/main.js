@@ -156,7 +156,7 @@ function renderExerciseTab(topicId) {
                     </div>
                     <div class="pdf-actions">
                         <button class="pdf-btn pdf-btn-view" onclick="viewRepoPDF('${pdf.path}', '${pdf.name}')">មើល</button>
-                        <a class="pdf-btn pdf-btn-view" href="${pdf.path}" download style="text-decoration:none;">ទាញយក</a>
+                        <a class="pdf-btn pdf-btn-download" href="${pdf.path}" download="${pdf.name}" style="text-decoration:none;">ទាញយក</a>
                     </div>
                 </div>
             `;
@@ -174,6 +174,19 @@ function renderExerciseTab(topicId) {
     }
 
     exerciseBody.innerHTML = html;
+}
+
+// ===== View Repository PDF =====
+function viewRepoPDF(path, name) {
+    pdfFullscreenTitle.textContent = name;
+    pdfFullscreenFrame.src = path;
+    pdfFullscreen.classList.remove('hidden');
+}
+
+// ===== Close PDF Fullscreen =====
+function closePdfFullscreen() {
+    pdfFullscreen.classList.add('hidden');
+    pdfFullscreenFrame.src = '';
 }
 
 // ===== Close Modal =====
