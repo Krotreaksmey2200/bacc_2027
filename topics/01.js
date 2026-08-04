@@ -10,7 +10,9 @@ const TOPIC_01 = {
         { name: "complex number.pdf", path: "pdfs/01_កុំផ្លិច/lession/complex number.pdf", type: "lesson" },
         { name: "លំហាត់ចំនួនកុំផ្លិច ២០២៧.pdf", path: "pdfs/01_កុំផ្លិច/practies/លំហាត់ចំនួនកុំផ្លិច ២០២៧.pdf", type: "exercise" }
     ],
-    research: [],
+    research: [
+        { name: "ចំនួនកុំផ្លិច ថ្មី (លឹម ផល្គុន).pdf", path: "pdfs/01_កុំផ្លិច/research/ចំនួនកុំផ្លិច ថ្មី (លឹម ផល្គុន).pdf" }
+    ],
     exercises: [
         {
             id: 1,
