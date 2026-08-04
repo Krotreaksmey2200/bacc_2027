@@ -7,6 +7,7 @@ const TOPIC_05 = {
     semester: 1,
     description: "រូបភាព និងលក្ខណៈអនុគមន៍សនិទាន",
     pdfs: [],
+    research: [],
     exercises: [
         {
             id: 1,

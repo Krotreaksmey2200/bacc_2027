@@ -7,6 +7,7 @@ const TOPIC_09 = {
     semester: 1,
     description: "ចំណុច សរសៃរ រង្វាល់ និងប្លង់ក្នុងលំហ",
     pdfs: [],
+    research: [],
     exercises: [
         {
             id: 1,

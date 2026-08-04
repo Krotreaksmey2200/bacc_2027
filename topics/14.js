@@ -7,6 +7,7 @@ const TOPIC_14 = {
     semester: 2,
     description: "សមីការ និងលក្ខណៈអេលីប",
     pdfs: [],
+    research: [],
     exercises: [
         {
             id: 1,

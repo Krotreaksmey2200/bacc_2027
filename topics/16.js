@@ -7,6 +7,7 @@ const TOPIC_16 = {
     semester: 3,
     description: "លំហាត់សង្ខេបសម្រាប់ត្រៀមប្រឡងឆមាសទី១",
     pdfs: [],
+    research: [],
     exercises: [
         {
             id: 1,

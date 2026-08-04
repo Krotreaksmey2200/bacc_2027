@@ -7,6 +7,7 @@ const TOPIC_15 = {
     semester: 2,
     description: "សមីការ និងលក្ខណៈអ៊ីពែប៉ូល",
     pdfs: [],
+    research: [],
     exercises: [
         {
             id: 1,

@@ -7,6 +7,7 @@ const TOPIC_12 = {
     semester: 2,
     description: "អាំងតេក្រាលកំណត់ និងអនុវត្តន៍ (ផ្ទៃក្រឡា និងប្រវែងសរសៃរ)",
     pdfs: [],
+    research: [],
     exercises: [
         {
             id: 1,

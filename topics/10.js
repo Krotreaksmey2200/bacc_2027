@@ -7,6 +7,7 @@ const TOPIC_10 = {
     semester: 2,
     description: "ដោះស្រាយសមីការឌីផេរ៉ងស្យែលលំដាប់ទី១",
     pdfs: [],
+    research: [],
     exercises: [
         {
             id: 1,

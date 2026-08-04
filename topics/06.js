@@ -7,6 +7,7 @@ const TOPIC_06 = {
     semester: 2,
     description: "អនុគមន៍ eˣ និងអនុវត្តន៍របស់វា",
     pdfs: [],
+    research: [],
     exercises: [
         {
             id: 1,

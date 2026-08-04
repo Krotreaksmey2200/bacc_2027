@@ -7,6 +7,7 @@ const TOPIC_13 = {
     semester: 2,
     description: "សមីការ និងលក្ខណៈប៉ារ៉ាបូល",
     pdfs: [],
+    research: [],
     exercises: [
         {
             id: 1,

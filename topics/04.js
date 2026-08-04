@@ -7,6 +7,7 @@ const TOPIC_04 = {
     semester: 1,
     description: "រកបរមា អតិបរមា និងតម្លៃអតិបរមា/បរមា",
     pdfs: [],
+    research: [],
     exercises: [
         {
             id: 1,

@@ -7,6 +7,7 @@ const TOPIC_07 = {
     semester: 2,
     description: "អនុគមន៍ ln(x) និង logₐ(x)",
     pdfs: [],
+    research: [],
     exercises: [
         {
             id: 1,

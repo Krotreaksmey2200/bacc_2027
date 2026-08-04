@@ -7,6 +7,7 @@ const TOPIC_08 = {
     semester: 1,
     description: "ប្រភេទអាំងតេក្រាល និងរូបមន្ត",
     pdfs: [],
+    research: [],
     exercises: [
         {
             id: 1,

@@ -7,6 +7,7 @@ const TOPIC_18 = {
     semester: 3,
     description: "លំហាត់អនុវត្តន៍ពិតប្រាកដសម្រាប់ប្រឡងបាក់ឌុប",
     pdfs: [],
+    research: [],
     exercises: [
         {
             id: 1,

@@ -713,6 +713,7 @@
                     <button class="tab-btn active" onclick="switchTab('lesson')">📖 មេរៀន</button>
                     <button class="tab-btn" onclick="switchTab('exercise')">✏️ លំហាត់</button>
                     <button class="tab-btn" onclick="switchTab('practies')">📁 ឯកសារលំហាត់</button>
+                    <button class="tab-btn" onclick="switchTab('research')">📚 ឯកសារស្រាវជ្រាវ</button>
                 </div>
                 
                 <div id="lessonTab" class="tab-content active">
@@ -725,6 +726,10 @@
                 
                 <div id="practiesTab" class="tab-content">
                     <!-- Practies PDF content will be loaded here -->
+                </div>
+                
+                <div id="researchTab" class="tab-content">
+                    <!-- Research PDF content will be loaded here -->
                 </div>
             </div>
         </main>
@@ -763,6 +768,7 @@
         const lessonTab = document.getElementById('lessonTab');
         const exerciseTab = document.getElementById('exerciseTab');
         const practiesTab = document.getElementById('practiesTab');
+        const researchTab = document.getElementById('researchTab');
         
         // Initialize
         document.addEventListener('DOMContentLoaded', () => {
@@ -828,10 +834,13 @@
             // Load practies content
             practiesTab.innerHTML = loadPractiesContent(topic);
             
+            // Load research content
+            researchTab.innerHTML = loadResearchContent(topic);
+            
             // Typeset MathJax (with retry if not loaded yet)
             function typesetAll() {
                 if (window.MathJax && MathJax.typesetPromise) {
-                    MathJax.typesetPromise([lessonTab, exerciseTab, practiesTab]).catch(err => console.log('MathJax error:', err));
+                    MathJax.typesetPromise([lessonTab, exerciseTab, practiesTab, researchTab]).catch(err => console.log('MathJax error:', err));
                 } else {
                     setTimeout(typesetAll, 200);
                 }
@@ -859,8 +868,10 @@
                 if (window.MathJax) {
                     MathJax.typesetPromise([exerciseTab]).catch(err => console.log('MathJax error:', err));
                 }
-            } else {
+            } else if (tab === 'practies') {
                 practiesTab.classList.add('active');
+            } else if (tab === 'research') {
+                researchTab.classList.add('active');
             }
         }
         
@@ -927,6 +938,45 @@
                         <div class="pdf-card-header">
                             <div class="pdf-info">
                                 <span class="pdf-icon">📄</span>
+                                <span class="pdf-name">${pdf.name}</span>
+                            </div>
+                            <div class="pdf-actions">
+                                <a class="pdf-btn pdf-btn-view" href="${pdf.path}" target="_blank" style="text-decoration:none;">👁️ មើល</a>
+                                <a class="pdf-btn pdf-btn-download" href="${pdf.path}" download="${pdf.name}" style="text-decoration:none;">⬇️ ទាញយក</a>
+                            </div>
+                        </div>
+                        <div class="pdf-preview">
+                            <iframe src="${pdf.path}" frameborder="0"></iframe>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            html += '</div>';
+            return html;
+        }
+        
+        // Load Research Content
+        function loadResearchContent(topic) {
+            const researchPDFs = (topic.research || []);
+            
+            if (researchPDFs.length === 0) {
+                return `
+                    <div class="empty-state">
+                        <span class="empty-state-icon">📚</span>
+                        <p>មិនទាន់មានឯកសារស្រាវជ្រាវ</p>
+                    </div>
+                `;
+            }
+            
+            let html = '<div class="practies-container">';
+            
+            researchPDFs.forEach((pdf, index) => {
+                html += `
+                    <div class="pdf-card">
+                        <div class="pdf-card-header">
+                            <div class="pdf-info">
+                                <span class="pdf-icon">📚</span>
                                 <span class="pdf-name">${pdf.name}</span>
                             </div>
                             <div class="pdf-actions">

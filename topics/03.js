@@ -7,6 +7,7 @@ const TOPIC_03 = {
     semester: 1,
     description: "ស្គាល់ និងពិនិត្យភាពជាប់អនុគមន៍",
     pdfs: [],
+    research: [],
     exercises: [
         {
             id: 1,
