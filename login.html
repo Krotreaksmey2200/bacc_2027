@@ -21,7 +21,7 @@
         .login-container {
             background: white;
             border-radius: 24px;
-            padding: 3rem;
+            padding: 2.5rem;
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
             text-align: center;
             max-width: 420px;
@@ -35,34 +35,146 @@
         }
         
         .login-icon {
-            font-size: 4rem;
-            margin-bottom: 1rem;
-        }
-        
-        .login-title {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: #1e3a8a;
+            font-size: 3.5rem;
             margin-bottom: 0.5rem;
         }
         
-        .login-subtitle {
-            font-size: 1rem;
-            color: #64748b;
-            margin-bottom: 2rem;
+        .login-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1e3a8a;
+            margin-bottom: 0.3rem;
         }
         
+        .login-subtitle {
+            font-size: 0.9rem;
+            color: #64748b;
+            margin-bottom: 1.5rem;
+        }
+        
+        /* Tab Navigation */
+        .tab-nav {
+            display: flex;
+            background: #f1f5f9;
+            border-radius: 10px;
+            padding: 4px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .tab-btn {
+            flex: 1;
+            padding: 0.7rem;
+            border: none;
+            background: transparent;
+            border-radius: 8px;
+            font-family: 'Battambang', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #64748b;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .tab-btn.active {
+            background: #3b82f6;
+            color: white;
+        }
+        
+        /* Form Styles */
+        .form-group {
+            margin-bottom: 1rem;
+            text-align: left;
+        }
+        
+        .form-label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #475569;
+            margin-bottom: 0.4rem;
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-family: 'Battambang', sans-serif;
+            transition: all 0.2s;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+        
+        .form-input::placeholder {
+            color: #94a3b8;
+        }
+        
+        .submit-btn {
+            width: 100%;
+            padding: 0.9rem;
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
+            border: none;
+            border-radius: 10px;
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 700;
+            font-family: 'Battambang', sans-serif;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-top: 0.5rem;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+        }
+        
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+        
+        .submit-btn:disabled {
+            background: #94a3b8;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        /* Divider */
+        .divider {
+            display: flex;
+            align-items: center;
+            margin: 1.5rem 0;
+        }
+        
+        .divider-line {
+            flex: 1;
+            height: 1px;
+            background: #e2e8f0;
+        }
+        
+        .divider-text {
+            padding: 0 1rem;
+            color: #94a3b8;
+            font-size: 0.85rem;
+        }
+        
+        /* Google Button */
         .google-btn {
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 0.8rem;
             width: 100%;
-            padding: 1rem 2rem;
+            padding: 0.9rem 2rem;
             background: white;
             border: 2px solid #e2e8f0;
-            border-radius: 12px;
-            font-size: 1.1rem;
+            border-radius: 10px;
+            font-size: 1rem;
             font-weight: 600;
             color: #1e293b;
             cursor: pointer;
@@ -77,109 +189,230 @@
             box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
         }
         
-        .google-btn:active {
-            transform: translateY(0);
-        }
-        
         .google-icon {
-            width: 24px;
-            height: 24px;
+            width: 22px;
+            height: 22px;
         }
         
-        .login-footer {
-            margin-top: 2rem;
+        /* Links */
+        .form-link {
+            color: #3b82f6;
+            text-decoration: none;
             font-size: 0.85rem;
-            color: #94a3b8;
+            cursor: pointer;
         }
         
+        .form-link:hover {
+            text-decoration: underline;
+        }
+        
+        .switch-text {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            color: #64748b;
+        }
+        
+        /* Error Message */
+        .error-msg {
+            display: none;
+            background: #fef2f2;
+            border: 1px solid #fecaca;
+            color: #dc2626;
+            padding: 0.8rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        
+        /* Success Message */
+        .success-msg {
+            display: none;
+            background: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            color: #16a34a;
+            padding: 0.8rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        
+        /* Loading */
         .loading {
             display: none;
-            margin-top: 1.5rem;
+            margin-top: 1rem;
         }
         
         .spinner {
-            width: 40px;
-            height: 40px;
-            border: 4px solid #e2e8f0;
-            border-top-color: #3b82f6;
+            border: 3px solid #e2e8f0;
+            border-top: 3px solid #3b82f6;
             border-radius: 50%;
+            width: 24px;
+            height: 24px;
             animation: spin 1s linear infinite;
             margin: 0 auto;
         }
         
         @keyframes spin {
-            to { transform: rotate(360deg); }
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
         
-        .loading-text {
-            margin-top: 0.8rem;
-            color: #64748b;
-            font-size: 0.9rem;
+        /* Footer */
+        .login-footer {
+            margin-top: 1.5rem;
+            font-size: 0.8rem;
+            color: #94a3b8;
         }
         
-        .error-msg {
+        /* Hidden */
+        .hidden {
+            display: none !important;
+        }
+        
+        /* Tab Content */
+        .tab-content {
             display: none;
-            margin-top: 1rem;
-            padding: 0.8rem;
-            background: #fef2f2;
-            border: 1px solid #fecaca;
-            border-radius: 8px;
-            color: #dc2626;
-            font-size: 0.9rem;
+        }
+        
+        .tab-content.active {
+            display: block;
         }
     </style>
 </head>
 <body>
     <div class="login-container">
-        <div class="login-icon">📐</div>
+        <div class="login-icon">📚</div>
         <h1 class="login-title">គណិតវិទ្យា ថ្នាក់ទី១២</h1>
         <p class="login-subtitle">ត្រៀមប្រឡងសញ្ញាបត្របាក់ឌុប ២០២៧</p>
         
-        <button class="google-btn" id="googleLoginBtn" onclick="signInWithGoogle()">
-            <svg class="google-icon" viewBox="0 0 24 24">
-                <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
-                <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
-                <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
-                <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
-            </svg>
-            ចូលដោយ Google
-        </button>
+        <!-- Tab Navigation -->
+        <div class="tab-nav">
+            <button class="tab-btn active" onclick="switchTab('login')">ចូល</button>
+            <button class="tab-btn" onclick="switchTab('signup')">ចុះឈ្មោះ</button>
+        </div>
+        
+        <!-- Login Form -->
+        <div id="tab-login" class="tab-content active">
+            <div id="loginError" class="error-msg"></div>
+            
+            <form id="loginForm" onsubmit="handleLogin(event)">
+                <div class="form-group">
+                    <label class="form-label">Email</label>
+                    <input type="email" class="form-input" id="loginEmail" placeholder="example@gmail.com" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">ពាក្យសម្ងាត់</label>
+                    <input type="password" class="form-input" id="loginPassword" placeholder="••••••••" required>
+                </div>
+                <button type="submit" class="submit-btn" id="loginBtn">ចូល</button>
+            </form>
+            
+            <div class="divider">
+                <div class="divider-line"></div>
+                <span class="divider-text">ឬ</span>
+                <div class="divider-line"></div>
+            </div>
+            
+            <button class="google-btn" onclick="signInWithGoogle()">
+                <img class="google-icon" src="https://www.gstatic.com/firebasejs/ui/auth/images/google.svg" alt="Google">
+                ចូលជាមួយ Google
+            </button>
+        </div>
+        
+        <!-- Signup Form -->
+        <div id="tab-signup" class="tab-content">
+            <div id="signupError" class="error-msg"></div>
+            <div id="signupSuccess" class="success-msg"></div>
+            
+            <form id="signupForm" onsubmit="handleSignup(event)">
+                <div class="form-group">
+                    <label class="form-label">ឈ្មោះ</label>
+                    <input type="text" class="form-input" id="signupName" placeholder="ឈ្មោះរបស់អ្នក" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Email</label>
+                    <input type="email" class="form-input" id="signupEmail" placeholder="example@gmail.com" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">ពាក្យសម្ងាត់</label>
+                    <input type="password" class="form-input" id="signupPassword" placeholder="យ៉ាហោចណាស់ ៦ តួ" required minlength="6">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">បញ្ជាក់ពាក្យសម្ងាត់</label>
+                    <input type="password" class="form-input" id="signupConfirm" placeholder="បញ្ជាក់ពាក្យសម្ងាត់" required>
+                </div>
+                <button type="submit" class="submit-btn" id="signupBtn">ចុះឈ្មោះ</button>
+            </form>
+            
+            <div class="switch-text">
+               មានគណនីរួចហើយ? <span class="form-link" onclick="switchTab('login')">ចូល</span>
+            </div>
+        </div>
+        
+        <p class="login-footer">
+            ដោយការចូល អ្នកយល់ព្រមជាមួយ<br>
+            <span class="form-link">លក្ខខណ្ឌប្រើប្រាស់</span> និង <span class="form-link">គោលនយោបាយភាពឯកជន</span>
+        </p>
         
         <div class="loading" id="loading">
             <div class="spinner"></div>
-            <p class="loading-text">កំពុងភ្ជាប់...</p>
         </div>
-        
-        <div class="error-msg" id="errorMsg"></div>
-        
-        <p class="login-footer">ចូលដោយប្រើ Account Google របស់អ្នក</p>
     </div>
     
     <!-- Firebase SDK -->
     <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
     
     <script src="js/firebase-config.js"></script>
     
     <script>
-        const googleLoginBtn = document.getElementById('googleLoginBtn');
-        const loading = document.getElementById('loading');
-        const errorMsg = document.getElementById('errorMsg');
+        // Tab switching
+        function switchTab(tab) {
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+            
+            if (tab === 'login') {
+                document.querySelector('.tab-btn:nth-child(1)').classList.add('active');
+                document.getElementById('tab-login').classList.add('active');
+            } else {
+                document.querySelector('.tab-btn:nth-child(2)').classList.add('active');
+                document.getElementById('tab-signup').classList.add('active');
+            }
+            
+            // Clear messages
+            clearMessages();
+        }
+        
+        // Clear messages
+        function clearMessages() {
+            document.querySelectorAll('.error-msg, .success-msg').forEach(el => {
+                el.style.display = 'none';
+                el.textContent = '';
+            });
+        }
+        
+        // Show error
+        function showError(elementId, message) {
+            const el = document.getElementById(elementId);
+            el.textContent = message;
+            el.style.display = 'block';
+        }
+        
+        // Show success
+        function showSuccess(elementId, message) {
+            const el = document.getElementById(elementId);
+            el.textContent = message;
+            el.style.display = 'block';
+        }
         
         // Check if user is allowed
         async function isUserAllowed(email) {
-            // Admin is always allowed
             if (isAdmin(auth.currentUser)) return true;
-            
-            // Check blocked list
             const blockedDoc = await db.collection('blockedEmails').doc(email).get();
             if (blockedDoc.exists) return false;
-            
-            // Check if allowed list exists
             const allowedSnapshot = await db.collection('allowedEmails').get();
             if (allowedSnapshot.empty) return true;
-            
-            // Check if in allowed list
             const allowedDoc = await db.collection('allowedEmails').doc(email).get();
             return allowedDoc.exists;
         }
@@ -192,50 +425,159 @@
                     window.location.href = 'index.html';
                 } else {
                     await auth.signOut();
-                    errorMsg.textContent = 'អ្នកមិនមានសិទ្ធិចូលប្រើប្រាស់ទំព័រនេះទេ។';
-                    errorMsg.style.display = 'block';
                 }
             }
         });
         
-        // Google Sign-In
-        function signInWithGoogle() {
-            googleLoginBtn.style.display = 'none';
-            loading.style.display = 'block';
-            errorMsg.style.display = 'none';
+        // Handle Login
+        async function handleLogin(e) {
+            e.preventDefault();
             
-            auth.signInWithPopup(provider)
-                .then(async (result) => {
-                    const user = result.user;
-                    
-                    // Check if user is allowed
-                    const allowed = await isUserAllowed(user.email);
-                    
-                    if (!allowed) {
-                        await auth.signOut();
-                        googleLoginBtn.style.display = 'flex';
-                        loading.style.display = 'none';
-                        errorMsg.textContent = 'អ្នកមិនមានសិទ្ធិចូលប្រើប្រាស់ទំព័រនេះទេ។ សូមទាក់ទងអ្នកគ្រប់គ្រង។';
-                        errorMsg.style.display = 'block';
-                        return;
-                    }
-                    
-                    // Save user info to Firestore
-                    await saveUser(user);
-                    
-                    // Log activity
-                    await logActivity('login', 'login.html');
-                    
-                    // Redirect to main page
-                    window.location.href = 'index.html';
-                })
-                .catch((error) => {
-                    console.error('Error:', error.message);
-                    googleLoginBtn.style.display = 'flex';
-                    loading.style.display = 'none';
-                    errorMsg.textContent = 'មានកំហុសក្នុងការចូល។ សូមព្យាយាមម្តងទៀត។';
-                    errorMsg.style.display = 'block';
+            const email = document.getElementById('loginEmail').value.trim();
+            const password = document.getElementById('loginPassword').value;
+            
+            document.getElementById('loginBtn').disabled = true;
+            document.getElementById('loading').style.display = 'block';
+            clearMessages();
+            
+            try {
+                const result = await auth.signInWithEmailAndPassword(email, password);
+                const user = result.user;
+                
+                // Check if allowed
+                const allowed = await isUserAllowed(user.email);
+                if (!allowed) {
+                    await auth.signOut();
+                    showError('loginError', 'អ្នកមិនមានសិទ្ធិចូលប្រើប្រាស់ទំព័រនេះទេ។');
+                    document.getElementById('loginBtn').disabled = false;
+                    document.getElementById('loading').style.display = 'none';
+                    return;
+                }
+                
+                // Save user and log activity
+                await saveUser(user);
+                await logActivity('login', 'login.html');
+                
+                window.location.href = 'index.html';
+            } catch (error) {
+                console.error('Login error:', error);
+                let errorMsg = 'មានកំហុសក្នុងការចូល។';
+                
+                if (error.code === 'auth/user-not-found') {
+                    errorMsg = 'រកមិនឃើញគណនីនេះទេ។';
+                } else if (error.code === 'auth/wrong-password') {
+                    errorMsg = 'ពាក្យសម្ងាត់មិនត្រឹមត្រូវទេ។';
+                } else if (error.code === 'auth/invalid-email') {
+                    errorMsg = 'Email មិនត្រឹមត្រូវទេ។';
+                } else if (error.code === 'auth/too-many-requests') {
+                    errorMsg = 'ព្យាយាមច្រើនពេក។ សូមរង់ចាំបន្តិច។';
+                }
+                
+                showError('loginError', errorMsg);
+                document.getElementById('loginBtn').disabled = false;
+                document.getElementById('loading').style.display = 'none';
+            }
+        }
+        
+        // Handle Signup
+        async function handleSignup(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('signupName').value.trim();
+            const email = document.getElementById('signupEmail').value.trim();
+            const password = document.getElementById('signupPassword').value;
+            const confirm = document.getElementById('signupConfirm').value;
+            
+            // Validate
+            if (password !== confirm) {
+                showError('signupError', 'ពាក្យសម្ងាត់មិនត្រូវគ្នាទេ។');
+                return;
+            }
+            
+            document.getElementById('signupBtn').disabled = true;
+            document.getElementById('loading').style.display = 'block';
+            clearMessages();
+            
+            try {
+                // Create user
+                const result = await auth.createUserWithEmailAndPassword(email, password);
+                const user = result.user;
+                
+                // Update display name
+                await user.updateProfile({ displayName: name });
+                
+                // Save user to Firestore
+                await db.collection('users').doc(user.uid).set({
+                    name: name,
+                    email: email,
+                    photo: '',
+                    createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+                    lastLogin: firebase.firestore.FieldValue.serverTimestamp()
                 });
+                
+                // Log activity
+                await db.collection('activity').add({
+                    action: 'signup',
+                    userId: user.uid,
+                    userName: name,
+                    userEmail: email,
+                    page: 'login.html',
+                    timestamp: firebase.firestore.FieldValue.serverTimestamp()
+                });
+                
+                showSuccess('signupSuccess', 'បានចុះឈ្មោះដោយជោគជ័យ! កំពុងផ្ទុក...');
+                
+                // Redirect after 1.5s
+                setTimeout(() => {
+                    window.location.href = 'index.html';
+                }, 1500);
+                
+            } catch (error) {
+                console.error('Signup error:', error);
+                let errorMsg = 'មានកំហុសក្នុងការចុះឈ្មោះ។';
+                
+                if (error.code === 'auth/email-already-in-use') {
+                    errorMsg = 'Email នេះត្រូវបានប្រើប្រាស់រួចហើយ។';
+                } else if (error.code === 'auth/weak-password') {
+                    errorMsg = 'ពាក្យសម្ងាត់ខ្សោយពេក។ សូមប្រើយ៉ាហោចណាស់ ៦ តួ។';
+                } else if (error.code === 'auth/invalid-email') {
+                    errorMsg = 'Email មិនត្រឹមត្រូវទេ។';
+                }
+                
+                showError('signupError', errorMsg);
+                document.getElementById('signupBtn').disabled = false;
+                document.getElementById('loading').style.display = 'none';
+            }
+        }
+        
+        // Google Sign-In
+        async function signInWithGoogle() {
+            document.getElementById('loading').style.display = 'block';
+            clearMessages();
+            
+            try {
+                const result = await auth.signInWithPopup(provider);
+                const user = result.user;
+                
+                // Check if allowed
+                const allowed = await isUserAllowed(user.email);
+                if (!allowed) {
+                    await auth.signOut();
+                    showError('loginError', 'អ្នកមិនមានសិទ្ធិចូលប្រើប្រាស់ទំព័រនេះទេ។');
+                    document.getElementById('loading').style.display = 'none';
+                    return;
+                }
+                
+                // Save user and log activity
+                await saveUser(user);
+                await logActivity('login', 'login.html');
+                
+                window.location.href = 'index.html';
+            } catch (error) {
+                console.error('Google login error:', error);
+                showError('loginError', 'មានកំហុសក្នុងការចូល។ សូមព្យាយាមម្តងទៀត។');
+                document.getElementById('loading').style.display = 'none';
+            }
         }
     </script>
 </body>
