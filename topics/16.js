@@ -17,9 +17,9 @@ const TOPIC_16 = {
         },
         {
             id: 2,
-            question: "គណនា \\(\\displaystyle \\lim_{x \\to 2} \\frac{x^2 - 4}{x - 2}\\)",
+            question: "គណនា \\(\\displaystyle \\lim\limits_{x \\to 2} \\frac{x^2 - 4}{x - 2}\\)",
             hint: "បំបែកទម្រង់",
-            answer: "\\(\\displaystyle \\frac{x^2 - 4}{x - 2} = \\frac{(x-2)(x+2)}{x-2} = x + 2\\)<br>\\(\\displaystyle \\lim_{x \\to 2} (x + 2) = 4\\)"
+            answer: "\\(\\displaystyle \\frac{x^2 - 4}{x - 2} = \\frac{(x-2)(x+2)}{x-2} = x + 2\\)<br>\\(\\displaystyle \\lim\limits_{x \\to 2} (x + 2) = 4\\)"
         },
         {
             id: 3,
