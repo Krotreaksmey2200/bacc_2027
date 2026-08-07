@@ -29,7 +29,7 @@ const TOPIC_01 = {
         {
             id: 3,
             question: "គណនា \\(z_1 \\cdot z_2\\) សម្រាប់ \\(z_1 = 2 + i\\) និង \\(z_2 = 3 - 2i\\)",
-            hint: "ប្រើក្បួន FOIL: \\((a+bi)(c+di) = (ac-bd) + (ad+bc)i\\)",
+            hint: "ប្រើក្បួន : \\((a+bi)(c+di) = (ac-bd) + (ad+bc)i\\)",
             answer: "\\(z_1 \\cdot z_2 = (2 \\cdot 3 - 1 \\cdot (-2)) + (2 \\cdot (-2) + 1 \\cdot 3)i = (6+2) + (-4+3)i = 8 - i\\)"
         },
         {
@@ -77,7 +77,7 @@ const TOPIC_01 = {
     ],
     content: `
         <h3>១. និយមន័យ</h3>
-        <p>កុំផ្លិច (Complex Number) គឺជាលេខដែលមានរូបភាព <strong>z = a + bi</strong> ដែល៖</p>
+        <p>កុំផ្លិច (Complex Number) គឺជាចំនួនដែលមានទម្រង់ <strong>z = a + bi</strong> ដែល៖</p>
         <ul>
             <li><strong>a</strong> គឺជាផ្នែកពិត (Real part) → Re(z) = a</li>
             <li><strong>b</strong> គឺជាផ្នែកនិមិត្ត (Imaginary part) → Im(z) = b</li>
@@ -88,15 +88,15 @@ const TOPIC_01 = {
 
         <div class="note-box">
             <h4>💡 ហេតុអ្វីបានជា \\(i^2 = -1\\)?</h4>
-            <p>នៅក្នុងលេខពិត យើងមិនអាចរកឃើញ x ដែល \\(x^2 = -1\\) បានទេ។ ប៉ុន្តែកុំផ្លិចអនុញ្ញាតឱ្យយើងបង្កើតលេខថ្មីដែលមានលក្ខណៈនេះ។</p>
+            <p>នៅក្នុងចំនួនពិត យើងមិនអាចរកឃើញ x ដែល \\(x^2 = -1\\) បានទេ។ ប៉ុន្តែកុំផ្លិចអនុញ្ញាតឱ្យយើងបង្កើតលេខថ្មីដែលមានលក្ខណៈនេះ។</p>
         </div>
 
         <h3>២. ទម្រង់នៃកុំផ្លិច</h3>
         <p>កុំផ្លិចអាចសរសេរបានក្នុងទម្រង់ជាច្រើន៖</p>
         <ul>
-            <li><strong>ទម្រង់ទូទៅ:</strong> \\(z = a + bi\\)</li>
-            <li><strong>ទម្រង់ទស្សនៈ:</strong> \\(z = r(\\cos \\theta + i \\sin \\theta) = r \\cdot e^{i\\theta}\\)</li>
-            <li><strong>ទម្រង់អថេរ:</strong> \\(z = r \\angle \\theta\\)</li>
+            <li><strong>ទម្រង់ពិជគណិត:</strong> \\(z = a + bi\\)</li>
+            <li><strong>ទម្រង់ត្រីកោណមាត្រ:</strong> \\(z = r(\\cos \\theta + i \\sin \\theta) = r \\cdot e^{i\\theta}\\)</li>
+            <li><strong>ទម្រង់អ៊ិចស្ប៉ូណង់ស្យែល:</strong> \\(z = r \\angle \\theta\\)</li>
         </ul>
 
         <div class="formula-box">
@@ -104,7 +104,7 @@ const TOPIC_01 = {
         </div>
 
         <div class="example-box">
-            <h4>ឧទាហរណ៍៖ ប្លង់កុំផ្លិច</h4>
+            <h4>ឧទាហរណ៍៖ សរសេរចំនួនកុំផ្លិចក្នុងទម្រង់ត្រីកោណមាត្រ</h4>
             <p>សម្រាប់ \\(z = 3 + 4i\\) ៖</p>
             <p>\\(r = |z| = \\sqrt{3^2 + 4^2} = \\sqrt{9 + 16} = \\sqrt{25} = 5\\)</p>
             <p>\\(\\theta = \\arg(z) = \\arctan\\left(\\frac{4}{3}\\right) \\approx 53.13^\\circ\\)</p>
@@ -114,35 +114,36 @@ const TOPIC_01 = {
         <h3>៣. ប្រមាណវិធីនៃកុំផ្លិច</h3>
         
         <h4>ក. បូក និងដក</h4>
-        <p>បូក/ដកកុំផ្លិច២ ដោយបូក/ដកផ្នែកពិត និងផ្នែកអាចន្លាស់ដាច់ដោយឡែក៖</p>
+        <p>ដើម្បីបូក ឬ ដកចំនួនកុំផ្លិច យើងត្រូវបូកឬដកផ្នែកពិត និងផ្នែកនិមិត្តជាមួយជាមួយផ្នែកនិមិត្ត</p>
         <div class="formula-box">
             \\((a + bi) + (c + di) = (a + c) + (b + d)i\\)
         </div>
 
-        <h4>ខ. គុណ</h4>
-        <p>គុណដោយប្រើក្បួន FOIL ដូចគ្នានឹងវិធីគុណ polynomial ៖</p>
+        <h4>ខ. ប្រមាណវិធីគុណ</h4>
         <div class="formula-box">
             \\((a + bi)(c + di) = (ac - bd) + (ad + bc)i\\)
         </div>
 
         <h4>គ. ចែក</h4>
-        <p>ចែកដោយប្រើ conjugate របស់អាគុដម (denominator) ៖</p>
+        <p>ចែកដត្រូវគុណនិងចំនួនកុំផ្លិចឆ្លាស់ភាគបែង</p>
         <div class="formula-box">
             \\(\\frac{a + bi}{c + di} = \\frac{(a + bi)(c - di)}{c^2 + d^2}\\)
         </div>
 
-        <h4>ឃ. Conjugate</h4>
-        <p>Conjugate របស់ \\(z = a + bi\\) គឺ \\(\\bar{z} = a - bi\\)</p>
+        <h4>ឃ. ចំនួនកុំផ្លិចឆ្លាស់ </h4>
+        <p>ចំនួនកុំផ្លិចឆ្លាស់ របស់ \\(z = a + bi\\) គឺ \\(\\bar{z} = a - bi\\)</p>
         <div class="formula-box">
             \\(\\overline{a + bi} = a - bi\\)
         </div>
 
         <h3>៤. លក្ខណៈសំខាន់ៗ</h3>
         <ul>
-            <li><strong>Modulus:</strong> \\(|z| = \\sqrt{a^2 + b^2}\\)</li>
-            <li><strong>Conjugate:</strong> \\(z \\cdot \\bar{z} = |z|^2 = a^2 + b^2\\)</li>
+            <li><strong> ម៉ូឌុល (Modulus):</strong> \\(|z| = \\sqrt{a^2 + b^2}\\)</li>
+            <li><strong>ចំនួនកុំផ្លិចឆ្លាស់:</strong> \\(z \\cdot \\bar{z} = |z|^2 = a^2 + b^2\\)</li>
             <li><strong>ផ្នែកពិត:</strong> \\(z + \\bar{z} = 2a\\)</li>
             <li><strong>ផ្នែកនិមិត្ត:</strong> \\(z - \\bar{z} = 2bi\\)</li>
+            <li><strong>z ជាចំនួនពិតសុទ្ធលុះត្រាតែ:</strong> \\(z \\bar{z} = |z|^2\\)</li>
+            <li><strong>z ជាចំនួននិមិត្តលុះត្រាតែ:</strong> \\(z \\bar{z} = -|z|^2\\)</li>
         </ul>
 
         <h3>៥. ឧទាហរណ៍ដោះស្រាយ</h3>
@@ -167,13 +168,13 @@ const TOPIC_01 = {
         </div>
 
         <div class="example-box">
-            <h4>ឧទាហរណ៍ ៣៖ រក Modulus</h4>
+            <h4>ឧទាហរណ៍ ៣៖ រក ម៉ូឌុល</h4>
             <p>រក \\(|z|\\) សម្រាប់ \\(z = 5 - 12i\\)</p>
             <p>\\(|z| = \\sqrt{5^2 + (-12)^2} = \\sqrt{25 + 144} = \\sqrt{169} = 13\\)</p>
         </div>
 
         <div class="note-box">
-            <h4>📝 ចំណាំសំខាន់៖</h4>
+            <h4>ចំណាំសំខាន់៖</h4>
             <ul>
                 <li>\\(i^1 = i, \\quad i^2 = -1, \\quad i^3 = -i, \\quad i^4 = 1\\) (វដ្ត ៤)</li>
                 <li>\\(z \\cdot \\bar{z} = |z|^2\\) (ឧបភ័គ្គសម្មតិកម្មសំខាន់)</li>
