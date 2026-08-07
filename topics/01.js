@@ -17,13 +17,13 @@ const TOPIC_01 = {
         {
             id: 1,
             question: "រក Re(z) និង Im(z) សម្រាប់ \\(z = 5 - 3i\\)",
-            hint: "Re(z) គឺផ្នែកពិត និង Im(z) គឺផ្នែកអាចន្លាស់",
+            hint: "Re(z) គឺផ្នែកពិត និង Im(z) គឺផ្នែកនិមិត្ត",
             answer: "\\(\\text{Re}(z) = 5\\) និង \\(\\text{Im}(z) = -3\\)"
         },
         {
             id: 2,
             question: "គណនា \\(z_1 + z_2\\) សម្រាប់ \\(z_1 = 3 + 2i\\) និង \\(z_2 = 1 - 4i\\)",
-            hint: "បូកផ្នែកពិតជាមួយផ្នែកពិត និងផ្នែកអាចន្លាស់ជាមួយផ្នែកអាចន្លាស់",
+            hint: "បូកផ្នែកពិតជាមួយផ្នែកពិត និងផ្នែកនិមិត្តជាមួយផ្នែកនិមិត្ត",
             answer: "\\(z_1 + z_2 = (3+1) + (2-4)i = 4 - 2i\\)"
         },
         {
@@ -59,7 +59,7 @@ const TOPIC_01 = {
         {
             id: 8,
             question: "គណនា \\((3 + 4i) + (2 - i) - (1 + 2i)\\)",
-            hint: "បូក/ដកផ្នែកពិត និងផ្នែកអាចន្លាស់ដាច់ដោយឡែក",
+            hint: "បូក/ដកផ្នែកពិត និងផ្នែកនិមិត្តដាច់ដោយឡែក",
             answer: "\\((3+2-1) + (4-1-2)i = 4 + i\\)"
         },
         {
@@ -80,8 +80,8 @@ const TOPIC_01 = {
         <p>កុំផ្លិច (Complex Number) គឺជាលេខដែលមានរូបភាព <strong>z = a + bi</strong> ដែល៖</p>
         <ul>
             <li><strong>a</strong> គឺជាផ្នែកពិត (Real part) → Re(z) = a</li>
-            <li><strong>b</strong> គឺជាផ្នែកអាចន្លាស់ (Imaginary part) → Im(z) = b</li>
-            <li><strong>i</strong> គឺជាលេខអាចន្លាស់ (Imaginary unit) ដែល \\(i^2 = -1\\)</li>
+            <li><strong>b</strong> គឺជាផ្នែកនិមិត្ត (Imaginary part) → Im(z) = b</li>
+            <li><strong>i</strong> គឺជាលេខនិមិត្ត (Imaginary unit) ដែល \\(i^2 = -1\\)</li>
         </ul>
 
         <div class="formula-box">\\(z = a + bi, \\quad i = \\sqrt{-1}, \\quad i^2 = -1\\)</div>
@@ -142,7 +142,7 @@ const TOPIC_01 = {
             <li><strong>Modulus:</strong> \\(|z| = \\sqrt{a^2 + b^2}\\)</li>
             <li><strong>Conjugate:</strong> \\(z \\cdot \\bar{z} = |z|^2 = a^2 + b^2\\)</li>
             <li><strong>ផ្នែកពិត:</strong> \\(z + \\bar{z} = 2a\\)</li>
-            <li><strong>ផ្នែកអាចន្លាស់:</strong> \\(z - \\bar{z} = 2bi\\)</li>
+            <li><strong>ផ្នែកនិមិត្ត:</strong> \\(z - \\bar{z} = 2bi\\)</li>
         </ul>
 
         <h3>៥. ឧទាហរណ៍ដោះស្រាយ</h3>
