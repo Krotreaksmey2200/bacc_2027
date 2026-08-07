@@ -7,7 +7,9 @@ const TOPIC_03 = {
     semester: 1,
     description: "ស្គាល់ និងពិនិត្យភាពជាប់អនុគមន៍",
     pdfs: [],
-    research: [],
+    research: [
+        { name: "continuity.pdf", path: "pdfs/03_ភាពជាប់អនុគមន៍/research/continuity.pdf" }
+    ],
     exercises: [
         {
             id: 1,
