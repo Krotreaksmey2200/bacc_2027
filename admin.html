@@ -48,7 +48,7 @@
             border: 2px solid white;
         }
         
-        .back-btn, .logout-btn {
+        .back-btn {
             padding: 0.6rem 1.2rem;
             background: rgba(255,255,255,0.2);
             border: 1px solid rgba(255,255,255,0.3);
@@ -59,7 +59,7 @@
             font-size: 0.9rem;
         }
         
-        .back-btn:hover, .logout-btn:hover {
+        .back-btn:hover {
             background: rgba(255,255,255,0.3);
         }
         
@@ -71,7 +71,7 @@
         
         .stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 1.5rem;
             margin-bottom: 2rem;
         }
@@ -107,19 +107,13 @@
             box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
         }
         
-        .section-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid #e2e8f0;
-        }
-        
         .section-title {
             font-size: 1.2rem;
             font-weight: 700;
             color: #1e3a8a;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #e2e8f0;
         }
         
         .table-container {
@@ -166,16 +160,6 @@
             font-weight: 600;
         }
         
-        .badge-allowed {
-            background: #dcfce7;
-            color: #16a34a;
-        }
-        
-        .badge-blocked {
-            background: #fee2e2;
-            color: #dc2626;
-        }
-        
         .badge-login {
             background: #dcfce7;
             color: #16a34a;
@@ -186,69 +170,9 @@
             color: #2563eb;
         }
         
-        .btn {
-            padding: 0.4rem 0.8rem;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            font-family: 'Battambang', sans-serif;
-            font-size: 0.85rem;
-        }
-        
-        .btn-danger {
-            background: #dc2626;
-            color: white;
-        }
-        
-        .btn-danger:hover {
-            background: #b91c1c;
-        }
-        
-        .btn-success {
-            background: #16a34a;
-            color: white;
-        }
-        
-        .btn-success:hover {
-            background: #15803d;
-        }
-        
-        .btn-warning {
-            background: #d97706;
-            color: white;
-        }
-        
-        .btn-warning:hover {
-            background: #b45309;
-        }
-        
-        .btn-primary {
-            background: #3b82f6;
-            color: white;
-        }
-        
-        .btn-primary:hover {
-            background: #2563eb;
-        }
-        
-        .add-user-form {
-            display: flex;
-            gap: 1rem;
-            margin-bottom: 1rem;
-        }
-        
-        .add-user-form input {
-            flex: 1;
-            padding: 0.6rem 1rem;
-            border: 1px solid #e2e8f0;
-            border-radius: 8px;
-            font-family: 'Battambang', sans-serif;
-            font-size: 0.9rem;
-        }
-        
-        .add-user-form input:focus {
-            outline: none;
-            border-color: #3b82f6;
+        .badge-exercise {
+            background: #fef3c7;
+            color: #d97706;
         }
         
         .loading {
@@ -257,69 +181,29 @@
             color: #64748b;
         }
         
-        .action-btns {
-            display: flex;
-            gap: 0.5rem;
-        }
-        
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.5);
-            z-index: 1000;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .modal.active {
-            display: flex;
-        }
-        
-        .modal-content {
-            background: white;
-            padding: 2rem;
-            border-radius: 16px;
-            max-width: 400px;
-            width: 90%;
-        }
-        
-        .modal-title {
-            font-size: 1.2rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            color: #1e3a8a;
-        }
-        
-        .modal-actions {
-            display: flex;
-            gap: 1rem;
-            justify-content: flex-end;
-            margin-top: 1.5rem;
-        }
-        
-        .toast {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            background: #16a34a;
+        .refresh-btn {
+            padding: 0.6rem 1.2rem;
+            background: #3b82f6;
             color: white;
-            padding: 1rem 1.5rem;
+            border: none;
             border-radius: 8px;
-            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.2);
-            z-index: 2000;
-            display: none;
+            cursor: pointer;
+            font-family: 'Battambang', sans-serif;
+            font-size: 0.9rem;
         }
         
-        .toast.show {
-            display: block;
+        .refresh-btn:hover {
+            background: #2563eb;
         }
         
-        .toast.error {
-            background: #dc2626;
+        .sheet-link {
+            color: #3b82f6;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .sheet-link:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
@@ -327,8 +211,9 @@
     <header class="header">
         <h1 class="header-title">📊 Admin Dashboard</h1>
         <div class="header-actions">
+            <a href="https://docs.google.com/spreadsheets/d/1l9V4UVnve5cp9ut5Rghq6HbouIcmZEASnyBq2fYlg0M/edit?gid=0#gid=0" target="_blank" class="sheet-link">📋 Google Sheet</a>
+            <button class="refresh-btn" onclick="loadData()">🔄 ផ្ទុកឡើងវិញ</button>
             <button class="back-btn" onclick="window.location.href='index.html'">← ត្រឡប់</button>
-            <button class="logout-btn" onclick="signOut()">ចេញ</button>
             <div class="user-info">
                 <img id="userAvatar" class="user-avatar" src="" alt="">
                 <span id="userName"></span>
@@ -337,7 +222,6 @@
     </header>
     
     <div class="container">
-        <!-- Stats -->
         <div class="stats-grid">
             <div class="stat-card">
                 <div class="stat-icon">👥</div>
@@ -345,38 +229,24 @@
                 <div class="stat-label">សិស្សសរុប</div>
             </div>
             <div class="stat-card">
-                <div class="stat-icon">✅</div>
-                <div class="stat-value" id="totalAllowed">0</div>
-                <div class="stat-label">អនុញ្ញាតិ</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-icon">🚫</div>
-                <div class="stat-value" id="totalBlocked">0</div>
-                <div class="stat-label">ច្រានចោល</div>
-            </div>
-            <div class="stat-card">
                 <div class="stat-icon">🔐</div>
                 <div class="stat-value" id="totalLogins">0</div>
                 <div class="stat-label">ចូលសរុប</div>
             </div>
+            <div class="stat-card">
+                <div class="stat-icon">📖</div>
+                <div class="stat-value" id="totalViews">0</div>
+                <div class="stat-label">មើលមេរៀន</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">✏️</div>
+                <div class="stat-value" id="totalExercises">0</div>
+                <div class="stat-label">ធ្វើលំហាត់</div>
+            </div>
         </div>
         
-        <!-- Add Allowed User -->
         <div class="section">
-            <div class="section-header">
-                <h2 class="section-title">➕ បន្ថែមអ្នកប្រើប្រាស់</h2>
-            </div>
-            <div class="add-user-form">
-                <input type="email" id="newUserEmail" placeholder="បញ្ចូល email (ឧ. example@gmail.com)">
-                <button class="btn btn-success" onclick="addAllowedUser()">➕ បន្ថែម</button>
-            </div>
-        </div>
-        
-        <!-- Allowed Users List -->
-        <div class="section">
-            <div class="section-header">
-                <h2 class="section-title">✅ អ្នកប្រើប្រាស់ដែលអនុញ្ញាតិ</h2>
-            </div>
+            <h2 class="section-title">👥 គណនីសិស្ស</h2>
             <div class="table-container">
                 <table>
                     <thead>
@@ -384,46 +254,19 @@
                             <th>រូបភាព</th>
                             <th>ឈ្មោះ</th>
                             <th>Email</th>
-                            <th>ស្ថានភាព</th>
+                            <th>ចូលដំបូង</th>
                             <th>ចូលចុងក្រោយ</th>
-                            <th>សកម្មភាព</th>
                         </tr>
                     </thead>
-                    <tbody id="allowedUsersTable">
-                        <tr><td colspan="6" class="loading">កំពុងផ្ទុក...</td></tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        
-        <!-- Blocked Users List -->
-        <div class="section">
-            <div class="section-header">
-                <h2 class="section-title">🚫 អ្នកប្រើប្រាស់ដែលច្រានចោល</h2>
-            </div>
-            <div class="table-container">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>រូបភាព</th>
-                            <th>ឈ្មោះ</th>
-                            <th>Email</th>
-                            <th>ស្ថានភាព</th>
-                            <th>សកម្មភាព</th>
-                        </tr>
-                    </thead>
-                    <tbody id="blockedUsersTable">
+                    <tbody id="usersTable">
                         <tr><td colspan="5" class="loading">កំពុងផ្ទុក...</td></tr>
                     </tbody>
                 </table>
             </div>
         </div>
         
-        <!-- Recent Activity -->
         <div class="section">
-            <div class="section-header">
-                <h2 class="section-title">📋 សកម្មភាពថ្មីៗ</h2>
-            </div>
+            <h2 class="section-title">📋 សកម្មភាពថ្មីៗ</h2>
             <div class="table-container">
                 <table>
                     <thead>
@@ -442,22 +285,6 @@
         </div>
     </div>
     
-    <!-- Delete Modal -->
-    <div class="modal" id="deleteModal">
-        <div class="modal-content">
-            <h3 class="modal-title">⚠️ លុបអ្នកប្រើប្រាស់</h3>
-            <p>តើអ្នកពិតជាចង់លុបអ្នកប្រើប្រាស់នេះមែនទេ?</p>
-            <p id="deleteUserName" style="font-weight:600;color:#1e3a8a;margin-top:0.5rem;"></p>
-            <div class="modal-actions">
-                <button class="btn btn-primary" onclick="closeModal()">បោះបង់</button>
-                <button class="btn btn-danger" onclick="confirmDelete()">លុប</button>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Toast -->
-    <div class="toast" id="toast"></div>
-    
     <!-- Firebase SDK -->
     <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
@@ -466,7 +293,8 @@
     <script src="js/firebase-config.js"></script>
     
     <script>
-        let currentDeleteUserId = null;
+        const userAvatar = document.getElementById('userAvatar');
+        const userName = document.getElementById('userName');
         
         // Check auth
         auth.onAuthStateChanged((user) => {
@@ -482,36 +310,21 @@
                 return;
             }
             
-            document.getElementById('userAvatar').src = user.photoURL || '';
-            document.getElementById('userName').textContent = user.displayName || user.email;
+            userAvatar.src = user.photoURL || '';
+            userName.textContent = user.displayName || user.email;
             
             loadData();
         });
         
-        // Sign Out
-        function signOut() {
-            auth.signOut().then(() => {
-                window.location.href = 'login.html';
-            });
-        }
-        
-        // Load all data
+        // Load data from Firestore
         async function loadData() {
             try {
-                // Get all users
+                // Get users
                 const usersSnapshot = await db.collection('users').get();
                 const users = usersSnapshot.docs.map(doc => ({
                     id: doc.id,
                     ...doc.data()
                 }));
-                
-                // Get allowed emails
-                const allowedSnapshot = await db.collection('allowedEmails').get();
-                const allowedEmails = allowedSnapshot.docs.map(doc => doc.id);
-                
-                // Get blocked emails
-                const blockedSnapshot = await db.collection('blockedEmails').get();
-                const blockedEmails = blockedSnapshot.docs.map(doc => doc.id);
                 
                 // Get activity
                 const activitySnapshot = await db.collection('activity')
@@ -523,86 +336,62 @@
                     ...doc.data()
                 }));
                 
-                // Calculate stats
-                document.getElementById('totalUsers').textContent = users.length;
-                document.getElementById('totalAllowed').textContent = allowedEmails.length;
-                document.getElementById('totalBlocked').textContent = blockedEmails.length;
-                document.getElementById('totalLogins').textContent = activity.filter(a => a.action === 'login').length;
+                // Update stats
+                document.getElementById('totalUsers').textContent = users.length || 0;
                 
-                // Render tables
-                renderAllowedUsers(users, allowedEmails, blockedEmails);
-                renderBlockedUsers(users, blockedEmails);
+                // Count logins
+                const logins = activity.filter(a => a.action === 'login');
+                document.getElementById('totalLogins').textContent = logins.length || 0;
+                
+                // Count page views
+                const views = activity.filter(a => a.action === 'view_topic');
+                document.getElementById('totalViews').textContent = views.length || 0;
+                
+                // Count exercises
+                const exercises = activity.filter(a => a.action === 'view_exercise');
+                document.getElementById('totalExercises').textContent = exercises.length || 0;
+                
+                // Render users table
+                renderUsers(users);
+                
+                // Render activity table
                 renderActivity(activity);
                 
             } catch (error) {
                 console.error('Error loading data:', error);
-                showToast('មានកំហុសក្នុងការផ្ទុកទិន្នន័', true);
+                document.getElementById('usersTable').innerHTML = 
+                    '<tr><td colspan="5" style="color:#dc2626;">មានកំហុសក្នុងការផ្ទុកទិន្នន័។</td></tr>';
             }
         }
         
-        // Render allowed users
-        function renderAllowedUsers(users, allowedEmails, blockedEmails) {
-            const tbody = document.getElementById('allowedUsersTable');
+        // Render users table
+        function renderUsers(users) {
+            const tbody = document.getElementById('usersTable');
             
-            // Filter users that are allowed
-            const allowedUsers = users.filter(u => 
-                allowedEmails.includes(u.email) && !blockedEmails.includes(u.email)
-            );
-            
-            if (allowedUsers.length === 0) {
-                tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;color:#64748b;">មិនទាន់មានអ្នកប្រើប្រាស់</td></tr>';
+            if (!users || users.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="5" style="text-align:center;color:#64748b;">មិនទាន់មានសិស្សចុះឈ្មោះ</td></tr>';
                 return;
             }
             
-            tbody.innerHTML = allowedUsers.map(user => {
+            tbody.innerHTML = users.map(user => {
                 const lastLogin = user.lastLogin ? new Date(user.lastLogin.seconds * 1000).toLocaleString('km-KH') : '-';
                 return `
                     <tr>
                         <td><img src="${user.photo || 'https://via.placeholder.com/32'}" style="width:32px;height:32px;border-radius:50%;"></td>
                         <td>${user.name || 'មិនស្គាល់'}</td>
                         <td>${user.email || '-'}</td>
-                        <td><span class="badge badge-allowed">អនុញ្ញាតិ</span></td>
                         <td>${lastLogin}</td>
-                        <td class="action-btns">
-                            <button class="btn btn-warning" onclick="blockUser('${user.email}')">🚫 ច្រានចោល</button>
-                            <button class="btn btn-danger" onclick="deleteUser('${user.id}', '${user.name || user.email}')">🗑️ លុប</button>
-                        </td>
+                        <td>${lastLogin}</td>
                     </tr>
                 `;
             }).join('');
         }
         
-        // Render blocked users
-        function renderBlockedUsers(users, blockedEmails) {
-            const tbody = document.getElementById('blockedUsersTable');
-            
-            // Filter users that are blocked
-            const blockedUsers = users.filter(u => blockedEmails.includes(u.email));
-            
-            if (blockedUsers.length === 0) {
-                tbody.innerHTML = '<tr><td colspan="5" style="text-align:center;color:#64748b;">មិនមានអ្នកប្រើប្រាស់ដែលច្រានចោល</td></tr>';
-                return;
-            }
-            
-            tbody.innerHTML = blockedUsers.map(user => `
-                <tr>
-                    <td><img src="${user.photo || 'https://via.placeholder.com/32'}" style="width:32px;height:32px;border-radius:50%;"></td>
-                    <td>${user.name || 'មិនស្គាល់'}</td>
-                    <td>${user.email || '-'}</td>
-                    <td><span class="badge badge-blocked">ច្រានចោល</span></td>
-                    <td class="action-btns">
-                        <button class="btn btn-success" onclick="unblockUser('${user.email}')">✅ អនុញ្ញាតិ</button>
-                        <button class="btn btn-danger" onclick="deleteUser('${user.id}', '${user.name || user.email}')">🗑️ លុប</button>
-                    </td>
-                </tr>
-            `).join('');
-        }
-        
-        // Render activity
+        // Render activity table
         function renderActivity(activity) {
             const tbody = document.getElementById('activityTable');
             
-            if (activity.length === 0) {
+            if (!activity || activity.length === 0) {
                 tbody.innerHTML = '<tr><td colspan="4" style="text-align:center;color:#64748b;">មិនទាន់មានសកម្មភាព</td></tr>';
                 return;
             }
@@ -614,6 +403,9 @@
                 if (item.action === 'view_topic') {
                     badgeClass = 'badge-view';
                     actionText = 'មើលមេរៀន';
+                } else if (item.action === 'view_exercise') {
+                    badgeClass = 'badge-exercise';
+                    actionText = 'ធ្វើលំហាត់';
                 }
                 
                 const time = item.timestamp ? new Date(item.timestamp.seconds * 1000).toLocaleString('km-KH') : '-';
@@ -628,152 +420,6 @@
                 `;
             }).join('');
         }
-        
-        // Add allowed user
-        async function addAllowedUser() {
-            const emailInput = document.getElementById('newUserEmail');
-            const email = emailInput.value.trim();
-            
-            if (!email) {
-                showToast('សូមបញ្ចូល email', true);
-                return;
-            }
-            
-            if (!email.includes('@')) {
-                showToast('Email មិនត្រឹមត្រូវ', true);
-                return;
-            }
-            
-            try {
-                // Add to allowedEmails collection
-                await db.collection('allowedEmails').doc(email).set({
-                    email: email,
-                    addedAt: firebase.firestore.FieldValue.serverTimestamp(),
-                    addedBy: auth.currentUser.email
-                });
-                
-                // Remove from blockedEmails if exists
-                await db.collection('blockedEmails').doc(email).delete().catch(() => {});
-                
-                emailInput.value = '';
-                showToast('បានបន្ថែមអ្នកប្រើប្រាស់ដោយជោគជ័យ!');
-                loadData();
-            } catch (error) {
-                console.error('Error adding user:', error);
-                showToast('មានកំហុសក្នុងការបន្ថែម', true);
-            }
-        }
-        
-        // Block user
-        async function blockUser(email) {
-            try {
-                // Add to blockedEmails collection
-                await db.collection('blockedEmails').doc(email).set({
-                    email: email,
-                    blockedAt: firebase.firestore.FieldValue.serverTimestamp(),
-                    blockedBy: auth.currentUser.email
-                });
-                
-                // Remove from allowedEmails
-                await db.collection('allowedEmails').doc(email).delete().catch(() => {});
-                
-                showToast('បានច្រានចោលអ្នកប្រើប្រាស់');
-                loadData();
-            } catch (error) {
-                console.error('Error blocking user:', error);
-                showToast('មានកំហុសក្នុងការច្រានចោល', true);
-            }
-        }
-        
-        // Unblock user
-        async function unblockUser(email) {
-            try {
-                // Remove from blockedEmails
-                await db.collection('blockedEmails').doc(email).delete();
-                
-                // Add to allowedEmails
-                await db.collection('allowedEmails').doc(email).set({
-                    email: email,
-                    addedAt: firebase.firestore.FieldValue.serverTimestamp(),
-                    addedBy: auth.currentUser.email
-                });
-                
-                showToast('បានអនុញ្ញាតិអ្នកប្រើប្រាស់');
-                loadData();
-            } catch (error) {
-                console.error('Error unblocking user:', error);
-                showToast('មានកំហុសក្នុងការអនុញ្ញាតិ', true);
-            }
-        }
-        
-        // Delete user
-        function deleteUser(userId, userName) {
-            currentDeleteUserId = userId;
-            document.getElementById('deleteUserName').textContent = userName;
-            document.getElementById('deleteModal').classList.add('active');
-        }
-        
-        // Confirm delete
-        async function confirmDelete() {
-            if (!currentDeleteUserId) return;
-            
-            try {
-                // Get user email before deleting
-                const userDoc = await db.collection('users').doc(currentDeleteUserId).get();
-                const userData = userDoc.data();
-                
-                if (userData) {
-                    // Remove from allowedEmails and blockedEmails
-                    await db.collection('allowedEmails').doc(userData.email).delete().catch(() => {});
-                    await db.collection('blockedEmails').doc(userData.email).delete().catch(() => {});
-                }
-                
-                // Delete user document
-                await db.collection('users').doc(currentDeleteUserId).delete();
-                
-                // Delete activity by this user
-                const activitySnapshot = await db.collection('activity')
-                    .where('userId', '==', currentDeleteUserId)
-                    .get();
-                
-                const batch = db.batch();
-                activitySnapshot.docs.forEach(doc => {
-                    batch.delete(doc.ref);
-                });
-                await batch.commit();
-                
-                closeModal();
-                showToast('បានលុបអ្នកប្រើប្រាស់ដោយជោគជ័យ!');
-                loadData();
-            } catch (error) {
-                console.error('Error deleting user:', error);
-                showToast('មានកំហុសក្នុងការលុប', true);
-            }
-        }
-        
-        // Close modal
-        function closeModal() {
-            document.getElementById('deleteModal').classList.remove('active');
-            currentDeleteUserId = null;
-        }
-        
-        // Show toast notification
-        function showToast(message, isError = false) {
-            const toast = document.getElementById('toast');
-            toast.textContent = message;
-            toast.className = isError ? 'toast show error' : 'toast show';
-            
-            setTimeout(() => {
-                toast.classList.remove('show');
-            }, 3000);
-        }
-        
-        // Add Enter key support for input
-        document.getElementById('newUserEmail').addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') {
-                addAllowedUser();
-            }
-        });
     </script>
 </body>
 </html>
