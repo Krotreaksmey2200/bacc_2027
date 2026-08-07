@@ -166,11 +166,35 @@
         const loading = document.getElementById('loading');
         const errorMsg = document.getElementById('errorMsg');
         
+        // Check if user is allowed
+        async function isUserAllowed(email) {
+            // Admin is always allowed
+            if (isAdmin(auth.currentUser)) return true;
+            
+            // Check blocked list
+            const blockedDoc = await db.collection('blockedEmails').doc(email).get();
+            if (blockedDoc.exists) return false;
+            
+            // Check if allowed list exists
+            const allowedSnapshot = await db.collection('allowedEmails').get();
+            if (allowedSnapshot.empty) return true;
+            
+            // Check if in allowed list
+            const allowedDoc = await db.collection('allowedEmails').doc(email).get();
+            return allowedDoc.exists;
+        }
+        
         // Check if already logged in
-        auth.onAuthStateChanged((user) => {
+        auth.onAuthStateChanged(async (user) => {
             if (user) {
-                // Already logged in, redirect to main page
-                window.location.href = 'index.html';
+                const allowed = await isUserAllowed(user.email);
+                if (allowed) {
+                    window.location.href = 'index.html';
+                } else {
+                    await auth.signOut();
+                    errorMsg.textContent = 'អ្នកមិនមានសិទ្ធិចូលប្រើប្រាស់ទំព័រនេះទេ។';
+                    errorMsg.style.display = 'block';
+                }
             }
         });
         
@@ -183,6 +207,18 @@
             auth.signInWithPopup(provider)
                 .then(async (result) => {
                     const user = result.user;
+                    
+                    // Check if user is allowed
+                    const allowed = await isUserAllowed(user.email);
+                    
+                    if (!allowed) {
+                        await auth.signOut();
+                        googleLoginBtn.style.display = 'flex';
+                        loading.style.display = 'none';
+                        errorMsg.textContent = 'អ្នកមិនមានសិទ្ធិចូលប្រើប្រាស់ទំព័រនេះទេ។ សូមទាក់ទងអ្នកគ្រប់គ្រង។';
+                        errorMsg.style.display = 'block';
+                        return;
+                    }
                     
                     // Save user info to Firestore
                     await saveUser(user);

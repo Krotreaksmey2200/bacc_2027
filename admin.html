@@ -11,111 +11,264 @@
         
         body {
             min-height: 100vh;
-            background: #f1f5f9;
+            background: #0f172a;
             font-family: 'Battambang', sans-serif;
+            color: #e2e8f0;
         }
         
+        /* Header */
         .header {
-            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
-            color: white;
-            padding: 1.5rem 2rem;
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            border-bottom: 1px solid #334155;
+            padding: 1rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
         }
         
         .header-title {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             font-weight: 700;
+            color: #f8fafc;
         }
         
-        .header-actions {
+        .header-badge {
+            background: #3b82f6;
+            color: white;
+            padding: 0.2rem 0.6rem;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        
+        .header-right {
             display: flex;
             gap: 1rem;
             align-items: center;
         }
         
-        .user-info {
+        .user-pill {
             display: flex;
             align-items: center;
-            gap: 0.8rem;
+            gap: 0.6rem;
+            background: #1e293b;
+            border: 1px solid #334155;
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
         }
         
-        .user-avatar {
-            width: 36px;
-            height: 36px;
+        .user-pill img {
+            width: 28px;
+            height: 28px;
             border-radius: 50%;
-            border: 2px solid white;
         }
         
-        .back-btn {
-            padding: 0.6rem 1.2rem;
-            background: rgba(255,255,255,0.2);
-            border: 1px solid rgba(255,255,255,0.3);
-            color: white;
+        .user-pill span {
+            font-size: 0.85rem;
+            color: #94a3b8;
+        }
+        
+        .btn {
+            padding: 0.5rem 1rem;
+            border: none;
             border-radius: 8px;
             cursor: pointer;
             font-family: 'Battambang', sans-serif;
             font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.2s;
         }
         
-        .back-btn:hover {
-            background: rgba(255,255,255,0.3);
+        .btn-ghost {
+            background: transparent;
+            color: #94a3b8;
+            border: 1px solid #334155;
         }
         
-        .container {
-            max-width: 1200px;
-            margin: 2rem auto;
-            padding: 0 1rem;
+        .btn-ghost:hover {
+            background: #1e293b;
+            color: white;
         }
         
+        .btn-danger {
+            background: #dc2626;
+            color: white;
+        }
+        
+        .btn-danger:hover {
+            background: #b91c1c;
+        }
+        
+        .btn-success {
+            background: #16a34a;
+            color: white;
+        }
+        
+        .btn-success:hover {
+            background: #15803d;
+        }
+        
+        .btn-primary {
+            background: #3b82f6;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #2563eb;
+        }
+        
+        .btn-warning {
+            background: #d97706;
+            color: white;
+        }
+        
+        .btn-warning:hover {
+            background: #b45309;
+        }
+        
+        .btn-sm {
+            padding: 0.3rem 0.6rem;
+            font-size: 0.8rem;
+        }
+        
+        /* Main Layout */
+        .main {
+            display: flex;
+            min-height: calc(100vh - 60px);
+        }
+        
+        /* Sidebar */
+        .sidebar {
+            width: 260px;
+            background: #1e293b;
+            border-right: 1px solid #334155;
+            padding: 1.5rem 0;
+        }
+        
+        .sidebar-menu {
+            list-style: none;
+        }
+        
+        .sidebar-item {
+            padding: 0.8rem 1.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            color: #94a3b8;
+            transition: all 0.2s;
+        }
+        
+        .sidebar-item:hover, .sidebar-item.active {
+            background: #334155;
+            color: white;
+        }
+        
+        .sidebar-item.active {
+            border-left: 3px solid #3b82f6;
+        }
+        
+        .sidebar-icon {
+            font-size: 1.2rem;
+        }
+        
+        /* Content */
+        .content {
+            flex: 1;
+            padding: 2rem;
+            overflow-y: auto;
+        }
+        
+        /* Stats Cards */
         .stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
             margin-bottom: 2rem;
         }
         
         .stat-card {
-            background: white;
-            border-radius: 16px;
-            padding: 1.5rem;
-            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+            background: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 12px;
+            padding: 1.2rem;
+            transition: all 0.2s;
+        }
+        
+        .stat-card:hover {
+            border-color: #3b82f6;
+            transform: translateY(-2px);
+        }
+        
+        .stat-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
         }
         
         .stat-icon {
-            font-size: 2rem;
-            margin-bottom: 0.5rem;
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
         }
         
+        .stat-icon.blue { background: rgba(59, 130, 246, 0.2); }
+        .stat-icon.green { background: rgba(34, 197, 94, 0.2); }
+        .stat-icon.red { background: rgba(239, 68, 68, 0.2); }
+        .stat-icon.yellow { background: rgba(234, 179, 8, 0.2); }
+        
         .stat-value {
-            font-size: 2rem;
+            font-size: 1.8rem;
             font-weight: 700;
-            color: #1e3a8a;
+            color: #f8fafc;
         }
         
         .stat-label {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: #64748b;
         }
         
-        .section {
-            background: white;
-            border-radius: 16px;
-            padding: 1.5rem;
+        /* Panels */
+        .panel {
+            background: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 12px;
             margin-bottom: 1.5rem;
-            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
         }
         
-        .section-title {
-            font-size: 1.2rem;
+        .panel-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid #334155;
+        }
+        
+        .panel-title {
+            font-size: 1.1rem;
             font-weight: 700;
-            color: #1e3a8a;
-            margin-bottom: 1rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid #e2e8f0;
+            color: #f8fafc;
         }
         
+        .panel-body {
+            padding: 1rem 1.5rem;
+        }
+        
+        /* Table */
         .table-container {
             overflow-x: auto;
         }
@@ -128,19 +281,22 @@
         th, td {
             padding: 0.8rem 1rem;
             text-align: left;
-            border-bottom: 1px solid #e2e8f0;
+            border-bottom: 1px solid #334155;
         }
         
         th {
-            background: #f8fafc;
+            background: #0f172a;
             font-weight: 600;
-            color: #475569;
+            color: #94a3b8;
+            font-size: 0.85rem;
+            text-transform: uppercase;
         }
         
         tr:hover {
-            background: #f8fafc;
+            background: rgba(59, 130, 246, 0.05);
         }
         
+        /* User Cell */
         .user-cell {
             display: flex;
             align-items: center;
@@ -148,142 +304,514 @@
         }
         
         .user-cell img {
-            width: 32px;
-            height: 32px;
+            width: 36px;
+            height: 36px;
             border-radius: 50%;
+            border: 2px solid #334155;
         }
         
-        .badge {
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
+        .user-name {
+            font-weight: 600;
+            color: #f8fafc;
+        }
+        
+        .user-email {
             font-size: 0.8rem;
+            color: #64748b;
+        }
+        
+        /* Badges */
+        .badge {
+            padding: 0.25rem 0.6rem;
+            border-radius: 12px;
+            font-size: 0.75rem;
             font-weight: 600;
         }
         
-        .badge-login {
-            background: #dcfce7;
-            color: #16a34a;
+        .badge-success {
+            background: rgba(34, 197, 94, 0.2);
+            color: #22c55e;
         }
         
-        .badge-view {
-            background: #dbeafe;
-            color: #2563eb;
+        .badge-danger {
+            background: rgba(239, 68, 68, 0.2);
+            color: #ef4444;
         }
         
-        .badge-exercise {
-            background: #fef3c7;
-            color: #d97706;
+        .badge-warning {
+            background: rgba(234, 179, 8, 0.2);
+            color: #eab308;
         }
         
+        .badge-info {
+            background: rgba(59, 130, 246, 0.2);
+            color: #3b82f6;
+        }
+        
+        /* Actions */
+        .actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        /* Input Group */
+        .input-group {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .input {
+            flex: 1;
+            padding: 0.6rem 1rem;
+            background: #0f172a;
+            border: 1px solid #334155;
+            border-radius: 8px;
+            color: white;
+            font-family: 'Battambang', sans-serif;
+            font-size: 0.9rem;
+        }
+        
+        .input:focus {
+            outline: none;
+            border-color: #3b82f6;
+        }
+        
+        .input::placeholder {
+            color: #64748b;
+        }
+        
+        /* Search */
+        .search-box {
+            position: relative;
+        }
+        
+        .search-box input {
+            padding-left: 2.5rem;
+        }
+        
+        .search-box::before {
+            content: "🔍";
+            position: absolute;
+            left: 0.8rem;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        
+        /* Modal */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-overlay.active {
+            display: flex;
+        }
+        
+        .modal {
+            background: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 16px;
+            padding: 1.5rem;
+            max-width: 400px;
+            width: 90%;
+        }
+        
+        .modal-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #f8fafc;
+            margin-bottom: 1rem;
+        }
+        
+        .modal-text {
+            color: #94a3b8;
+            margin-bottom: 0.5rem;
+        }
+        
+        .modal-highlight {
+            color: #3b82f6;
+            font-weight: 600;
+        }
+        
+        .modal-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: flex-end;
+            margin-top: 1.5rem;
+        }
+        
+        /* Toast */
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            padding: 1rem 1.5rem;
+            border-radius: 10px;
+            color: white;
+            font-weight: 600;
+            z-index: 2000;
+            transform: translateX(120%);
+            transition: transform 0.3s;
+        }
+        
+        .toast.show {
+            transform: translateX(0);
+        }
+        
+        .toast-success {
+            background: #16a34a;
+        }
+        
+        .toast-error {
+            background: #dc2626;
+        }
+        
+        .toast-info {
+            background: #3b82f6;
+        }
+        
+        /* Loading */
         .loading {
             text-align: center;
             padding: 3rem;
             color: #64748b;
         }
         
-        .refresh-btn {
-            padding: 0.6rem 1.2rem;
-            background: #3b82f6;
-            color: white;
-            border: none;
+        .spinner {
+            border: 3px solid #334155;
+            border-top: 3px solid #3b82f6;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: 3rem;
+            color: #64748b;
+        }
+        
+        .empty-state-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        /* Tab Navigation */
+        .tab-nav {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .tab-btn {
+            padding: 0.5rem 1rem;
+            background: transparent;
+            border: 1px solid #334155;
             border-radius: 8px;
+            color: #94a3b8;
             cursor: pointer;
             font-family: 'Battambang', sans-serif;
             font-size: 0.9rem;
         }
         
-        .refresh-btn:hover {
-            background: #2563eb;
+        .tab-btn.active {
+            background: #3b82f6;
+            border-color: #3b82f6;
+            color: white;
         }
         
-        .sheet-link {
-            color: #3b82f6;
-            text-decoration: none;
-            font-weight: 600;
-        }
-        
-        .sheet-link:hover {
-            text-decoration: underline;
+        /* Responsive */
+        @media (max-width: 768px) {
+            .sidebar {
+                display: none;
+            }
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Header -->
     <header class="header">
-        <h1 class="header-title">📊 Admin Dashboard</h1>
-        <div class="header-actions">
-            <a href="https://docs.google.com/spreadsheets/d/1l9V4UVnve5cp9ut5Rghq6HbouIcmZEASnyBq2fYlg0M/edit?gid=0#gid=0" target="_blank" class="sheet-link">📋 Google Sheet</a>
-            <button class="refresh-btn" onclick="loadData()">🔄 ផ្ទុកឡើងវិញ</button>
-            <button class="back-btn" onclick="window.location.href='index.html'">← ត្រឡប់</button>
-            <div class="user-info">
-                <img id="userAvatar" class="user-avatar" src="" alt="">
-                <span id="userName"></span>
+        <div class="header-left">
+            <h1 class="header-title">🛡️ Admin Dashboard</h1>
+            <span class="header-badge">v1.0</span>
+        </div>
+        <div class="header-right">
+            <button class="btn btn-ghost" onclick="window.location.href='index.html'">← ត្រឡប់</button>
+            <button class="btn btn-ghost" onclick="signOut()">ចេញ</button>
+            <div class="user-pill">
+                <img id="adminAvatar" src="" alt="">
+                <span id="adminName"></span>
             </div>
         </div>
     </header>
     
-    <div class="container">
-        <div class="stats-grid">
-            <div class="stat-card">
-                <div class="stat-icon">👥</div>
-                <div class="stat-value" id="totalUsers">0</div>
-                <div class="stat-label">សិស្សសរុប</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-icon">🔐</div>
-                <div class="stat-value" id="totalLogins">0</div>
-                <div class="stat-label">ចូលសរុប</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-icon">📖</div>
-                <div class="stat-value" id="totalViews">0</div>
-                <div class="stat-label">មើលមេរៀន</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-icon">✏️</div>
-                <div class="stat-value" id="totalExercises">0</div>
-                <div class="stat-label">ធ្វើលំហាត់</div>
-            </div>
-        </div>
+    <!-- Main -->
+    <div class="main">
+        <!-- Sidebar -->
+        <nav class="sidebar">
+            <ul class="sidebar-menu">
+                <li class="sidebar-item active" onclick="showSection('overview')">
+                    <span class="sidebar-icon">📊</span> ទិន្នន័យសរុប
+                </li>
+                <li class="sidebar-item" onclick="showSection('users')">
+                    <span class="sidebar-icon">👥</span> អ្នកប្រើប្រាស់
+                </li>
+                <li class="sidebar-item" onclick="showSection('activity')">
+                    <span class="sidebar-icon">📋</span> សកម្មភាព
+                </li>
+                <li class="sidebar-item" onclick="showSection('settings')">
+                    <span class="sidebar-icon">⚙️</span> ការកំណត់
+                </li>
+            </ul>
+        </nav>
         
-        <div class="section">
-            <h2 class="section-title">👥 គណនីសិស្ស</h2>
-            <div class="table-container">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>រូបភាព</th>
-                            <th>ឈ្មោះ</th>
-                            <th>Email</th>
-                            <th>ចូលដំបូង</th>
-                            <th>ចូលចុងក្រោយ</th>
-                        </tr>
-                    </thead>
-                    <tbody id="usersTable">
-                        <tr><td colspan="5" class="loading">កំពុងផ្ទុក...</td></tr>
-                    </tbody>
-                </table>
+        <!-- Content -->
+        <main class="content">
+            <!-- Overview Section -->
+            <div id="section-overview">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <div class="stat-icon blue">👥</div>
+                        </div>
+                        <div class="stat-value" id="statUsers">0</div>
+                        <div class="stat-label">អ្នកប្រើប្រាស់សរុប</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <div class="stat-icon green">✅</div>
+                        </div>
+                        <div class="stat-value" id="statActive">0</div>
+                        <div class="stat-label">សកម្មថ្ងៃនេះ</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <div class="stat-icon red">🚫</div>
+                        </div>
+                        <div class="stat-value" id="statBlocked">0</div>
+                        <div class="stat-label">ច្រានចោល</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <div class="stat-icon yellow">📖</div>
+                        </div>
+                        <div class="stat-value" id="statViews">0</div>
+                        <div class="stat-label">ការមើលមេរៀន</div>
+                    </div>
+                </div>
+                
+                <!-- Recent Activity -->
+                <div class="panel">
+                    <div class="panel-header">
+                        <h2 class="panel-title">📋 សកម្មភាពថ្មីៗ</h2>
+                    </div>
+                    <div class="panel-body">
+                        <div class="table-container">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>សកម្មភាព</th>
+                                        <th>អ្នកប្រើប្រាស់</th>
+                                        <th>ទំព័រ</th>
+                                        <th>ពេលវេលា</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="overviewActivity">
+                                    <tr><td colspan="4" class="loading"><div class="spinner"></div>កំពុងផ្ទុក...</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-        
-        <div class="section">
-            <h2 class="section-title">📋 សកម្មភាពថ្មីៗ</h2>
-            <div class="table-container">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>សកម្មភាព</th>
-                            <th>សិស្ស</th>
-                            <th>ទំព័រ</th>
-                            <th>ពេលវេលា</th>
-                        </tr>
-                    </thead>
-                    <tbody id="activityTable">
-                        <tr><td colspan="4" class="loading">កំពុងផ្ទុក...</td></tr>
-                    </tbody>
-                </table>
+            
+            <!-- Users Section -->
+            <div id="section-users" style="display:none;">
+                <div class="panel">
+                    <div class="panel-header">
+                        <h2 class="panel-title">👥 គ្រប់គ្រងអ្នកប្រើប្រាស់</h2>
+                        <div class="input-group">
+                            <div class="search-box">
+                                <input type="text" class="input" id="searchUser" placeholder="ស្វែងរក..." oninput="filterUsers()">
+                            </div>
+                            <button class="btn btn-primary" onclick="showAddUserModal()">+ បន្ថែម</button>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="tab-nav">
+                            <button class="tab-btn active" onclick="filterByStatus('all', this)">ទាំងអស់</button>
+                            <button class="tab-btn" onclick="filterByStatus('allowed', this)">✅ អនុញ្ញាតិ</button>
+                            <button class="tab-btn" onclick="filterByStatus('blocked', this)">🚫 ច្រានចោល</button>
+                            <button class="tab-btn" onclick="filterByStatus('new', this)">🆕 ថ្មី</button>
+                        </div>
+                        <div class="table-container">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>រូបភាព</th>
+                                        <th>ឈ្មោះ</th>
+                                        <th>Email</th>
+                                        <th>ស្ថានភាព</th>
+                                        <th>ចូលចុងក្រោយ</th>
+                                        <th>សកម្មភាព</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="usersTable">
+                                    <tr><td colspan="6" class="loading"><div class="spinner"></div>កំពុងផ្ទុក...</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Activity Section -->
+            <div id="section-activity" style="display:none;">
+                <div class="panel">
+                    <div class="panel-header">
+                        <h2 class="panel-title">📋 ប្រវត្តិសកម្មភាព</h2>
+                        <button class="btn btn-danger" onclick="clearActivity()">🗑️ លុបទាំងអស់</button>
+                    </div>
+                    <div class="panel-body">
+                        <div class="table-container">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>សកម្មភាព</th>
+                                        <th>អ្នកប្រើប្រាស់</th>
+                                        <th>Email</th>
+                                        <th>ទំព័រ</th>
+                                        <th>ពេលវេលា</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="activityTable">
+                                    <tr><td colspan="5" class="loading"><div class="spinner"></div>កំពុងផ្ទុក...</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Settings Section -->
+            <div id="section-settings" style="display:none;">
+                <div class="panel">
+                    <div class="panel-header">
+                        <h2 class="panel-title">⚙️ ការកំណត់ Firebase</h2>
+                    </div>
+                    <div class="panel-body">
+                        <h3 style="color:#3b82f6;margin-bottom:1rem;">Firestore Collections</h3>
+                        <p style="color:#94a3b8;margin-bottom:1rem;">សូមប្រាកដថាអ្នកបានកំណត់ Firestore Rules៖</p>
+                        <pre style="background:#0f172a;padding:1rem;border-radius:8px;color:#22c55e;font-size:0.85rem;overflow-x:auto;">
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /{document=**} {
+      allow read, write: if request.auth != null;
+    }
+  }
+}
+                        </pre>
+                        <h3 style="color:#3b82f6;margin:1.5rem 0 1rem;">Collections ដែលប្រើ៖</h3>
+                        <ul style="color:#94a3b8;list-style:disc;padding-left:1.5rem;">
+                            <li><strong>users</strong> - ព័ត៌មានអ្នកប្រើប្រាស់</li>
+                            <li><strong>activity</strong> - ប្រវត្តិសកម្មភាព</li>
+                            <li><strong>allowedEmails</strong> - Email ដែលអនុញ្ញាតិ</li>
+                            <li><strong>blockedEmails</strong> - Email ដែលច្រានចោល</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <!-- Add User Modal -->
+    <div class="modal-overlay" id="addUserModal">
+        <div class="modal">
+            <h3 class="modal-title">➕ បន្ថែមអ្នកប្រើប្រាស់</h3>
+            <p class="modal-text">បញ្ចូល Email ដើម្បីអនុញ្ញាតិ៖</p>
+            <input type="email" class="input" id="newUserEmail" placeholder="example@gmail.com" style="width:100%;margin-top:0.5rem;">
+            <div class="modal-actions">
+                <button class="btn btn-ghost" onclick="closeModal('addUserModal')">បោះបង់</button>
+                <button class="btn btn-primary" onclick="addAllowedUser()">បន្ថែម</button>
             </div>
         </div>
     </div>
+    
+    <!-- Block User Modal -->
+    <div class="modal-overlay" id="blockUserModal">
+        <div class="modal">
+            <h3 class="modal-title">🚫 ច្រានចោលអ្នកប្រើប្រាស់</h3>
+            <p class="modal-text">តើអ្នកពិតជាចង់ច្រានចោលអ្នកប្រើប្រាស់នេះមែនទេ?</p>
+            <p class="modal-highlight" id="blockUserName" style="margin-top:0.5rem;"></p>
+            <div class="modal-actions">
+                <button class="btn btn-ghost" onclick="closeModal('blockUserModal')">បោះបង់</button>
+                <button class="btn btn-warning" onclick="confirmBlock()">ច្រានចោល</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Unblock User Modal -->
+    <div class="modal-overlay" id="unblockUserModal">
+        <div class="modal">
+            <h3 class="modal-title">✅ អនុញ្ញាតិអ្នកប្រើប្រាស់</h3>
+            <p class="modal-text">តើអ្នកពិតជាចង់អនុញ្ញាតិអ្នកប្រើប្រាស់នេះមែនទេ?</p>
+            <p class="modal-highlight" id="unblockUserName" style="margin-top:0.5rem;"></p>
+            <div class="modal-actions">
+                <button class="btn btn-ghost" onclick="closeModal('unblockUserModal')">បោះបង់</button>
+                <button class="btn btn-success" onclick="confirmUnblock()">អនុញ្ញាតិ</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Delete User Modal -->
+    <div class="modal-overlay" id="deleteUserModal">
+        <div class="modal">
+            <h3 class="modal-title">🗑️ លុបអ្នកប្រើប្រាស់</h3>
+            <p class="modal-text">តើអ្នកពិតជាចង់លុបអ្នកប្រើប្រាស់នេះមែនទេ?</p>
+            <p class="modal-highlight" id="deleteUserName" style="margin-top:0.5rem;"></p>
+            <p style="color:#ef4444;font-size:0.85rem;margin-top:0.5rem;">⚠️ សកម្មភាពទាំងអស់របស់អ្នកប្រើប្រាស់នេះនឹងត្រូវលុប</p>
+            <div class="modal-actions">
+                <button class="btn btn-ghost" onclick="closeModal('deleteUserModal')">បោះបង់</button>
+                <button class="btn btn-danger" onclick="confirmDelete()">លុប</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Clear Activity Modal -->
+    <div class="modal-overlay" id="clearActivityModal">
+        <div class="modal">
+            <h3 class="modal-title">🗑️ លុបសកម្មភាពទាំងអស់</h3>
+            <p class="modal-text">តើអ្នកពិតជាចង់លុបសកម្មភាពទាំងអស់មែនទេ?</p>
+            <p style="color:#ef4444;font-size:0.85rem;margin-top:0.5rem;">⚠️ សកម្មភាពទាំងអស់នឹងត្រូវលុបជាអច្រិន្ទ</p>
+            <div class="modal-actions">
+                <button class="btn btn-ghost" onclick="closeModal('clearActivityModal')">បោះបង់</button>
+                <button class="btn btn-danger" onclick="confirmClearActivity()">លុបទាំងអស់</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Toast -->
+    <div class="toast" id="toast"></div>
     
     <!-- Firebase SDK -->
     <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
@@ -293,126 +821,186 @@
     <script src="js/firebase-config.js"></script>
     
     <script>
-        const userAvatar = document.getElementById('userAvatar');
-        const userName = document.getElementById('userName');
+        // State
+        let allUsers = [];
+        let allActivity = [];
+        let currentFilter = 'all';
+        let pendingAction = null;
         
-        // Check auth
-        auth.onAuthStateChanged((user) => {
+        // Initialize
+        auth.onAuthStateChanged(async (user) => {
             if (!user) {
                 window.location.href = 'login.html';
                 return;
             }
             
-            // Check if user is admin
             if (!isAdmin(user)) {
                 alert('អ្នកមិនមានសិទ្ធិចូលទំព័រនេះទេ។');
                 window.location.href = 'index.html';
                 return;
             }
             
-            userAvatar.src = user.photoURL || '';
-            userName.textContent = user.displayName || user.email;
+            document.getElementById('adminAvatar').src = user.photoURL || '';
+            document.getElementById('adminName').textContent = user.displayName || user.email;
             
-            loadData();
+            await loadData();
         });
         
-        // Load data from Firestore
+        // Sign Out
+        function signOut() {
+            auth.signOut().then(() => window.location.href = 'login.html');
+        }
+        
+        // Load Data
         async function loadData() {
             try {
-                // Get users
-                const usersSnapshot = await db.collection('users').get();
-                const users = usersSnapshot.docs.map(doc => ({
-                    id: doc.id,
-                    ...doc.data()
-                }));
+                // Load users
+                const usersSnap = await db.collection('users').get();
+                allUsers = usersSnap.docs.map(doc => ({ id: doc.id, ...doc.data() }));
                 
-                // Get activity
-                const activitySnapshot = await db.collection('activity')
+                // Load blocked emails
+                const blockedSnap = await db.collection('blockedEmails').get();
+                const blockedEmails = blockedSnap.docs.map(doc => doc.id);
+                
+                // Mark users as blocked
+                allUsers.forEach(user => {
+                    user.status = blockedEmails.includes(user.email) ? 'blocked' : 'allowed';
+                });
+                
+                // Load activity
+                const activitySnap = await db.collection('activity')
                     .orderBy('timestamp', 'desc')
-                    .limit(50)
+                    .limit(100)
                     .get();
-                const activity = activitySnapshot.docs.map(doc => ({
-                    id: doc.id,
-                    ...doc.data()
-                }));
+                allActivity = activitySnap.docs.map(doc => ({ id: doc.id, ...doc.data() }));
                 
-                // Update stats
-                document.getElementById('totalUsers').textContent = users.length || 0;
+                // Calculate stats
+                const today = new Date();
+                today.setHours(0, 0, 0, 0);
                 
-                // Count logins
-                const logins = activity.filter(a => a.action === 'login');
-                document.getElementById('totalLogins').textContent = logins.length || 0;
+                document.getElementById('statUsers').textContent = allUsers.length;
+                document.getElementById('statActive').textContent = allUsers.filter(u => {
+                    if (!u.lastLogin) return false;
+                    return new Date(u.lastLogin.seconds * 1000) >= today;
+                }).length;
+                document.getElementById('statBlocked').textContent = blockedEmails.length;
+                document.getElementById('statViews').textContent = allActivity.filter(a => a.action === 'view_topic').length;
                 
-                // Count page views
-                const views = activity.filter(a => a.action === 'view_topic');
-                document.getElementById('totalViews').textContent = views.length || 0;
-                
-                // Count exercises
-                const exercises = activity.filter(a => a.action === 'view_exercise');
-                document.getElementById('totalExercises').textContent = exercises.length || 0;
-                
-                // Render users table
-                renderUsers(users);
-                
-                // Render activity table
-                renderActivity(activity);
+                renderUsers();
+                renderActivity();
+                renderOverviewActivity();
                 
             } catch (error) {
                 console.error('Error loading data:', error);
-                document.getElementById('usersTable').innerHTML = 
-                    '<tr><td colspan="5" style="color:#dc2626;">មានកំហុសក្នុងការផ្ទុកទិន្នន័។</td></tr>';
+                showToast('មានកំហុសក្នុងការផ្ទុកទិន្នន័', 'error');
             }
         }
         
-        // Render users table
-        function renderUsers(users) {
+        // Show Section
+        function showSection(section) {
+            document.querySelectorAll('[id^="section-"]').forEach(el => el.style.display = 'none');
+            document.getElementById('section-' + section).style.display = 'block';
+            document.querySelectorAll('.sidebar-item').forEach(el => el.classList.remove('active'));
+            event.currentTarget.classList.add('active');
+        }
+        
+        // Render Users
+        function renderUsers() {
             const tbody = document.getElementById('usersTable');
+            const search = document.getElementById('searchUser').value.toLowerCase();
             
-            if (!users || users.length === 0) {
-                tbody.innerHTML = '<tr><td colspan="5" style="text-align:center;color:#64748b;">មិនទាន់មានសិស្សចុះឈ្មោះ</td></tr>';
+            let filtered = allUsers;
+            if (search) {
+                filtered = filtered.filter(u => 
+                    (u.name && u.name.toLowerCase().includes(search)) ||
+                    (u.email && u.email.toLowerCase().includes(search))
+                );
+            }
+            
+            if (currentFilter !== 'all') {
+                filtered = filtered.filter(u => u.status === currentFilter);
+            }
+            
+            if (filtered.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="6" class="empty-state"><div class="empty-state-icon">👤</div>មិនមានអ្នកប្រើប្រាស់</td></tr>';
                 return;
             }
             
-            tbody.innerHTML = users.map(user => {
+            tbody.innerHTML = filtered.map(user => {
                 const lastLogin = user.lastLogin ? new Date(user.lastLogin.seconds * 1000).toLocaleString('km-KH') : '-';
+                const statusBadge = user.status === 'blocked' 
+                    ? '<span class="badge badge-danger">ច្រានចោល</span>'
+                    : '<span class="badge badge-success">អនុញ្ញាតិ</span>';
+                
                 return `
                     <tr>
-                        <td><img src="${user.photo || 'https://via.placeholder.com/32'}" style="width:32px;height:32px;border-radius:50%;"></td>
-                        <td>${user.name || 'មិនស្គាល់'}</td>
-                        <td>${user.email || '-'}</td>
+                        <td><img src="${user.photo || 'https://via.placeholder.com/36'}" style="width:36px;height:36px;border-radius:50%;"></td>
+                        <td><div class="user-name">${user.name || 'មិនស្គាល់'}</div></td>
+                        <td><div class="user-email">${user.email || '-'}</div></td>
+                        <td>${statusBadge}</td>
                         <td>${lastLogin}</td>
-                        <td>${lastLogin}</td>
+                        <td>
+                            <div class="actions">
+                                ${user.status === 'blocked' 
+                                    ? `<button class="btn btn-success btn-sm" onclick="showUnblockModal('${user.email}', '${user.name || user.email}')">✅</button>`
+                                    : `<button class="btn btn-warning btn-sm" onclick="showBlockModal('${user.email}', '${user.name || user.email}')">🚫</button>`
+                                }
+                                <button class="btn btn-danger btn-sm" onclick="showDeleteModal('${user.id}', '${user.name || user.email}')">🗑️</button>
+                            </div>
+                        </td>
                     </tr>
                 `;
             }).join('');
         }
         
-        // Render activity table
-        function renderActivity(activity) {
+        // Render Activity
+        function renderActivity() {
             const tbody = document.getElementById('activityTable');
             
-            if (!activity || activity.length === 0) {
-                tbody.innerHTML = '<tr><td colspan="4" style="text-align:center;color:#64748b;">មិនទាន់មានសកម្មភាព</td></tr>';
+            if (allActivity.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="5" class="empty-state"><div class="empty-state-icon">📋</div>មិនទាន់មានសកម្មភាព</td></tr>';
                 return;
             }
             
-            tbody.innerHTML = activity.map(item => {
-                let badgeClass = 'badge-login';
-                let actionText = 'ចូល';
-                
-                if (item.action === 'view_topic') {
-                    badgeClass = 'badge-view';
-                    actionText = 'មើលមេរៀន';
-                } else if (item.action === 'view_exercise') {
-                    badgeClass = 'badge-exercise';
-                    actionText = 'ធ្វើលំហាត់';
-                }
+            tbody.innerHTML = allActivity.map(item => {
+                let badge = '<span class="badge badge-info">ចូល</span>';
+                if (item.action === 'view_topic') badge = '<span class="badge badge-success">មើលមេរៀន</span>';
+                if (item.action === 'view_exercise') badge = '<span class="badge badge-warning">ធ្វើលំហាត់</span>';
                 
                 const time = item.timestamp ? new Date(item.timestamp.seconds * 1000).toLocaleString('km-KH') : '-';
                 
                 return `
                     <tr>
-                        <td><span class="badge ${badgeClass}">${actionText}</span></td>
+                        <td>${badge}</td>
+                        <td>${item.userName || 'មិនស្គាល់'}</td>
+                        <td>${item.userEmail || '-'}</td>
+                        <td>${item.page || '-'}</td>
+                        <td>${time}</td>
+                    </tr>
+                `;
+            }).join('');
+        }
+        
+        // Render Overview Activity
+        function renderOverviewActivity() {
+            const tbody = document.getElementById('overviewActivity');
+            const recent = allActivity.slice(0, 10);
+            
+            if (recent.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="4" class="empty-state"><div class="empty-state-icon">📋</div>មិនទាន់មានសកម្មភាព</td></tr>';
+                return;
+            }
+            
+            tbody.innerHTML = recent.map(item => {
+                let badge = '<span class="badge badge-info">ចូល</span>';
+                if (item.action === 'view_topic') badge = '<span class="badge badge-success">មើលមេរៀន</span>';
+                if (item.action === 'view_exercise') badge = '<span class="badge badge-warning">ធ្វើលំហាត់</span>';
+                
+                const time = item.timestamp ? new Date(item.timestamp.seconds * 1000).toLocaleString('km-KH') : '-';
+                
+                return `
+                    <tr>
+                        <td>${badge}</td>
                         <td>${item.userName || 'មិនស្គាល់'}</td>
                         <td>${item.page || '-'}</td>
                         <td>${time}</td>
@@ -420,6 +1008,180 @@
                 `;
             }).join('');
         }
+        
+        // Filter Users
+        function filterUsers() {
+            renderUsers();
+        }
+        
+        function filterByStatus(status, btn) {
+            currentFilter = status;
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            renderUsers();
+        }
+        
+        // Modals
+        function showAddUserModal() {
+            document.getElementById('newUserEmail').value = '';
+            document.getElementById('addUserModal').classList.add('active');
+            document.getElementById('newUserEmail').focus();
+        }
+        
+        function showBlockModal(email, name) {
+            document.getElementById('blockUserName').textContent = `${name} (${email})`;
+            pendingAction = { type: 'block', email };
+            document.getElementById('blockUserModal').classList.add('active');
+        }
+        
+        function showUnblockModal(email, name) {
+            document.getElementById('unblockUserName').textContent = `${name} (${email})`;
+            pendingAction = { type: 'unblock', email };
+            document.getElementById('unblockUserModal').classList.add('active');
+        }
+        
+        function showDeleteModal(id, name) {
+            document.getElementById('deleteUserName').textContent = name;
+            pendingAction = { type: 'delete', id };
+            document.getElementById('deleteUserModal').classList.add('active');
+        }
+        
+        function closeModal(id) {
+            document.getElementById(id).classList.remove('active');
+            pendingAction = null;
+        }
+        
+        // Actions
+        async function addAllowedUser() {
+            const email = document.getElementById('newUserEmail').value.trim();
+            
+            if (!email || !email.includes('@')) {
+                showToast('សូមបញ្ចូល email ត្រឹមត្រូវ', 'error');
+                return;
+            }
+            
+            try {
+                await db.collection('allowedEmails').doc(email).set({
+                    email,
+                    addedAt: firebase.firestore.FieldValue.serverTimestamp(),
+                    addedBy: auth.currentUser.email
+                });
+                
+                // Remove from blocked if exists
+                await db.collection('blockedEmails').doc(email).delete().catch(() => {});
+                
+                closeModal('addUserModal');
+                showToast('បានបន្ថែមអ្នកប្រើប្រាស់ដោយជោគជ័យ!', 'success');
+                await loadData();
+            } catch (error) {
+                console.error('Error:', error);
+                showToast('មានកំហុសក្នុងការបន្ថែម', 'error');
+            }
+        }
+        
+        async function confirmBlock() {
+            if (!pendingAction || pendingAction.type !== 'block') return;
+            
+            try {
+                await db.collection('blockedEmails').doc(pendingAction.email).set({
+                    email: pendingAction.email,
+                    blockedAt: firebase.firestore.FieldValue.serverTimestamp(),
+                    blockedBy: auth.currentUser.email
+                });
+                
+                await db.collection('allowedEmails').doc(pendingAction.email).delete().catch(() => {});
+                
+                closeModal('blockUserModal');
+                showToast('បានច្រានចោលអ្នកប្រើប្រាស់', 'success');
+                await loadData();
+            } catch (error) {
+                console.error('Error:', error);
+                showToast('មានកំហុសក្នុងការច្រានចោល', 'error');
+            }
+        }
+        
+        async function confirmUnblock() {
+            if (!pendingAction || pendingAction.type !== 'unblock') return;
+            
+            try {
+                await db.collection('blockedEmails').doc(pendingAction.email).delete();
+                await db.collection('allowedEmails').doc(pendingAction.email).set({
+                    email: pendingAction.email,
+                    addedAt: firebase.firestore.FieldValue.serverTimestamp(),
+                    addedBy: auth.currentUser.email
+                });
+                
+                closeModal('unblockUserModal');
+                showToast('បានអនុញ្ញាតិអ្នកប្រើប្រាស់', 'success');
+                await loadData();
+            } catch (error) {
+                console.error('Error:', error);
+                showToast('មានកំហុសក្នុងការអនុញ្ញាតិ', 'error');
+            }
+        }
+        
+        async function confirmDelete() {
+            if (!pendingAction || pendingAction.type !== 'delete') return;
+            
+            try {
+                const userDoc = await db.collection('users').doc(pendingAction.id).get();
+                const userData = userDoc.data();
+                
+                if (userData) {
+                    await db.collection('allowedEmails').doc(userData.email).delete().catch(() => {});
+                    await db.collection('blockedEmails').doc(userData.email).delete().catch(() => {});
+                }
+                
+                await db.collection('users').doc(pendingAction.id).delete();
+                
+                // Delete activity
+                const activitySnap = await db.collection('activity').where('userId', '==', pendingAction.id).get();
+                const batch = db.batch();
+                activitySnap.docs.forEach(doc => batch.delete(doc.ref));
+                await batch.commit();
+                
+                closeModal('deleteUserModal');
+                showToast('បានលុបអ្នកប្រើប្រាស់ដោយជោគជ័យ!', 'success');
+                await loadData();
+            } catch (error) {
+                console.error('Error:', error);
+                showToast('មានកំហុសក្នុងការលុប', 'error');
+            }
+        }
+        
+        // Clear Activity
+        function clearActivity() {
+            document.getElementById('clearActivityModal').classList.add('active');
+        }
+        
+        async function confirmClearActivity() {
+            try {
+                const activitySnap = await db.collection('activity').get();
+                const batch = db.batch();
+                activitySnap.docs.forEach(doc => batch.delete(doc.ref));
+                await batch.commit();
+                
+                closeModal('clearActivityModal');
+                showToast('បានលុបសកម្មភាពទាំងអស់', 'success');
+                await loadData();
+            } catch (error) {
+                console.error('Error:', error);
+                showToast('មានកំហុសក្នុងការលុប', 'error');
+            }
+        }
+        
+        // Toast
+        function showToast(message, type = 'success') {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.className = 'toast show toast-' + type;
+            setTimeout(() => toast.classList.remove('show'), 3000);
+        }
+        
+        // Enter key for email input
+        document.getElementById('newUserEmail').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') addAllowedUser();
+        });
     </script>
 </body>
 </html>
