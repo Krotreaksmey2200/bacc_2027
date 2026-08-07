@@ -11,7 +11,7 @@ const TOPIC_02 = {
         { name: "limit_2027.pdf", path: "pdfs/02_លីមីតអនុគមន៍/practies/limit_2027.pdf", type: "exercise" }
     ],
     research: [
-        { name: "លីមីតអនុគមន៍.pdf", path: "pdfs/02_លីមីតអនុគមន៍/research/លីមីតអនុគមន៍.pdf" }
+        { name: "limit_of_function.pdf", path: "pdfs/02_លីមីតអនុគមន៍/research/limit_of_function.pdf" }
     ],
     exercises: [
         {
