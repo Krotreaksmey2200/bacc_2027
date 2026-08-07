@@ -7,7 +7,9 @@ const TOPIC_04 = {
     semester: 1,
     description: "រកបរមា អតិបរមា និងតម្លៃអតិបរមា/បរមា",
     pdfs: [],
-    research: [],
+    research: [
+        { name: "ចំនួនកុំផ្លិច ថ្មី (លឹម ផល្គុន).pdf", path: "pdfs/01_កុំផ្លិច/research/ចំនួនកុំផ្លិច ថ្មី (លឹម ផល្គុន).pdf" }
+    ],
     exercises: [
         {
             id: 1,
