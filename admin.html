@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - គណិតវិទ្យា</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Battambang:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            min-height: 100vh;
+            background: #f1f5f9;
+            font-family: 'Battambang', sans-serif;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            color: white;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .header-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .header-actions {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+        
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+        
+        .user-avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: 2px solid white;
+        }
+        
+        .back-btn {
+            padding: 0.6rem 1.2rem;
+            background: rgba(255,255,255,0.2);
+            border: 1px solid rgba(255,255,255,0.3);
+            color: white;
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: 'Battambang', sans-serif;
+            font-size: 0.9rem;
+        }
+        
+        .back-btn:hover {
+            background: rgba(255,255,255,0.3);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .stat-card {
+            background: white;
+            border-radius: 16px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+        }
+        
+        .stat-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #1e3a8a;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: #64748b;
+        }
+        
+        .section {
+            background: white;
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+        }
+        
+        .section-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #1e3a8a;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #e2e8f0;
+        }
+        
+        .table-container {
+            overflow-x: auto;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        th, td {
+            padding: 0.8rem 1rem;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        th {
+            background: #f8fafc;
+            font-weight: 600;
+            color: #475569;
+        }
+        
+        tr:hover {
+            background: #f8fafc;
+        }
+        
+        .user-cell {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+        
+        .user-cell img {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+        }
+        
+        .badge {
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .badge-login {
+            background: #dcfce7;
+            color: #16a34a;
+        }
+        
+        .badge-view {
+            background: #dbeafe;
+            color: #2563eb;
+        }
+        
+        .badge-exercise {
+            background: #fef3c7;
+            color: #d97706;
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 3rem;
+            color: #64748b;
+        }
+        
+        .refresh-btn {
+            padding: 0.6rem 1.2rem;
+            background: #3b82f6;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: 'Battambang', sans-serif;
+            font-size: 0.9rem;
+        }
+        
+        .refresh-btn:hover {
+            background: #2563eb;
+        }
+        
+        .sheet-link {
+            color: #3b82f6;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .sheet-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1 class="header-title">📊 Admin Dashboard</h1>
+        <div class="header-actions">
+            <a href="https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/edit" target="_blank" class="sheet-link">📋 Google Sheet</a>
+            <button class="refresh-btn" onclick="loadData()">🔄 ផ្ទុកឡើងវិញ</button>
+            <button class="back-btn" onclick="window.location.href='index.html'">← ត្រឡប់</button>
+            <div class="user-info">
+                <img id="userAvatar" class="user-avatar" src="" alt="">
+                <span id="userName"></span>
+            </div>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon">👥</div>
+                <div class="stat-value" id="totalUsers">0</div>
+                <div class="stat-label">សិស្សសរុប</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">🔐</div>
+                <div class="stat-value" id="totalLogins">0</div>
+                <div class="stat-label">ចូលសរុប</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">📖</div>
+                <div class="stat-value" id="totalViews">0</div>
+                <div class="stat-label">មើលមេរៀន</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">✏️</div>
+                <div class="stat-value" id="totalExercises">0</div>
+                <div class="stat-label">ធ្វើលំហាត់</div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">👥 គណនីសិស្ស</h2>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>រូបភាព</th>
+                            <th>ឈ្មោះ</th>
+                            <th>Email</th>
+                            <th>ចូលដំបូង</th>
+                            <th>ចូលចុងក្រោយ</th>
+                        </tr>
+                    </thead>
+                    <tbody id="usersTable">
+                        <tr><td colspan="5" class="loading">កំពុងផ្ទុក...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">📋 សកម្មភាពថ្មីៗ</h2>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>សកម្មភាព</th>
+                            <th>សិស្ស</th>
+                            <th>ទំព័រ</th>
+                            <th>ពេលវេលា</th>
+                        </tr>
+                    </thead>
+                    <tbody id="activityTable">
+                        <tr><td colspan="4" class="loading">កំពុងផ្ទុក...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+    
+    <script src="js/firebase-config.js"></script>
+    
+    <script>
+        const userAvatar = document.getElementById('userAvatar');
+        const userName = document.getElementById('userName');
+        
+        // Google Sheet URL - Replace with your actual sheet URL
+        const GOOGLE_SHEET_URL = 'https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec';
+        
+        // Check auth
+        auth.onAuthStateChanged((user) => {
+            if (!user) {
+                window.location.href = 'login.html';
+                return;
+            }
+            
+            userAvatar.src = user.photoURL || '';
+            userName.textContent = user.displayName || user.email;
+            
+            loadData();
+        });
+        
+        // Load data from Google Sheets
+        async function loadData() {
+            try {
+                // Fetch users
+                const usersResponse = await fetch(`${GOOGLE_SHEET_URL}?action=users`);
+                const users = await usersResponse.json();
+                
+                // Fetch activity
+                const activityResponse = await fetch(`${GOOGLE_SHEET_URL}?action=activity`);
+                const activity = await activityResponse.json();
+                
+                // Update stats
+                document.getElementById('totalUsers').textContent = users.length || 0;
+                
+                // Count logins
+                const logins = activity.filter(a => a.action === 'login');
+                document.getElementById('totalLogins').textContent = logins.length || 0;
+                
+                // Count page views
+                const views = activity.filter(a => a.action === 'view_topic');
+                document.getElementById('totalViews').textContent = views.length || 0;
+                
+                // Count exercises
+                const exercises = activity.filter(a => a.action === 'view_exercise');
+                document.getElementById('totalExercises').textContent = exercises.length || 0;
+                
+                // Render users table
+                renderUsers(users);
+                
+                // Render activity table
+                renderActivity(activity.slice(0, 20)); // Show last 20
+                
+            } catch (error) {
+                console.error('Error loading data:', error);
+                document.getElementById('usersTable').innerHTML = 
+                    '<tr><td colspan="5" style="color:#dc2626;">មានកំហុសក្នុងការផ្ទុកទិន្នន័។ សូមពិនិត្យ Google Apps Script។</td></tr>';
+            }
+        }
+        
+        // Render users table
+        function renderUsers(users) {
+            const tbody = document.getElementById('usersTable');
+            
+            if (!users || users.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="5" style="text-align:center;color:#64748b;">មិនទាន់មានសិស្សចុះឈ្មោះ</td></tr>';
+                return;
+            }
+            
+            tbody.innerHTML = users.map(user => `
+                <tr>
+                    <td><img src="${user.photo || 'https://via.placeholder.com/32'}" style="width:32px;height:32px;border-radius:50%;"></td>
+                    <td>${user.name || 'មិនស្គាល់'}</td>
+                    <td>${user.email || '-'}</td>
+                    <td>${user.firstLogin || '-'}</td>
+                    <td>${user.lastLogin || '-'}</td>
+                </tr>
+            `).join('');
+        }
+        
+        // Render activity table
+        function renderActivity(activity) {
+            const tbody = document.getElementById('activityTable');
+            
+            if (!activity || activity.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="4" style="text-align:center;color:#64748b;">មិនទាន់មានសកម្មភាព</td></tr>';
+                return;
+            }
+            
+            tbody.innerHTML = activity.map(item => {
+                let badgeClass = 'badge-login';
+                let actionText = 'ចូល';
+                
+                if (item.action === 'view_topic') {
+                    badgeClass = 'badge-view';
+                    actionText = 'មើលមេរៀន';
+                } else if (item.action === 'view_exercise') {
+                    badgeClass = 'badge-exercise';
+                    actionText = 'ធ្វើលំហាត់';
+                }
+                
+                return `
+                    <tr>
+                        <td><span class="badge ${badgeClass}">${actionText}</span></td>
+                        <td>${item.userName || 'មិនស្គាល់'}</td>
+                        <td>${item.page || '-'}</td>
+                        <td>${item.timestamp || '-'}</td>
+                    </tr>
+                `;
+            }).join('');
+        }
+    </script>
+</body>
+</html>

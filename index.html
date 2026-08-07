@@ -185,11 +185,43 @@
     <script src="js/main.js"></script>
     <script src="js/firebase-config.js"></script>
     <script>
+        // Google Apps Script URL - Replace with your deployed script URL
+        const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec';
+        
+        // Auth check - redirect to login if not authenticated
+        auth.onAuthStateChanged((user) => {
+            if (!user) {
+                window.location.href = 'login.html';
+            }
+        });
+        
         // Auth functions
         const loginBtn = document.getElementById('loginBtn');
         const userSection = document.getElementById('userSection');
         const userAvatar = document.getElementById('userAvatar');
         const userName = document.getElementById('userName');
+        
+        // Log activity function
+        function logActivity(action, page) {
+            const user = auth.currentUser;
+            if (!user) return;
+            
+            const data = {
+                action: action,
+                userId: user.uid,
+                userName: user.displayName,
+                userEmail: user.email,
+                userPhoto: user.photoURL,
+                page: page,
+                timestamp: new Date().toISOString()
+            };
+            
+            fetch(APPS_SCRIPT_URL, {
+                method: 'POST',
+                body: JSON.stringify(data),
+                headers: { 'Content-Type': 'application/json' }
+            }).catch(err => console.log('Activity log error:', err));
+        }
         
         // Google Sign-In
         function signInWithGoogle() {
@@ -222,6 +254,9 @@
                 userSection.classList.remove('hidden');
                 userAvatar.src = user.photoURL || 'https://via.placeholder.com/32';
                 userName.textContent = user.displayName || user.email;
+                
+                // Log page view
+                logActivity('view_home', 'index.html');
             } else {
                 // User is signed out
                 loginBtn.classList.remove('hidden');
