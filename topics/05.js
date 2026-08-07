@@ -11,21 +11,21 @@ const TOPIC_05 = {
     exercises: [
         {
             id: 1,
-            question: "គណនា \\(2^3 \\cdot 2^4\\)",
-            hint: "ប្រើរូបមន្ត \\(a^x \\cdot a^y = a^{x+y}\\)",
-            answer: "\\(2^3 \\cdot 2^4 = 2^{3+4} = 2^7 = 128\\)"
+            question: "គណនា \\(\\displaystyle 2^3 \\cdot 2^4\\)",
+            hint: "ប្រើរូបមន្ត \\(\\displaystyle a^x \\cdot a^y = a^{x+y}\\)",
+            answer: "\\(\\displaystyle 2^3 \\cdot 2^4 = 2^{3+4} = 2^7 = 128\\)"
         },
         {
             id: 2,
-            question: "គណនា \\(\\frac{5^6}{5^2}\\)",
-            hint: "ប្រើរូបមន្ត \\(\\frac{a^x}{a^y} = a^{x-y}\\)",
-            answer: "\\(\\frac{5^6}{5^2} = 5^{6-2} = 5^4 = 625\\)"
+            question: "គណនា \\(\\displaystyle \\frac{5^6}{5^2}\\)",
+            hint: "ប្រើរូបមន្ត \\(\\displaystyle \\frac{a^x}{a^y} = a^{x-y}\\)",
+            answer: "\\(\\displaystyle \\frac{5^6}{5^2} = 5^{6-2} = 5^4 = 625\\)"
         },
         {
             id: 3,
-            question: "គណនា \\((3^2)^3\\)",
-            hint: "ប្រើរូបមន្ត \\((a^x)^n = a^{nx}\\)",
-            answer: "\\((3^2)^3 = 3^{2 \\cdot 3} = 3^6 = 729\\)"
+            question: "គណនា \\(\\displaystyle (3^2)^3\\)",
+            hint: "ប្រើរូបមន្ត \\(\\displaystyle (a^x)^n = a^{nx}\\)",
+            answer: "\\(\\displaystyle (3^2)^3 = 3^{2 \\cdot 3} = 3^6 = 729\\)"
         }
     ],
     content: `
@@ -33,32 +33,32 @@ const TOPIC_05 = {
         <p>អនុគមន៍សនិទាន (Exponential Function) មានទម្រង់ <strong>f(x) = aˣ</strong> ដែល a &gt; 0 និង a ≠ 1</p>
 
         <div class="formula-box">
-            \\(f(x) = a^x, \\quad a > 0, a \\neq 1\\)
+            \\(\\displaystyle f(x) = a^x, \\quad a > 0, a \\neq 1\\)
         </div>
 
         <h3>២. លក្ខណៈ</h3>
         <ul>
-            <li>តម្លៃអថេរ: \\(f(0) = 1\\)</li>
-            <li>\\(\\text{dom}(f) = \\mathbb{R}\\), \\(\\text{ran}(f) = (0, +\\infty)\\)</li>
-            <li>ប្រសិនបើ \\(a > 1\\) → កើន</li>
-            <li>ប្រសិនបើ \\(0 < a < 1\\) → ថយ</li>
-            <li>សមីការ asymptote: \\(y = 0\\)</li>
+            <li>តម្លៃអថេរ: \\(\\displaystyle f(0) = 1\\)</li>
+            <li>\\(\\displaystyle \\text{dom}(f) = \\mathbb{R}\\), \\(\\displaystyle \\text{ran}(f) = (0, +\\infty)\\)</li>
+            <li>ប្រសិនបើ \\(\\displaystyle a > 1\\) → កើន</li>
+            <li>ប្រសិនបើ \\(\\displaystyle 0 < a < 1\\) → ថយ</li>
+            <li>សមីការ asymptote: \\(\\displaystyle y = 0\\)</li>
         </ul>
 
         <h3>៣. ប្រមាណវិធី</h3>
         <div class="formula-box">
-            \\(a^x \\cdot a^y = a^{x+y}, \\quad \\frac{a^x}{a^y} = a^{x-y}, \\quad (a^x)^n = a^{nx}\\)
+            \\(\\displaystyle a^x \\cdot a^y = a^{x+y}, \\quad \\frac{a^x}{a^y} = a^{x-y}, \\quad (a^x)^n = a^{nx}\\)
         </div>
 
         <div class="example-box">
             <h4>ឧទាហរណ៍៖</h4>
-            <p>គណនា \\(2^3 \\cdot 2^4 = 2^{3+4} = 2^7 = 128\\)</p>
-            <p>គណនា \\(\\frac{5^6}{5^2} = 5^{6-2} = 5^4 = 625\\)</p>
+            <p>គណនា \\(\\displaystyle 2^3 \\cdot 2^4 = 2^{3+4} = 2^7 = 128\\)</p>
+            <p>គណនា \\(\\displaystyle \\frac{5^6}{5^2} = 5^{6-2} = 5^4 = 625\\)</p>
         </div>
 
         <div class="note-box">
             <h4>អនុគមន៍សនិទានពិសេស៖</h4>
-            <p><strong>\\(e^x\\)</strong> ដែល \\(e \\approx 2.71828\\) (អនុគមន៍ធម្មជាតិ)</p>
+            <p><strong>\\(\\displaystyle e^x\\)</strong> ដែល \\(\\displaystyle e \\approx 2.71828\\) (អនុគមន៍ធម្មជាតិ)</p>
         </div>
     `
 };

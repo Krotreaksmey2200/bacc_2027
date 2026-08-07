@@ -11,33 +11,33 @@ const TOPIC_16 = {
     exercises: [
         {
             id: 1,
-            question: "គណនា \\((3 + 2i)(1 - i)\\)",
+            question: "គណនា \\(\\displaystyle (3 + 2i)(1 - i)\\)",
             hint: "ប្រើការគុណកុំផ្លិច",
-            answer: "\\((3 + 2i)(1 - i) = 3 - 3i + 2i - 2i^2 = 3 - i + 2 = 5 - i\\)"
+            answer: "\\(\\displaystyle (3 + 2i)(1 - i) = 3 - 3i + 2i - 2i^2 = 3 - i + 2 = 5 - i\\)"
         },
         {
             id: 2,
-            question: "គណនា \\(\\lim_{x \\to 2} \\frac{x^2 - 4}{x - 2}\\)",
+            question: "គណនា \\(\\displaystyle \\lim_{x \\to 2} \\frac{x^2 - 4}{x - 2}\\)",
             hint: "បំបែកទម្រង់",
-            answer: "\\(\\frac{x^2 - 4}{x - 2} = \\frac{(x-2)(x+2)}{x-2} = x + 2\\)<br>\\(\\lim_{x \\to 2} (x + 2) = 4\\)"
+            answer: "\\(\\displaystyle \\frac{x^2 - 4}{x - 2} = \\frac{(x-2)(x+2)}{x-2} = x + 2\\)<br>\\(\\displaystyle \\lim_{x \\to 2} (x + 2) = 4\\)"
         },
         {
             id: 3,
-            question: "រកចំណុចបរមាលីករបស់ \\(f(x) = x^3 - 3x^2 + 1\\)",
-            hint: "ដាក់ \\(f'(x) = 0\\)",
-            answer: "\\(f'(x) = 3x^2 - 6x = 3x(x - 2) = 0\\)<br>\\(x = 0\\) ឬ \\(x = 2\\)<br>\\(f(0) = 1\\) (បរមា), \\(f(2) = -3\\) (បរមា)"
+            question: "រកចំណុចបរមាលីករបស់ \\(\\displaystyle f(x) = x^3 - 3x^2 + 1\\)",
+            hint: "ដាក់ \\(\\displaystyle f'(x) = 0\\)",
+            answer: "\\(\\displaystyle f'(x) = 3x^2 - 6x = 3x(x - 2) = 0\\)<br>\\(\\displaystyle x = 0\\) ឬ \\(\\displaystyle x = 2\\)<br>\\(\\displaystyle f(0) = 1\\) (បរមា), \\(\\displaystyle f(2) = -3\\) (បរមា)"
         },
         {
             id: 4,
-            question: "គណនា \\(e^{\\ln 5}\\)",
-            hint: "ប្រើលក្ខណៈ \\(e^{\\ln x} = x\\)",
-            answer: "\\(e^{\\ln 5} = 5\\)"
+            question: "គណនា \\(\\displaystyle e^{\\ln 5}\\)",
+            hint: "ប្រើលក្ខណៈ \\(\\displaystyle e^{\\ln x} = x\\)",
+            answer: "\\(\\displaystyle e^{\\ln 5} = 5\\)"
         },
         {
             id: 5,
-            question: "គណនា \\(\\ln e^3\\)",
-            hint: "ប្រើលក្ខណៈ \\(\\ln e^x = x\\)",
-            answer: "\\(\\ln e^3 = 3\\)"
+            question: "គណនា \\(\\displaystyle \\ln e^3\\)",
+            hint: "ប្រើលក្ខណៈ \\(\\displaystyle \\ln e^x = x\\)",
+            answer: "\\(\\displaystyle \\ln e^3 = 3\\)"
         }
     ],
     content: `

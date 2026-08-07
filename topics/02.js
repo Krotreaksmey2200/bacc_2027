@@ -16,33 +16,33 @@ const TOPIC_02 = {
     exercises: [
         {
             id: 1,
-            question: "គណនា \\(\\lim_{x \\to 3} \\frac{x^2 - 9}{x - 3}\\)",
-            hint: "បំបែកកន្សោមភាគដោយប្រើ \\((x^2 - 9) = (x+3)(x-3)\\)",
-            answer: "\\(\\lim_{x \\to 3} \\frac{(x+3)(x-3)}{x-3} = \\lim_{x \\to 3} (x+3) = 6\\)"
+            question: "គណនា \\(\\displaystyle \\lim_{x \\to 3} \\frac{x^2 - 9}{x - 3}\\)",
+            hint: "បំបែកកន្សោមភាគដោយប្រើ \\(\\displaystyle (x^2 - 9) = (x+3)(x-3)\\)",
+            answer: "\\(\\displaystyle \\lim_{x \\to 3} \\frac{(x+3)(x-3)}{x-3} = \\lim_{x \\to 3} (x+3) = 6\\)"
         },
         {
             id: 2,
-            question: "គណនា \\(\\lim_{x \\to 0} \\frac{\\sin 5x}{x}\\)",
-            hint: "ប្រើរូបមន្ត \\(\\lim_{x \\to 0} \\frac{\\sin x}{x} = 1\\)",
-            answer: "\\(\\lim_{x \\to 0} \\frac{\\sin 5x}{x} = \\lim_{x \\to 0} \\frac{5 \\cdot \\sin 5x}{5x} = 5 \\cdot 1 = 5\\)"
+            question: "គណនា \\(\\displaystyle \\lim_{x \\to 0} \\frac{\\sin 5x}{x}\\)",
+            hint: "ប្រើរូបមន្ត \\(\\displaystyle \\lim_{x \\to 0} \\frac{\\sin x}{x} = 1\\)",
+            answer: "\\(\\displaystyle \\lim_{x \\to 0} \\frac{\\sin 5x}{x} = \\lim_{x \\to 0} \\frac{5 \\cdot \\sin 5x}{5x} = 5 \\cdot 1 = 5\\)"
         },
         {
             id: 3,
-            question: "គណនា \\(\\lim_{x \\to \\infty} \\frac{3x^2 + 2x}{5x^2 - 1}\\)",
-            hint: "ចែកគ្រប់ពាក្យដោយ \\(x^2\\)",
-            answer: "\\(\\lim_{x \\to \\infty} \\frac{3 + \\frac{2}{x}}{5 - \\frac{1}{x^2}} = \\frac{3}{5}\\)"
+            question: "គណនា \\(\\displaystyle \\lim_{x \\to \\infty} \\frac{3x^2 + 2x}{5x^2 - 1}\\)",
+            hint: "ចែកគ្រប់ពាក្យដោយ \\(\\displaystyle x^2\\)",
+            answer: "\\(\\displaystyle \\lim_{x \\to \\infty} \\frac{3 + \\frac{2}{x}}{5 - \\frac{1}{x^2}} = \\frac{3}{5}\\)"
         },
         {
             id: 4,
-            question: "គណនា \\(\\lim_{x \\to 0} \\frac{e^x - 1}{x}\\)",
+            question: "គណនា \\(\\displaystyle \\lim_{x \\to 0} \\frac{e^x - 1}{x}\\)",
             hint: "ប្រើរូបមន្តពិសេស",
-            answer: "\\(\\lim_{x \\to 0} \\frac{e^x - 1}{x} = 1\\)"
+            answer: "\\(\\displaystyle \\lim_{x \\to 0} \\frac{e^x - 1}{x} = 1\\)"
         },
         {
             id: 5,
-            question: "គណនា \\(\\lim_{x \\to 0} \\frac{1 - \\cos x}{x^2}\\)",
-            hint: "ប្រើរូបមន្ត \\(1 - \\cos x = 2\\sin^2(x/2)\\)",
-            answer: "\\(\\lim_{x \\to 0} \\frac{2\\sin^2(x/2)}{x^2} = \\lim_{x \\to 0} \\frac{\\sin^2(x/2)}{2(x/2)^2} = \\frac{1}{2}\\)"
+            question: "គណនា \\(\\displaystyle \\lim_{x \\to 0} \\frac{1 - \\cos x}{x^2}\\)",
+            hint: "ប្រើរូបមន្ត \\(\\displaystyle 1 - \\cos x = 2\\sin^2(x/2)\\)",
+            answer: "\\(\\displaystyle \\lim_{x \\to 0} \\frac{2\\sin^2(x/2)}{x^2} = \\lim_{x \\to 0} \\frac{\\sin^2(x/2)}{2(x/2)^2} = \\frac{1}{2}\\)"
         }
     ],
     content: `
@@ -53,26 +53,26 @@ const TOPIC_02 = {
 
             <p>សូមស្រមៃថា នៅព្រឹកមួយ អ្នកកំពុងជិះម៉ូតូទៅសាលា។ ម៉ូតូរបស់អ្នកចាប់ផ្តើមចេញពីផ្ទះ ហើយកំពុងធ្វើដំណើរតាមផ្លូវទៅសាលា។</p>
 
-            <p>យើងអាចសន្មត់ថា ចម្ងាយដែលម៉ូតូបានធ្វើដំណើរ បន្ទាប់ពី \\(t\\) ម៉ោង ត្រូវបានកំណត់ដោយអនុគមន៍៖</p>
+            <p>យើងអាចសន្មត់ថា ចម្ងាយដែលម៉ូតូបានធ្វើដំណើរ បន្ទាប់ពី \\(\\displaystyle t\\) ម៉ោង ត្រូវបានកំណត់ដោយអនុគមន៍៖</p>
 
             <div class="formula-box">
-                \\(\\boxed{s(t)=60t}\\)
+                \\(\\displaystyle \\boxed{s(t)=60t}\\)
             </div>
 
             <p>ដែល៖</p>
             <ul>
-                <li>\\(s(t)\\) ជាចម្ងាយដែលម៉ូតូបានធ្វើដំណើរ គិតជា km</li>
-                <li>\\(t\\) ជាពេលវេលា គិតជាម៉ោង</li>
-                <li>\\(60\\) គឺជាល្បឿន (60) km/h</li>
+                <li>\\(\\displaystyle s(t)\\) ជាចម្ងាយដែលម៉ូតូបានធ្វើដំណើរ គិតជា km</li>
+                <li>\\(\\displaystyle t\\) ជាពេលវេលា គិតជាម៉ោង</li>
+                <li>\\(\\displaystyle 60\\) គឺជាល្បឿន (60) km/h</li>
             </ul>
 
             <p>ឥឡូវ ខ្ញុំសួរសិស្សទាំងអស់គ្នា៖</p>
 
             <div class="example-box">
-                <p><strong>បើអ្នកជិះម៉ូតូរយៈពេល \\(1\\) ម៉ោង តើអ្នកធ្វើដំណើរបានប៉ុន្មាន km?</strong></p>
+                <p><strong>បើអ្នកជិះម៉ូតូរយៈពេល \\(\\displaystyle 1\\) ម៉ោង តើអ្នកធ្វើដំណើរបានប៉ុន្មាន km?</strong></p>
                 <p>យើងមាន៖</p>
                 <div class="formula-box">
-                    \\(s(1)=60(1)=60\\text{ km}\\)
+                    \\(\\displaystyle s(1)=60(1)=60\\text{ km}\\)
                 </div>
                 <p>ងាយទេ?</p>
             </div>
@@ -80,13 +80,13 @@ const TOPIC_02 = {
             <p>ឥឡូវ ខ្ញុំសួរមួយទៀត៖</p>
 
             <div class="example-box">
-                <p><strong>បើជិះរយៈពេល \\(0.5\\) ម៉ោង តើបានប៉ុន្មាន km?</strong></p>
+                <p><strong>បើជិះរយៈពេល \\(\\displaystyle 0.5\\) ម៉ោង តើបានប៉ុន្មាន km?</strong></p>
                 <div class="formula-box">
-                    \\(s(0.5)=60(0.5)=30\\text{ km}\\)
+                    \\(\\displaystyle s(0.5)=60(0.5)=30\\text{ km}\\)
                 </div>
-                <p>ហើយបើ \\(t=0.1\\) នោះ៖</p>
+                <p>ហើយបើ \\(\\displaystyle t=0.1\\) នោះ៖</p>
                 <div class="formula-box">
-                    \\(s(0.1)=6\\text{ km}\\)
+                    \\(\\displaystyle s(0.1)=6\\text{ km}\\)
                 </div>
                 <p>គ្រប់គ្នាអាចគណនាបាន។</p>
             </div>
@@ -96,20 +96,20 @@ const TOPIC_02 = {
 
         <h3>🚗 សំណួរទី១៖ តើម៉ូតូនៅឯណា?</h3>
 
-        <p>សន្មតថា អ្នកកំពុងជិះម៉ូតូទៅសាលា ហើយសាលាស្ថិតនៅចម្ងាយ \\(10\\) km ពីផ្ទះ។</p>
+        <p>សន្មតថា អ្នកកំពុងជិះម៉ូតូទៅសាលា ហើយសាលាស្ថិតនៅចម្ងាយ \\(\\displaystyle 10\\) km ពីផ្ទះ។</p>
 
         <p>យើងកំណត់អនុគមន៍ចម្ងាយ៖</p>
         <div class="formula-box">
-            \\(s(t)=60t\\)
+            \\(\\displaystyle s(t)=60t\\)
         </div>
 
-        <p>បើអ្នកជិះបាន \\(10\\) km នោះ៖</p>
+        <p>បើអ្នកជិះបាន \\(\\displaystyle 10\\) km នោះ៖</p>
         <div class="formula-box">
-            \\(60t=10\\)
+            \\(\\displaystyle 60t=10\\)
         </div>
         <p>ដូច្នេះ៖</p>
         <div class="formula-box">
-            \\(t=\\frac{1}{6}\\text{h}\\)
+            \\(\\displaystyle t=\\frac{1}{6}\\text{h}\\)
         </div>
         <p>ឬប្រហែល 10 នាទី។ នេះមានន័យថា បន្ទាប់ពី 10 នាទី អ្នកទៅដល់សាលា។</p>
 
@@ -117,7 +117,7 @@ const TOPIC_02 = {
             <h4>🤔 តើនៅពេលអ្នក "ជិតដល់" សាលា មានអ្វីកើតឡើង?</h4>
             <p>សូមស្រមៃថា អ្នកនៅសល់ចម្ងាយតែ 1 km ពីសាលា។</p>
             <p>បន្ទាប់មក៖ 500m → 100m → 10m → 1m → 0.1m</p>
-            <p>ចម្ងាយកំពុងខិតទៅជិត 0។ យើងអាចសរសេរថា៖ \\(d\\to0\\)</p>
+            <p>ចម្ងាយកំពុងខិតទៅជិត 0។ យើងអាចសរសេរថា៖ \\(\\displaystyle d\\to0\\)</p>
             <p><strong>សំណួរគឺ៖ តើការខិតទៅជិតសាលា អាចពិពណ៌នាដោយគណិតវិទ្យាបានយ៉ាងដូចម្តេច?</strong></p>
             <p>នេះជាចំណុចដែលយើងចាប់ផ្តើមត្រូវការគំនិត <strong>លីមីត</strong>។</p>
         </div>
@@ -128,53 +128,53 @@ const TOPIC_02 = {
 
         <p>យើងអាចកំណត់អនុគមន៍ចម្ងាយថ្មី៖</p>
         <div class="formula-box">
-            \\(\\boxed{s(t)=t^2+2t}\\)
+            \\(\\displaystyle \\boxed{s(t)=t^2+2t}\\)
         </div>
 
-        <p>នៅពេល \\(t=2\\) យើងបាន៖</p>
+        <p>នៅពេល \\(\\displaystyle t=2\\) យើងបាន៖</p>
         <div class="formula-box">
-            \\(s(2)=2^2+2(2)=8\\)
+            \\(\\displaystyle s(2)=2^2+2(2)=8\\)
         </div>
         <p>មានន័យថា នៅពេល 2 ម៉ោង អ្នកបានធ្វើដំណើរ 8 km។</p>
 
         <div class="note-box">
-            <p><strong>ប៉ុន្តែ ខ្ញុំសួរ៖ នៅពេល \\(t=2\\) ម៉ោង "ពិតប្រាកដ" តើម៉ូតូរបស់អ្នកកំពុងមានល្បឿនប៉ុន្មាន?</strong></p>
-            <p>នេះជាសំណួរដែលមិនអាចឆ្លើយដោយគ្រាន់តែដាក់ \\(t=2\\) ក្នុង \\(s(t)\\) បានទេ។</p>
-            <p>ព្រោះ \\(s(2)=8\\) នេះប្រាប់យើងពី <strong>ចម្ងាយ</strong>។ ប៉ុន្តែយើងចង់ដឹងពី <strong>ល្បឿន</strong>។</p>
+            <p><strong>ប៉ុន្តែ ខ្ញុំសួរ៖ នៅពេល \\(\\displaystyle t=2\\) ម៉ោង "ពិតប្រាកដ" តើម៉ូតូរបស់អ្នកកំពុងមានល្បឿនប៉ុន្មាន?</strong></p>
+            <p>នេះជាសំណួរដែលមិនអាចឆ្លើយដោយគ្រាន់តែដាក់ \\(\\displaystyle t=2\\) ក្នុង \\(\\displaystyle s(t)\\) បានទេ។</p>
+            <p>ព្រោះ \\(\\displaystyle s(2)=8\\) នេះប្រាប់យើងពី <strong>ចម្ងាយ</strong>។ ប៉ុន្តែយើងចង់ដឹងពី <strong>ល្បឿន</strong>។</p>
             <p>ដូច្នេះយើងត្រូវសិក្សាថា ចម្ងាយផ្លាស់ប្តូរយ៉ាងដូចម្តេច នៅពេលពេលវេលាផ្លាស់ប្តូរ។</p>
         </div>
 
-        <h3>⏱️ យើងចាប់ផ្តើមពិនិត្យជិត \\(t=2\\)</h3>
+        <h3>⏱️ យើងចាប់ផ្តើមពិនិត្យជិត \\(\\displaystyle t=2\\)</h3>
 
-        <p>យើងអាចពិនិត្យពី \\(t=2\\) ទៅ \\(t=2.1\\)៖</p>
+        <p>យើងអាចពិនិត្យពី \\(\\displaystyle t=2\\) ទៅ \\(\\displaystyle t=2.1\\)៖</p>
         <div class="formula-box">
-            \\(s(2)=8\\)
+            \\(\\displaystyle s(2)=8\\)
         </div>
         <div class="formula-box">
-            \\(s(2.1)=2.1^2+2(2.1)=8.61\\)
+            \\(\\displaystyle s(2.1)=2.1^2+2(2.1)=8.61\\)
         </div>
         <p>ដូច្នេះ ល្បឿនមធ្យមក្នុងចន្លោះនេះគឺ៖</p>
         <div class="formula-box">
-            \\(\\frac{s(2.1)-s(2)}{2.1-2} = \\frac{8.61-8}{0.1} = 6.1\\)
+            \\(\\displaystyle \\frac{s(2.1)-s(2)}{2.1-2} = \\frac{8.61-8}{0.1} = 6.1\\)
         </div>
 
         <p>ប៉ុន្តែនេះគ្រាន់តែជាល្បឿនមធ្យម។ តើយើងអាចធ្វើឱ្យចន្លោះពេលកាន់តែតូចទៀតបានទេ?</p>
 
-        <p>យើងយក \\(t=2.01\\) បន្ទាប់មក \\(t=2.001\\) បន្ទាប់មក \\(t=2.0001\\)...</p>
+        <p>យើងយក \\(\\displaystyle t=2.01\\) បន្ទាប់មក \\(\\displaystyle t=2.001\\) បន្ទាប់មក \\(\\displaystyle t=2.0001\\)...</p>
 
-        <p>យើងកំពុងធ្វើឱ្យពេលវេលា <strong>ខិតទៅជិត \\(2\\)</strong>៖ \\(t\\to2\\)</p>
+        <p>យើងកំពុងធ្វើឱ្យពេលវេលា <strong>ខិតទៅជិត \\(\\displaystyle 2\\)</strong>៖ \\(\\displaystyle t\\to2\\)</p>
 
         <p>ហើយយើងសិក្សាថា ល្បឿនមធ្យមកំពុង <strong>ខិតទៅជិតតម្លៃណាមួយ</strong>។ នេះហើយជាគំនិតដ៏សំខាន់នៃ <strong>លីមីត</strong>។</p>
 
         <div class="note-box">
             <h4>💡 ឥឡូវនេះ យើងមកដល់សំណួរដ៏សំខាន់បំផុត!</h4>
             <p>តើយើងអាចសួរបានទេថា៖</p>
-            <p><strong>នៅពេល \\(t\\) ខិតទៅជិត \\(2\\) តើអនុគមន៍មួយកំពុងខិតទៅជិតតម្លៃប៉ុន្មាន?</strong></p>
+            <p><strong>នៅពេល \\(\\displaystyle t\\) ខិតទៅជិត \\(\\displaystyle 2\\) តើអនុគមន៍មួយកំពុងខិតទៅជិតតម្លៃប៉ុន្មាន?</strong></p>
             <p>យើងអាចសរសេរជានិមិត្តសញ្ញា៖</p>
             <div class="formula-box">
-                \\(\\boxed{\\lim_{t\\to2}f(t)}\\)
+                \\(\\displaystyle \\boxed{\\lim_{t\\to2}f(t)}\\)
             </div>
-            <p>នេះមានន័យថា៖ <strong>នៅពេល \\(t\\) ខិតទៅជិត \\(2\\) តើ \\(f(t)\\) កំពុងខិតទៅជិតតម្លៃប៉ុន្មាន?</strong></p>
+            <p>នេះមានន័យថា៖ <strong>នៅពេល \\(\\displaystyle t\\) ខិតទៅជិត \\(\\displaystyle 2\\) តើ \\(\\displaystyle f(t)\\) កំពុងខិតទៅជិតតម្លៃប៉ុន្មាន?</strong></p>
             <p>នេះហើយជាអ្វីដែលយើងនឹងរៀននៅថ្ងៃនេះ។</p>
         </div>
 
@@ -206,18 +206,18 @@ const TOPIC_02 = {
             </ul>
             <p>ហើយដើម្បីឆ្លើយសំណួរទាំងនេះ យើងត្រូវការគំនិត៖</p>
             <div class="formula-box">
-                \\(\\boxed{\\text{Limit}}\\)
+                \\(\\displaystyle \\boxed{\\text{Limit}}\\)
             </div>
             <p>ដូច្នេះ សិស្សទាំងអស់គ្នា...</p>
-            <p>នៅពេលអ្នកឃើញ៖ \\(\\lim_{x\\to a}f(x)=L\\)</p>
+            <p>នៅពេលអ្នកឃើញ៖ \\(\\displaystyle \\lim_{x\\to a}f(x)=L\\)</p>
             <p>សូមកុំគិតថា វាគ្រាន់តែជារូបមន្តដែលត្រូវចាំ។</p>
-            <p>សូមអានវាថា៖ <strong>"នៅពេល \\(x\\) ខិតទៅជិត \\(a\\) តើ \\(f(x)\\) កំពុងខិតទៅជិត \\(L\\) ឬ?"</strong></p>
+            <p>សូមអានវាថា៖ <strong>"នៅពេល \\(\\displaystyle x\\) ខិតទៅជិត \\(\\displaystyle a\\) តើ \\(\\displaystyle f(x)\\) កំពុងខិតទៅជិត \\(\\displaystyle L\\) ឬ?"</strong></p>
             <p>នេះគឺជាសំណួរដ៏សាមញ្ញមួយ... ប៉ុន្តែវាជាសំណួរដែលបាននាំមនុស្សទៅរកពិភពដ៏អស្ចារ្យនៃ <strong>Calculus</strong>។</p>
             <p>ហើយថ្ងៃនេះ... យើងនឹងចាប់ផ្តើមស្វែងរកចម្លើយជាមួយគ្នា៖</p>
             <div class="formula-box">
-                \\(\\boxed{\\lim_{x\\to a}f(x)=?}\\)
+                \\(\\displaystyle \\boxed{\\lim_{x\\to a}f(x)=?}\\)
             </div>
-            <p><strong>តើនៅពេល \\(x\\) ខិតទៅជិត \\(a\\) តើ \\(f(x)\\) នឹងខិតទៅជិតអ្វី?</strong></p>
+            <p><strong>តើនៅពេល \\(\\displaystyle x\\) ខិតទៅជិត \\(\\displaystyle a\\) តើ \\(\\displaystyle f(x)\\) នឹងខិតទៅជិតអ្វី?</strong></p>
             <p>👉 <strong>នេះហើយជាអ្វីដែលយើងនឹងស្វែងយល់នៅក្នុងមេរៀន «លីមីតនៃអនុគមន៍»។</strong></p>
         </div>
 
@@ -225,38 +225,38 @@ const TOPIC_02 = {
         <p>លីមីតអនុគមន៍ f(x) នៅពេល x → a គឺជាតម្លៃដែល f(x) ខិតជិតនៅពេល x ខិតជិត a</p>
 
         <div class="formula-box">
-            \\(\\lim_{x \\to a} f(x) = L\\)
+            \\(\\displaystyle \\lim_{x \\to a} f(x) = L\\)
         </div>
 
         <h3>២. ក្បួនគណនាលីមីត</h3>
         <ul>
-            <li><strong>សមាមាត្រ:</strong> ប្រសិនបើ \\(\\lim f(x) = A\\) និង \\(\\lim g(x) = B \\neq 0\\) នោះ \\(\\lim \\frac{f(x)}{g(x)} = \\frac{A}{B}\\)</li>
-            <li><strong>ផលគុណ:</strong> \\(\\lim[f(x) \\cdot g(x)] = \\lim f(x) \\cdot \\lim g(x)\\)</li>
-            <li><strong>បូក/ដក:</strong> \\(\\lim[f(x) \\pm g(x)] = \\lim f(x) \\pm \\lim g(x)\\)</li>
+            <li><strong>សមាមាត្រ:</strong> ប្រសិនបើ \\(\\displaystyle \\lim f(x) = A\\) និង \\(\\displaystyle \\lim g(x) = B \\neq 0\\) នោះ \\(\\displaystyle \\lim \\frac{f(x)}{g(x)} = \\frac{A}{B}\\)</li>
+            <li><strong>ផលគុណ:</strong> \\(\\displaystyle \\lim[f(x) \\cdot g(x)] = \\lim f(x) \\cdot \\lim g(x)\\)</li>
+            <li><strong>បូក/ដក:</strong> \\(\\displaystyle \\lim[f(x) \\pm g(x)] = \\lim f(x) \\pm \\lim g(x)\\)</li>
         </ul>
 
         <h3>៣. លីមីតអនន្ត</h3>
         <div class="formula-box">
-            \\(\\lim_{x \\to \\infty} \\frac{a_n x^n + \\cdots}{b_m x^m + \\cdots}\\)
+            \\(\\displaystyle \\lim_{x \\to \\infty} \\frac{a_n x^n + \\cdots}{b_m x^m + \\cdots}\\)
         </div>
         <ul>
-            <li>ប្រសិនបើ \\(n < m\\) → លីមីត = 0</li>
-            <li>ប្រសិនបើ \\(n = m\\) → លីមីត = \\(\\frac{a_n}{b_m}\\)</li>
-            <li>ប្រសិនបើ \\(n > m\\) → លីមីត = \\(\\pm \\infty\\)</li>
+            <li>ប្រសិនបើ \\(\\displaystyle n < m\\) → លីមីត = 0</li>
+            <li>ប្រសិនបើ \\(\\displaystyle n = m\\) → លីមីត = \\(\\displaystyle \\frac{a_n}{b_m}\\)</li>
+            <li>ប្រសិនបើ \\(\\displaystyle n > m\\) → លីមីត = \\(\\displaystyle \\pm \\infty\\)</li>
         </ul>
 
         <h3>៤. លីមីតពិសេស</h3>
         <div class="formula-box">
-            \\(\\lim_{x \\to 0} \\frac{\\sin x}{x} = 1, \\quad \\lim_{x \\to 0} \\frac{1 - \\cos x}{x} = 0\\)
+            \\(\\displaystyle \\lim_{x \\to 0} \\frac{\\sin x}{x} = 1, \\quad \\lim_{x \\to 0} \\frac{1 - \\cos x}{x} = 0\\)
         </div>
         <div class="formula-box">
-            \\(\\lim_{x \\to 0} \\frac{e^x - 1}{x} = 1, \\quad \\lim_{x \\to 0} \\frac{\\ln(1+x)}{x} = 1\\)
+            \\(\\displaystyle \\lim_{x \\to 0} \\frac{e^x - 1}{x} = 1, \\quad \\lim_{x \\to 0} \\frac{\\ln(1+x)}{x} = 1\\)
         </div>
 
         <div class="example-box">
             <h4>ឧទាហរណ៍៖</h4>
-            <p>គណនា \\(\\lim_{x \\to 2} \\frac{x^2 - 4}{x - 2}\\)</p>
-            <p>\\(= \\lim_{x \\to 2} \\frac{(x+2)(x-2)}{x-2} = \\lim_{x \\to 2} (x+2) = 4\\)</p>
+            <p>គណនា \\(\\displaystyle \\lim_{x \\to 2} \\frac{x^2 - 4}{x - 2}\\)</p>
+            <p>\\(\\displaystyle = \\lim_{x \\to 2} \\frac{(x+2)(x-2)}{x-2} = \\lim_{x \\to 2} (x+2) = 4\\)</p>
         </div>
     `
 };
