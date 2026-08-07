@@ -296,13 +296,17 @@
         const userAvatar = document.getElementById('userAvatar');
         const userName = document.getElementById('userName');
         
-        // Google Sheet URL - Replace with your actual sheet URL
-        const GOOGLE_SHEET_URL = 'https://script.google.com/macros/s/AKfycbxwlV64c9Xj6CDhg-eD050mSfh7cs-UqHBuxwqwMRKo7W__kxbddenjR0omnur53tuB7Q/exec';
-        
         // Check auth
         auth.onAuthStateChanged((user) => {
             if (!user) {
                 window.location.href = 'login.html';
+                return;
+            }
+            
+            // Check if user is admin
+            if (!isAdmin(user)) {
+                alert('អ្នកមិនមានសិទ្ធិចូលទំព័រនេះទេ។');
+                window.location.href = 'index.html';
                 return;
             }
             
@@ -312,16 +316,25 @@
             loadData();
         });
         
-        // Load data from Google Sheets
+        // Load data from Firestore
         async function loadData() {
             try {
-                // Fetch users
-                const usersResponse = await fetch(`${GOOGLE_SHEET_URL}?action=users`);
-                const users = await usersResponse.json();
+                // Get users
+                const usersSnapshot = await db.collection('users').get();
+                const users = usersSnapshot.docs.map(doc => ({
+                    id: doc.id,
+                    ...doc.data()
+                }));
                 
-                // Fetch activity
-                const activityResponse = await fetch(`${GOOGLE_SHEET_URL}?action=activity`);
-                const activity = await activityResponse.json();
+                // Get activity
+                const activitySnapshot = await db.collection('activity')
+                    .orderBy('timestamp', 'desc')
+                    .limit(50)
+                    .get();
+                const activity = activitySnapshot.docs.map(doc => ({
+                    id: doc.id,
+                    ...doc.data()
+                }));
                 
                 // Update stats
                 document.getElementById('totalUsers').textContent = users.length || 0;
@@ -342,12 +355,12 @@
                 renderUsers(users);
                 
                 // Render activity table
-                renderActivity(activity.slice(0, 20)); // Show last 20
+                renderActivity(activity);
                 
             } catch (error) {
                 console.error('Error loading data:', error);
                 document.getElementById('usersTable').innerHTML = 
-                    '<tr><td colspan="5" style="color:#dc2626;">មានកំហុសក្នុងការផ្ទុកទិន្នន័។ សូមពិនិត្យ Google Apps Script។</td></tr>';
+                    '<tr><td colspan="5" style="color:#dc2626;">មានកំហុសក្នុងការផ្ទុកទិន្នន័។</td></tr>';
             }
         }
         
@@ -360,15 +373,18 @@
                 return;
             }
             
-            tbody.innerHTML = users.map(user => `
-                <tr>
-                    <td><img src="${user.photo || 'https://via.placeholder.com/32'}" style="width:32px;height:32px;border-radius:50%;"></td>
-                    <td>${user.name || 'មិនស្គាល់'}</td>
-                    <td>${user.email || '-'}</td>
-                    <td>${user.firstLogin || '-'}</td>
-                    <td>${user.lastLogin || '-'}</td>
-                </tr>
-            `).join('');
+            tbody.innerHTML = users.map(user => {
+                const lastLogin = user.lastLogin ? new Date(user.lastLogin.seconds * 1000).toLocaleString('km-KH') : '-';
+                return `
+                    <tr>
+                        <td><img src="${user.photo || 'https://via.placeholder.com/32'}" style="width:32px;height:32px;border-radius:50%;"></td>
+                        <td>${user.name || 'មិនស្គាល់'}</td>
+                        <td>${user.email || '-'}</td>
+                        <td>${lastLogin}</td>
+                        <td>${lastLogin}</td>
+                    </tr>
+                `;
+            }).join('');
         }
         
         // Render activity table
@@ -392,12 +408,14 @@
                     actionText = 'ធ្វើលំហាត់';
                 }
                 
+                const time = item.timestamp ? new Date(item.timestamp.seconds * 1000).toLocaleString('km-KH') : '-';
+                
                 return `
                     <tr>
                         <td><span class="badge ${badgeClass}">${actionText}</span></td>
                         <td>${item.userName || 'មិនស្គាល់'}</td>
                         <td>${item.page || '-'}</td>
-                        <td>${item.timestamp || '-'}</td>
+                        <td>${time}</td>
                     </tr>
                 `;
             }).join('');
