@@ -70,34 +70,6 @@
 
 ---
 
-## 🚀 របៀបប្រើប្រាស់
-
-### ១. បើកគេហទំព័រ
-
-```bash
-# Clone repository
-git clone https://github.com/Krotreaksmey2200/bacc_2027.git
-
-# បើកក្នុង Browser
-open index.html
-```
-
-### ២. សិក្សាមេរៀន
-
-1. **ជ្រើសរើសឆមាស** → ចុចលើ Tab "ឆមាសទី១" ឬ "ឆមាសទី២"
-2. **ជ្រើសរើសប្រធានបទ** → ចុចលើ Card មេរៀន
-3. **អានមេរៀន** → អូសចុះក្រោមដើម្បីអាន
-4. **មើល PDF** → ចុច "មើល" ឬ "ទាញយក"
-5. **ធ្វើលំហាត់** → ចុច Tab "លំហាត់"
-
----
-
-## 📞 ទំនាក់ទំនង
-
-- **GitHub**: [Krotreaksmey2200](https://github.com/Krotreaksmey2200)
-- **Issues**: [Report Bug](https://github.com/Krotreaksmey2200/bacc_2027/issues)
-
----
 
 ## 📄 License
 
