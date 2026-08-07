@@ -649,15 +649,16 @@
                 <div class="panel">
                     <div class="panel-header">
                         <h2 class="panel-title">👥 គ្រប់គ្រងអ្នកប្រើប្រាស់</h2>
-                        <div class="input-group">
+                        <div style="display:flex;gap:0.5rem;align-items:center;">
                             <div class="search-box">
                                 <input type="text" class="input" id="searchUser" placeholder="ស្វែងរក..." oninput="filterUsers()">
                             </div>
                             <button class="btn btn-primary" onclick="showAddUserModal()">+ បន្ថែម</button>
+                            <button class="btn btn-success" onclick="exportUsersCSV()">📥 Export</button>
                         </div>
                     </div>
-                    <div class="panel-body">
-                        <div class="tab-nav">
+                    <div class="panel-body" style="max-height:600px;overflow-y:auto;">
+                        <div class="tab-nav" style="position:sticky;top:0;background:#1e293b;z-index:10;padding:0.5rem 0;">
                             <button class="tab-btn active" onclick="filterByStatus('all', this)">ទាំងអស់</button>
                             <button class="tab-btn" onclick="filterByStatus('allowed', this)">✅ អនុញ្ញាតិ</button>
                             <button class="tab-btn" onclick="filterByStatus('blocked', this)">🚫 ច្រានចោល</button>
@@ -665,7 +666,7 @@
                         </div>
                         <div class="table-container">
                             <table>
-                                <thead>
+                                <thead style="position:sticky;top:0;background:#1e293b;z-index:10;">
                                     <tr>
                                         <th>រូបភាព</th>
                                         <th>ឈ្មោះ</th>
@@ -689,12 +690,15 @@
                 <div class="panel">
                     <div class="panel-header">
                         <h2 class="panel-title">📋 ប្រវត្តិសកម្មភាព</h2>
-                        <button class="btn btn-danger" onclick="clearActivity()">🗑️ លុបទាំងអស់</button>
+                        <div style="display:flex;gap:0.5rem;">
+                            <button class="btn btn-primary" onclick="exportActivityCSV()">📥 Export CSV</button>
+                            <button class="btn btn-danger" onclick="clearActivity()">🗑️ លុបទាំងអស់</button>
+                        </div>
                     </div>
-                    <div class="panel-body">
+                    <div class="panel-body" style="max-height:600px;overflow-y:auto;">
                         <div class="table-container">
                             <table>
-                                <thead>
+                                <thead style="position:sticky;top:0;background:#1e293b;z-index:10;">
                                     <tr>
                                         <th>សកម្មភាព</th>
                                         <th>អ្នកប្រើប្រាស់</th>
@@ -870,7 +874,7 @@ service cloud.firestore {
                 // Load activity
                 const activitySnap = await db.collection('activity')
                     .orderBy('timestamp', 'desc')
-                    .limit(100)
+                    .limit(500)
                     .get();
                 allActivity = activitySnap.docs.map(doc => ({ id: doc.id, ...doc.data() }));
                 
@@ -1168,6 +1172,76 @@ service cloud.firestore {
                 console.error('Error:', error);
                 showToast('មានកំហុសក្នុងការលុប', 'error');
             }
+        }
+        
+        // Export Activity to CSV
+        function exportActivityCSV() {
+            if (allActivity.length === 0) {
+                showToast('មិនមានសកម្មភាពដើម្បី export', 'error');
+                return;
+            }
+            
+            // CSV Header
+            let csv = '\uFEFFសកម្មភាព,ឈ្មោះ,Email,ទំព័រ,ពេលវេលា\n';
+            
+            // CSV Rows
+            allActivity.forEach(item => {
+                let action = 'ចូល';
+                if (item.action === 'view_topic') action = 'មើលមេរៀន';
+                if (item.action === 'view_exercise') action = 'ធ្វើលំហាត់';
+                if (item.action === 'signup') action = 'ចុះឈ្មោះ';
+                
+                const time = item.timestamp ? new Date(item.timestamp.seconds * 1000).toLocaleString('km-KH') : '-';
+                const name = (item.userName || 'មិនស្គាល់').replace(/,/g, ' ');
+                const email = (item.userEmail || '-').replace(/,/g, ' ');
+                const page = (item.page || '-').replace(/,/g, ' ');
+                
+                csv += `${action},${name},${email},${page},${time}\n`;
+            });
+            
+            // Create download link
+            const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.setAttribute('href', url);
+            link.setAttribute('download', `activity_${new Date().toISOString().split('T')[0]}.csv`);
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            URL.revokeObjectURL(url);
+            
+            showToast('បាន export CSV ដោយជោគជ័យ!', 'success');
+        }
+        
+        // Export Users to CSV
+        function exportUsersCSV() {
+            if (allUsers.length === 0) {
+                showToast('មិនមានអ្នកប្រើប្រាស់ដើម្បី export', 'error');
+                return;
+            }
+            
+            let csv = '\uFEFFឈ្មោះ,Email,ស្ថានភាព,ចូលចុងក្រោយ\n';
+            
+            allUsers.forEach(user => {
+                const name = (user.name || 'មិនស្គាល់').replace(/,/g, ' ');
+                const email = (user.email || '-').replace(/,/g, ' ');
+                const status = user.status === 'blocked' ? 'ច្រានចោល' : 'អនុញ្ញាតិ';
+                const lastLogin = user.lastLogin ? new Date(user.lastLogin.seconds * 1000).toLocaleString('km-KH') : '-';
+                
+                csv += `${name},${email},${status},${lastLogin}\n`;
+            });
+            
+            const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.setAttribute('href', url);
+            link.setAttribute('download', `users_${new Date().toISOString().split('T')[0]}.csv`);
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            URL.revokeObjectURL(url);
+            
+            showToast('បាន export អ្នកប្រើប្រាស់ដោយជោគជ័យ!', 'success');
         }
         
         // Toast
