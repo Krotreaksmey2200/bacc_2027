@@ -10,7 +10,9 @@ const TOPIC_02 = {
         { name: "limit_of_function_update.pdf", path: "pdfs/02_លីមីតអនុគមន៍/lession/limit_of_function_update.pdf", type: "lesson" },
         { name: "limit_2027.pdf", path: "pdfs/02_លីមីតអនុគមន៍/practies/limit_2027.pdf", type: "exercise" }
     ],
-    research: [],
+    research: [
+        { name: "លីមីតអនុគមន៍.pdf", path: "pdfs/02_លីមីតអនុគមន៍/research/លីមីតអនុគមន៍.pdf" }
+    ],
     exercises: [
         {
             id: 1,
