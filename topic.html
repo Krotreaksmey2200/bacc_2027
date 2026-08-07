@@ -804,9 +804,27 @@
                 });
         }
         
+        // Check if user is allowed
+        async function isUserAllowed(email) {
+            if (isAdmin(auth.currentUser)) return true;
+            const blockedDoc = await db.collection('blockedEmails').doc(email).get();
+            if (blockedDoc.exists) return false;
+            const allowedSnapshot = await db.collection('allowedEmails').get();
+            if (allowedSnapshot.empty) return true;
+            const allowedDoc = await db.collection('allowedEmails').doc(email).get();
+            return allowedDoc.exists;
+        }
+        
         // Auth State Observer
-        auth.onAuthStateChanged((user) => {
+        auth.onAuthStateChanged(async (user) => {
             if (user) {
+                const allowed = await isUserAllowed(user.email);
+                if (!allowed) {
+                    await auth.signOut();
+                    window.location.href = 'login.html';
+                    return;
+                }
+                
                 loginBtn.classList.add('hidden');
                 userSection.classList.remove('hidden');
                 userAvatar.src = user.photoURL || 'https://via.placeholder.com/32';
