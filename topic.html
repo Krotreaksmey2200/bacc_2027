@@ -18,6 +18,11 @@
     };
     </script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
     <style>
         /* Topic Page Styles */
         .topic-page {
@@ -704,6 +709,17 @@
                     <span class="topic-icon" id="topicIcon"></span>
                     <h1 class="topic-title" id="topicTitle"></h1>
                 </div>
+                <div id="authSection" style="display:flex;align-items:center;gap:0.8rem;">
+                    <button id="loginBtn" class="login-btn" onclick="signInWithGoogle()">
+                        <span class="login-icon">👤</span>
+                        <span class="login-text">ចូល</span>
+                    </button>
+                    <div id="userSection" class="user-section hidden">
+                        <img id="userAvatar" class="user-avatar" src="" alt="avatar">
+                        <span id="userName" class="user-name"></span>
+                        <button id="logoutBtn" class="logout-btn" onclick="signOut()">ចេញ</button>
+                    </div>
+                </div>
             </div>
         </header>
         
@@ -756,8 +772,51 @@
     <script src="topics/18.js"></script>
     
     <script src="js/data.js"></script>
+    <script src="js/firebase-config.js"></script>
     
     <script>
+        // Auth functions
+        const loginBtn = document.getElementById('loginBtn');
+        const userSection = document.getElementById('userSection');
+        const userAvatar = document.getElementById('userAvatar');
+        const userName = document.getElementById('userName');
+        
+        // Google Sign-In
+        function signInWithGoogle() {
+            auth.signInWithPopup(provider)
+                .then((result) => {
+                    console.log('User signed in:', result.user.displayName);
+                })
+                .catch((error) => {
+                    console.error('Error:', error.message);
+                    alert('មានកំហុសក្នុងការចូល។ សូមព្យាយាមម្តងទៀត។');
+                });
+        }
+        
+        // Sign Out
+        function signOut() {
+            auth.signOut()
+                .then(() => {
+                    console.log('User signed out');
+                })
+                .catch((error) => {
+                    console.error('Error:', error.message);
+                });
+        }
+        
+        // Auth State Observer
+        auth.onAuthStateChanged((user) => {
+            if (user) {
+                loginBtn.classList.add('hidden');
+                userSection.classList.remove('hidden');
+                userAvatar.src = user.photoURL || 'https://via.placeholder.com/32';
+                userName.textContent = user.displayName || user.email;
+            } else {
+                loginBtn.classList.remove('hidden');
+                userSection.classList.add('hidden');
+            }
+        });
+        
         // Get topic ID from URL
         const urlParams = new URLSearchParams(window.location.search);
         const topicId = parseInt(urlParams.get('id'));
