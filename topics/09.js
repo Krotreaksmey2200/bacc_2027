@@ -29,7 +29,7 @@ const TOPIC_09 = {
         },
         {
             id: 3,
-            question: "រកសមីការរង្វាល់ដែលមានកណ្ដាល O(1,2,3) និងកាំង R = 4",
+            question: "រកសមីការស្វ៊ែរដែលមានផ្ចឹត O(1,2,3) និងកាំង R = 4",
             hint: "ប្រើរូបមន្ត \\(\\displaystyle (x-a)^2 + (y-b)^2 + (z-c)^2 = R^2\\)",
             answer: "\\(\\displaystyle (x-1)^2 + (y-2)^2 + (z-3)^2 = 16\\)"
         }
@@ -47,10 +47,10 @@ const TOPIC_09 = {
             \\(\\displaystyle d(A,B) = \\sqrt{(x_2-x_1)^2 + (y_2-y_1)^2 + (z_2-z_1)^2}\\)
         </div>
 
-        <h3>៣. សមីការសរសៃរ</h3>
+        <h3>៣. សមីការប៉ារ៉ាម៉ែត្រ</h3>
         <p>សរសៃរ AB កាត់ចំណុច M ដែល M = (1-t)A + tB</p>
 
-        <h4>ទម្រង់រង្វាល់ (Symmetric)</h4>
+        <h4>ទម្រង់សមីការឆ្លុះ (Symmetric)</h4>
         <div class="formula-box">
             \\(\\displaystyle \\frac{x-x_1}{a} = \\frac{y-y_1}{b} = \\frac{z-z_1}{c}\\)
         </div>
@@ -65,7 +65,7 @@ const TOPIC_09 = {
             \\(\\displaystyle ax + by + cz + d = 0\\)
         </div>
 
-        <h3>៥. សមីការរង្វាល់</h3>
+        <h3>៥. សមីការស្វ៊ែរ</h3>
         <div class="formula-box">
             \\(\\displaystyle (x-a)^2 + (y-b)^2 + (z-c)^2 = R^2\\)
         </div>
