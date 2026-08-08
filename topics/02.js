@@ -16,7 +16,7 @@ const TOPIC_02 = {
     exercises: [
         {
             id: 1,
-            question: "គណនា \\(\\displaystyle \\lim\limits_{x \\to 3} \\frac{x^2 - 9}{x - 3}\\)",
+            question: "គណនា \\(\\displaystyle \\limits_{x \\to 3} \\frac{x^2 - 9}{x - 3}\\)",
             hint: "បំបែកកន្សោមភាគដោយប្រើ \\(\\displaystyle (x^2 - 9) = (x+3)(x-3)\\)",
             answer: "\\(\\displaystyle \\lim\limits_{x \\to 3} \\frac{(x+3)(x-3)}{x-3} = \\lim\limits_{x \\to 3} (x+3) = 6\\)"
         },
