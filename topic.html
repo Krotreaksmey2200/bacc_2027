@@ -98,6 +98,39 @@
             border-radius: 10px;
         }
         
+        .topic-header .user-section {
+            gap: 0.4rem;
+        }
+        
+        .topic-header .user-avatar {
+            width: 28px;
+            height: 28px;
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+        
+        .topic-header .user-name {
+            color: white;
+            font-size: 0.8rem;
+        }
+        
+        .topic-header .logout-btn {
+            padding: 0.3rem 0.6rem;
+            font-size: 0.75rem;
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .topic-header .logout-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        
+        .topic-header .login-btn {
+            padding: 0.3rem 0.8rem;
+            font-size: 0.8rem;
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
         .topic-content {
             max-width: 1100px;
             margin: 0 auto;
@@ -708,6 +741,16 @@
                     <button class="back-btn" onclick="goBack()">←</button>
                     <span class="topic-icon" id="topicIcon"></span>
                     <h1 class="topic-title" id="topicTitle"></h1>
+                </div>
+                <div id="authSection" style="display:flex;align-items:center;gap:0.5rem;">
+                    <button id="loginBtn" class="login-btn" onclick="signInWithGoogle()">
+                        <span class="login-text">ចូល</span>
+                    </button>
+                    <div id="userSection" class="user-section hidden">
+                        <img id="userAvatar" class="user-avatar" src="" alt="avatar">
+                        <span id="userName" class="user-name"></span>
+                        <button id="logoutBtn" class="logout-btn" onclick="signOut()">ចេញ</button>
+                    </div>
                 </div>
             </div>
         </header>
