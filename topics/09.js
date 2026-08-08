@@ -70,16 +70,15 @@ const TOPIC_09 = {
             \\(\\displaystyle (x-a)^2 + (y-b)^2 + (z-c)^2 = R^2\\)
         </div>
 
+        <p>ប្រើ GeoGebra 3D Calculator ដើម្បីមើលរូបស្វ៊ែរក្នុងលំហ៖</p>
+        <div class="geogebra-embed">
+            <iframe src="https://www.geogebra.org/calculator/3d?embed" width="100%" height="500px" style="border:0;border-radius:12px;" allowfullscreen></iframe>
+        </div>
+
         <div class="example-box">
             <h4>ឧទាហរណ៍៖</h4>
             <p>រកប្រវែង AB ដែល A(1,2,3) និង B(4,6,8)</p>
             <p>\\(\\displaystyle d = \\sqrt{(4-1)^2 + (6-2)^2 + (8-3)^2} = \\sqrt{9+16+25} = \\sqrt{50} = 5\\sqrt{2}\\)</p>
-        </div>
-
-        <h3>៦. គំនូរធរណីមាត្រ 3D (GeoGebra)</h3>
-        <p>ប្រើ GeoGebra 3D Calculator ដើម្បីមើលរូបធរណីមាត្រក្នុងលំហ៖</p>
-        <div class="geogebra-embed">
-            <iframe src="https://www.geogebra.org/calculator/3d?embed" width="100%" height="500px" style="border:0;border-radius:12px;" allowfullscreen></iframe>
         </div>
     `
 };
