@@ -751,14 +751,12 @@ service cloud.firestore {
     <!-- Add User Modal -->
     <div class="modal-overlay" id="addUserModal">
         <div class="modal">
-            <h3 class="modal-title">➕ បង្កើតអ្នកប្រើប្រាស់ថ្មី</h3>
-            <p class="modal-text">បញ្ចូល Email និងពាក្យសម្ងាត់៖</p>
+            <h3 class="modal-title">➕ បន្ថែមអ្នកប្រើប្រាស់</h3>
+            <p class="modal-text">បញ្ចូល Email ដើម្បីអនុញ្ញាតិ៖</p>
             <input type="email" class="input" id="newUserEmail" placeholder="example@gmail.com" style="width:100%;margin-top:0.5rem;">
-            <input type="password" class="input" id="newUserPassword" placeholder="ពាក្យសម្ងាត់ (យ៉ាហោចណាស់ ៦ តួ)" style="width:100%;margin-top:0.5rem;" minlength="6">
-            <input type="text" class="input" id="newUserName" placeholder="ឈ្មោះ (ស្រេចចិត្ត)" style="width:100%;margin-top:0.5rem;">
             <div class="modal-actions">
                 <button class="btn btn-ghost" onclick="closeModal('addUserModal')">បោះបង់</button>
-                <button class="btn btn-primary" onclick="createUserAccount()">បង្កើត</button>
+                <button class="btn btn-primary" onclick="addAllowedUser()">បន្ថែម</button>
             </div>
         </div>
     </div>
@@ -1030,8 +1028,6 @@ service cloud.firestore {
         // Modals
         function showAddUserModal() {
             document.getElementById('newUserEmail').value = '';
-            document.getElementById('newUserPassword').value = '';
-            document.getElementById('newUserName').value = '';
             document.getElementById('addUserModal').classList.add('active');
             document.getElementById('newUserEmail').focus();
         }
@@ -1060,7 +1056,7 @@ service cloud.firestore {
         }
         
         // Actions
-        async function addUser() {
+        async function addAllowedUser() {
             const email = document.getElementById('newUserEmail').value.trim();
             
             if (!email || !email.includes('@')) {
@@ -1084,80 +1080,6 @@ service cloud.firestore {
             } catch (error) {
                 console.error('Error:', error);
                 showToast('មានកំហុសក្នុងការបន្ថែម', 'error');
-            }
-        }
-        
-        async function createUserAccount() {
-            const email = document.getElementById('newUserEmail').value.trim();
-            const password = document.getElementById('newUserPassword').value;
-            const name = document.getElementById('newUserName').value.trim();
-            
-            if (!email || !email.includes('@')) {
-                showToast('សូមបញ្ចូល email ត្រឹមត្រូវ', 'error');
-                return;
-            }
-            if (!password || password.length < 6) {
-                showToast('ពាក្យសម្ងាត់យ៉ាហោចណាស់ ៦ តួ', 'error');
-                return;
-            }
-            
-            const adminEmail = auth.currentUser.email;
-            
-            try {
-                // Create user account
-                const result = await auth.createUserWithEmailAndPassword(email, password);
-                const newUser = result.user;
-                
-                if (name) {
-                    await newUser.updateProfile({ displayName: name });
-                }
-                
-                // Add to allowedEmails
-                await db.collection('allowedEmails').doc(email).set({
-                    email,
-                    addedAt: firebase.firestore.FieldValue.serverTimestamp(),
-                    addedBy: adminEmail
-                });
-                
-                // Save user to users collection
-                await db.collection('users').doc(newUser.uid).set({
-                    name: name || '',
-                    email,
-                    photo: '',
-                    createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-                    createdBy: adminEmail
-                });
-                
-                // Log activity
-                await db.collection('activity').add({
-                    action: 'admin_create_user',
-                    userId: newUser.uid,
-                    userName: name || '',
-                    userEmail: email,
-                    adminEmail: adminEmail,
-                    page: 'admin.html',
-                    timestamp: firebase.firestore.FieldValue.serverTimestamp()
-                });
-                
-                // Sign out new user, admin must re-login
-                await auth.signOut();
-                
-                closeModal('addUserModal');
-                showToast('បានបង្កើតគណនី ' + email + ' ដោយជោគជ័យ! សូមចូលម្តងទៀត។', 'success');
-                
-                setTimeout(() => {
-                    window.location.href = 'admin.html';
-                }, 1500);
-                
-            } catch (error) {
-                console.error('Create user error:', error);
-                let msg = 'មានកំហុសក្នុងការបង្កើតគណនី';
-                if (error.code === 'auth/email-already-in-use') {
-                    msg = 'Email នេះត្រូវបានប្រើរួចហើយ';
-                } else if (error.code === 'auth/weak-password') {
-                    msg = 'ពាក្យសម្ងាត់ខ្សោយពេក';
-                }
-                showToast(msg, 'error');
             }
         }
         
@@ -1332,10 +1254,7 @@ service cloud.firestore {
         
         // Enter key for email input
         document.getElementById('newUserEmail').addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') document.getElementById('newUserPassword').focus();
-        });
-        document.getElementById('newUserPassword').addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') createUserAccount();
+            if (e.key === 'Enter') addAllowedUser();
         });
     </script>
 </body>
