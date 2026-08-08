@@ -72,19 +72,8 @@ const TOPIC_09 = {
 
         <p>ដើម្បីមើលរូបស្វ៊ែរក្នុងលំហ៖</p>
         <div class="geogebra-embed">
-            <iframe id="ggb3d" src="https://www.geogebra.org/calculator/3d?embed&ggbOnInit=api" width="100%" height="500px" style="border:0;border-radius:12px;" allowfullscreen></iframe>
+            <iframe src="https://www.geogebra.org/calculator/3d?embed&materialId=ahcmhdjp" width="100%" height="500px" style="border:0;border-radius:12px;" allowfullscreen></iframe>
         </div>
-        <script>
-            window.addEventListener('message', function(e) {
-                try {
-                    var d = JSON.parse(e.data);
-                    if (d && d.event === 'apiReady') {
-                        var f = document.getElementById('ggb3d');
-                        f.contentWindow.postMessage(JSON.stringify({method:'evalCommand', args:['eq1: (x-1)^2+(y-1)^2+(z-1)^2=4']}), '*');
-                    }
-                } catch(err) {}
-            });
-        </script>
 
         <div class="example-box">
             <h4>ឧទាហរណ៍៖</h4>
