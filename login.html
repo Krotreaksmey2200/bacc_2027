@@ -691,6 +691,14 @@
                     page: 'login.html',
                     timestamp: firebase.firestore.FieldValue.serverTimestamp()
                 });
+
+                // Add email to allowedEmails so user can login
+                await db.collection('allowedEmails').doc(email).set({
+                    email: email,
+                    name: name,
+                    addedBy: 'signup',
+                    createdAt: firebase.firestore.FieldValue.serverTimestamp()
+                });
                 
                 showSuccess('signupSuccess', 'បានចុះឈ្មោះដោយជោគជ័យ!');
                 
