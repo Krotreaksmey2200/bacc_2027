@@ -96,6 +96,14 @@
             </div>
         </section>
 
+        <section id="users" class="users-section">
+            <h2 class="section-title">👥 អ្នកប្រើប្រាស់</h2>
+            <p class="section-desc">អ្នកដែលបានចុះឈ្មោះក្នុងវេទិកា</p>
+            <div class="users-grid" id="usersGrid">
+                <p class="loading-text">កំពុងផ្ទុក...</p>
+            </div>
+        </section>
+
         <section id="about" class="about-section">
             <h2 class="section-title"> អំពីវេទិកានេះ</h2>
             <div class="about-content">
@@ -250,12 +258,52 @@
                 // Save user and log activity
                 saveUser(user);
                 logActivity('view_home', 'index.html');
+                
+                // Load users list
+                loadUsers();
             } else {
                 // User is signed out
                 loginBtn.classList.remove('hidden');
                 userSection.classList.add('hidden');
             }
         });
+        
+        // Load and render users
+        async function loadUsers() {
+            const grid = document.getElementById('usersGrid');
+            try {
+                const snapshot = await db.collection('users').orderBy('lastLogin', 'desc').get();
+                
+                if (snapshot.empty) {
+                    grid.innerHTML = '<p class="no-users">មិនទាន់មានអ្នកប្រើប្រាស់</p>';
+                    return;
+                }
+                
+                grid.innerHTML = snapshot.docs.map(doc => {
+                    const user = doc.data();
+                    const photo = user.photo || 'https://via.placeholder.com/44';
+                    const name = user.name || 'អ្នកប្រើប្រាស់';
+                    const email = user.email || '';
+                    const date = user.lastLogin 
+                        ? new Date(user.lastLogin.seconds * 1000).toLocaleDateString('km-KH')
+                        : '';
+                    
+                    return `
+                        <div class="user-card">
+                            <img src="${photo}" alt="${name}">
+                            <div class="user-card-info">
+                                <div class="user-card-name">${name}</div>
+                                <div class="user-card-email">${email}</div>
+                                ${date ? `<div class="user-card-date">ចូលចុងក្រោយ: ${date}</div>` : ''}
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+            } catch (error) {
+                console.error('Error loading users:', error);
+                grid.innerHTML = '<p class="loading-text">មិនអាចផ្ទុកបាន</p>';
+            }
+        }
     </script>
 </body>
 </html>
