@@ -70,7 +70,7 @@ const TOPIC_09 = {
             \\(\\displaystyle (x-a)^2 + (y-b)^2 + (z-c)^2 = R^2\\)
         </div>
 
-        <p>ប្រើ GeoGebra 3D Calculator ដើម្បីមើលរូបស្វ៊ែរក្នុងលំហ៖</p>
+        <p>ដើម្បីមើលរូបស្វ៊ែរក្នុងលំហ៖</p>
         <div class="geogebra-embed">
             <iframe src="https://www.geogebra.org/calculator/3d?embed" width="100%" height="500px" style="border:0;border-radius:12px;" allowfullscreen></iframe>
         </div>
