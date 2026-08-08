@@ -6,7 +6,7 @@ const TOPIC_09 = {
     tag: "មេរៀនទី៩",
     semester: 1,
     description: "សមីការប៉ារ៉ាម៉ែត្រ សមីការឆ្លុះ ស្វ៊ែរ និងប្លង់ក្នុងលំហ",
-     pdfs: [
+    pdfs: [
         { name: "វុិចទ័រក្នុងលំហ.pdf", path: "pdfs/09_ធរណីមាត្រវិភាគក្នុងលំហ/lession/វុិចទ័រ.pdf", type: "lesson" },
         { name: "វុិចទ័រលំហាត់.pdf", path: "pdfs/09_ធរណីមាត្រវិភាគក្នុងលំហ/practies/វុិចទ័រលំហាត់.pdf", type: "exercise" }
     ],
