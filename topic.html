@@ -33,7 +33,7 @@
         
         .topic-header {
             background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #8b5cf6 100%);
-            padding: 1.5rem 2rem;
+            padding: 0.5rem 2rem;
             position: sticky;
             top: 0;
             z-index: 100;
@@ -51,17 +51,17 @@
         .topic-header-left {
             display: flex;
             align-items: center;
-            gap: 1rem;
+            gap: 0.6rem;
         }
         
         .back-btn {
             background: rgba(255, 255, 255, 0.2);
             border: 1px solid rgba(255, 255, 255, 0.3);
             color: white;
-            padding: 0.7rem 1.2rem;
-            border-radius: 12px;
+            padding: 0.4rem 0.8rem;
+            border-radius: 10px;
             cursor: pointer;
-            font-size: 1rem;
+            font-size: 0.9rem;
             font-weight: 600;
             transition: all 0.2s ease;
             display: flex;
@@ -82,20 +82,20 @@
         .topic-title {
             color: white;
             font-family: 'Battambang', serif;
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             font-weight: 700;
             text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
         
         .topic-icon {
-            font-size: 2.2rem;
-            width: 50px;
-            height: 50px;
+            font-size: 1.6rem;
+            width: 40px;
+            height: 40px;
             display: flex;
             align-items: center;
             justify-content: center;
             background: rgba(255, 255, 255, 0.2);
-            border-radius: 12px;
+            border-radius: 10px;
         }
         
         .topic-content {
@@ -413,26 +413,26 @@
         /* Responsive */
         @media (max-width: 768px) {
             .topic-header {
-                padding: 1rem;
+                padding: 0.4rem 1rem;
             }
             
             .topic-header-content {
-                gap: 0.8rem;
+                gap: 0.6rem;
             }
             
             .topic-title {
-                font-size: 1.2rem;
+                font-size: 1rem;
             }
             
             .topic-icon {
-                font-size: 1.8rem;
-                width: 40px;
-                height: 40px;
+                font-size: 1.4rem;
+                width: 36px;
+                height: 36px;
             }
             
             .back-btn {
-                padding: 0.5rem 0.8rem;
-                font-size: 0.9rem;
+                padding: 0.35rem 0.6rem;
+                font-size: 0.85rem;
             }
             
             .topic-content {
@@ -494,7 +494,7 @@
             }
             
             .topic-title {
-                font-size: 1.1rem;
+                font-size: 0.95rem;
                 width: 100%;
                 order: 3;
             }
@@ -709,17 +709,6 @@
                     <span class="topic-icon" id="topicIcon"></span>
                     <h1 class="topic-title" id="topicTitle"></h1>
                 </div>
-                <div id="authSection" style="display:flex;align-items:center;gap:0.8rem;">
-                    <button id="loginBtn" class="login-btn" onclick="signInWithGoogle()">
-                        <span class="login-icon">👤</span>
-                        <span class="login-text">ចូល</span>
-                    </button>
-                    <div id="userSection" class="user-section hidden">
-                        <img id="userAvatar" class="user-avatar" src="" alt="avatar">
-                        <span id="userName" class="user-name"></span>
-                        <button id="logoutBtn" class="logout-btn" onclick="signOut()">ចេញ</button>
-                    </div>
-                </div>
             </div>
         </header>
         
@@ -825,10 +814,10 @@
                     return;
                 }
                 
-                loginBtn.classList.add('hidden');
-                userSection.classList.remove('hidden');
-                userAvatar.src = user.photoURL || 'https://via.placeholder.com/32';
-                userName.textContent = user.displayName || user.email;
+                if (loginBtn) loginBtn.classList.add('hidden');
+                if (userSection) userSection.classList.remove('hidden');
+                if (userAvatar) userAvatar.src = user.photoURL || 'https://via.placeholder.com/32';
+                if (userName) userName.textContent = user.displayName || user.email;
                 
                 // Save user and log activity
                 saveUser(user);
@@ -838,8 +827,8 @@
                     logActivity('view_topic', 'topic.html?id=' + topicId);
                 }
             } else {
-                loginBtn.classList.remove('hidden');
-                userSection.classList.add('hidden');
+                if (loginBtn) loginBtn.classList.remove('hidden');
+                if (userSection) userSection.classList.add('hidden');
             }
         });
         
