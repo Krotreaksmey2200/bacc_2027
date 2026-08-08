@@ -72,13 +72,16 @@ const TOPIC_09 = {
 
         <p>ដើម្បីមើលរូបស្វ៊ែរក្នុងលំហ៖</p>
         <div class="geogebra-embed">
-            <iframe src="https://www.geogebra.org/calculator/3d?embed" width="100%" height="500px" style="border:0;border-radius:12px;" allowfullscreen></iframe>
+            <iframe id="ggb3d" src="https://www.geogebra.org/calculator/3d?embed" width="100%" height="500px" style="border:0;border-radius:12px;" allowfullscreen></iframe>
         </div>
-        <p style="text-align:center;margin-top:0.5rem;">
-            <a href="https://www.geogebra.org/calculator/3d" target="_blank" class="pdf-btn pdf-btn-view" style="display:inline-flex;">
-                បើក GeoGebra 3D ក្នុង Tab ថ្មី
-            </a>
-        </p>
+        <script>
+            document.getElementById('ggb3d').onload = function() {
+                var f = this;
+                var eq = 'eq1: (x-1)^2+(y-1)^2+(z-1)^2=4';
+                function send() { try { f.contentWindow.postMessage(eq, '*'); } catch(e) {} }
+                send(); setTimeout(send, 2000); setTimeout(send, 5000);
+            };
+        </script>
 
         <div class="example-box">
             <h4>ឧទាហរណ៍៖</h4>
