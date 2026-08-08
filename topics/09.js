@@ -72,7 +72,7 @@ const TOPIC_09 = {
 
         <p>ដើម្បីមើលរូបស្វ៊ែរក្នុងលំហ៖</p>
         <div class="geogebra-embed">
-            <iframe src="https://www.geogebra.org/calculator/3d?embed&materialId=ahcmhdjp" width="100%" height="500px" style="border:0;border-radius:12px;" allowfullscreen></iframe>
+            <iframe src="https://www.geogebra.org/3d/ahcmhdjp?embed" width="100%" height="600" allowfullscreen style="border:1px solid #e4e4e4;border-radius:12px;" frameborder="0"></iframe>
         </div>
 
         <div class="example-box">
