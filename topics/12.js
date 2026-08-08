@@ -7,12 +7,12 @@ const TOPIC_12 = {
     semester: 2,
     description: "អាំងតេក្រាលកំណត់ និងអនុវត្តន៍ (ផ្ទៃក្រឡា និងប្រវែងសរសៃរ)",
     pdfs: [
-        { name: "វុិចទ័រក្នុងលំហ.pdf", path: "pdfs/12_ធរណីមាត្រវិភាគក្នុងលំហ/lession/វុិចទ័រក្នុងលំហ.pdf", type: "lesson" },
-        { name: "វុិចទ័រលំហាត់.pdf", path: "pdfs/12_ធរណីមាត្រវិភាគក្នុងលំហ/practies/វុិចទ័រលំហាត់.pdf", type: "exercise" }
+        { name: "វុិចទ័រក្នុងលំហ.pdf", path: "pdfs/12_អាំងតេក្រាលកំណត់/lession/វុិចទ័រក្នុងលំហ.pdf", type: "lesson" },
+        { name: "វុិចទ័រលំហាត់.pdf", path: "pdfs/12_អាំងតេក្រាលកំណត់/practies/វុិចទ័រលំហាត់.pdf", type: "exercise" }
     ],
     research: [
-        { name: "vecteur-fully.pdf", path: "pdfs/12_ធរណីមាត្រវិភាគក្នុងលំហ/research/vecteur-fully.pdf" },
-        { name: "កម្រងលំហាត់ជ្រើសរើសធរណីមាត្រថ្នាក់ទី_១២_អោ_មណីចន្រ្ទា.pdf", path: "pdfs/12_ធរណីមាត្រវិភាគក្នុងលំហ/research/កម្រងលំហាត់ជ្រើសរើសធរណីមាត្រថ្នាក់ទី_១២_អោ_មណីចន្រ្ទា.pdf" }
+        { name: "vecteur-fully.pdf", path: "pdfs/12_អាំងតេក្រាលកំណត់/research/vecteur-fully.pdf" },
+        { name: "កម្រងលំហាត់ជ្រើសរើសធរណីមាត្រថ្នាក់ទី_១២_អោ_មណីចន្រ្ទា.pdf", path: "pdfs/12_អាំងតេក្រាលកំណត់/research/កម្រងលំហាត់ជ្រើសរើសធរណីមាត្រថ្នាក់ទី_១២_អោ_មណីចន្រ្ទា.pdf" }
     ],
     exercises: [
         {
