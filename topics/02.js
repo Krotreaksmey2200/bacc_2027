@@ -12,7 +12,8 @@ const TOPIC_02 = {
     ],
     research: [
         { name: "limit_of_function.pdf", path: "pdfs/02_limits/research/limit_of_function.pdf" },
-        { name: "លីមីតនៃអនុគមន៍Limit of function (អ៊ូច ប៊ុនថន).pdf", path: "pdfs/02_limits/research/លីមីតនៃអនុគមន៍Limit of function (អ៊ូច ប៊ុនថន).pdf" }
+        { name: "លីមីតនៃអនុគមន៍Limit of function (អ៊ូច ប៊ុនថន).pdf", path: "pdfs/02_limits/research/លីមីតនៃអនុគមន៍Limit of function (អ៊ូច ប៊ុនថន).pdf" },
+        { name: "លីមីត-អ៊ូច-ប៊ុនថន.pdf", path: "pdfs/02_limits/លីមីត-អ៊ូច-ប៊ុនថន.pdf" }
     ],
     exercises: [
         {
