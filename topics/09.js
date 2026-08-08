@@ -5,14 +5,14 @@ const TOPIC_09 = {
     iconPath: "icons/09.png",
     tag: "មេរៀនទី៩",
     semester: 1,
-    description: "ចំណុច សរសៃរ រង្វាល់ និងប្លង់ក្នុងលំហ",
+    description: "សមីការប៉ារ៉ាម៉ែត្រ សមីការឆ្លុះ ស្វ៊ែរ និងប្លង់ក្នុងលំហ",
      pdfs: [
-        { name: "វុិចទ័រក្នុងលំហ.pdf", path: "pdfs/12_ធរណីមាត្រវិភាគក្នុងលំហ/lession/វុិចទ័រក្នុងលំហ.pdf", type: "lesson" },
-        { name: "វុិចទ័រលំហាត់.pdf", path: "pdfs/12_ធរណីមាត្រវិភាគក្នុងលំហ/practies/វុិចទ័រលំហាត់.pdf", type: "exercise" }
+        { name: "វុិចទ័រក្នុងលំហ.pdf", path: "pdfs/09_ធរណីមាត្រវិភាគក្នុងលំហ/lession/វុិចទ័រក្នុងលំហ.pdf", type: "lesson" },
+        { name: "វុិចទ័រលំហាត់.pdf", path: "pdfs/09_ធរណីមាត្រវិភាគក្នុងលំហ/practies/វុិចទ័រលំហាត់.pdf", type: "exercise" }
     ],
     research: [
-        { name: "vecteur-fully.pdf", path: "pdfs/12_ធរណីមាត្រវិភាគក្នុងលំហ/research/vecteur-fully.pdf" },
-        { name: "កម្រងលំហាត់ជ្រើសរើសធរណីមាត្រថ្នាក់ទី_១២_អោ_មណីចន្រ្ទា.pdf", path: "pdfs/12_ធរណីមាត្រវិភាគក្នុងលំហ/research/កម្រងលំហាត់ជ្រើសរើសធរណីមាត្រថ្នាក់ទី_១២_អោ_មណីចន្រ្ទា.pdf" }
+        { name: "vecteur-fully.pdf", path: "pdfs/09_ធរណីមាត្រវិភាគក្នុងលំហ/research/vecteur-fully.pdf" },
+        { name: "កម្រងលំហាត់ជ្រើសរើសធរណីមាត្រថ្នាក់ទី_១២_អោ_មណីចន្រ្ទា.pdf", path: "pdfs/09_ធរណីមាត្រវិភាគក្នុងលំហ/research/កម្រងលំហាត់ជ្រើសរើសធរណីមាត្រថ្នាក់ទី_១៥_អោ_មណিজន្រ្ទា.pdf" }
     ],
     exercises: [
         {
