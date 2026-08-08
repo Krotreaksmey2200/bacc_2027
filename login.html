@@ -692,6 +692,11 @@
                     timestamp: firebase.firestore.FieldValue.serverTimestamp()
                 });
                 
+                await db.collection('allowedEmails').doc(email).set({
+                    email: email,
+                    addedBy: 'self-signup'
+                });
+                
                 showSuccess('signupSuccess', 'បានចុះឈ្មោះដោយជោគជ័យ!');
                 
                 setTimeout(() => {
@@ -725,12 +730,13 @@
                 const result = await auth.signInWithPopup(provider);
                 const user = result.user;
                 
-                const allowed = await isUserAllowed(user.email);
-                if (!allowed) {
-                    await auth.signOut();
-                    showError('loginError', 'អ្នកមិនមានសិទ្ធិចូលប្រើប្រាស់ទំព័រនេះទេ។');
-                    document.getElementById('loading').style.display = 'none';
-                    return;
+                // First-time Google user → add to allowedEmails
+                const allowedDoc = await db.collection('allowedEmails').doc(user.email).get();
+                if (!allowedDoc.exists) {
+                    await db.collection('allowedEmails').doc(user.email).set({
+                        email: user.email,
+                        addedBy: 'google-signup'
+                    });
                 }
                 
                 await saveUser(user);
