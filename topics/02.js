@@ -22,7 +22,7 @@ const TOPIC_02 = {
         },
         {
             id: 2,
-            question: "គណនា \\(\\displaystyle \\lim\limits_{x \\to 0} \\frac{\\sin 5x}{x}\\)",
+            question: "គណនា \\(\\displaystyle \\lim\\limits_{x \\to 0} \\frac{\\sin 5x}{x}\\)",
             hint: "ប្រើរូបមន្ត \\(\\displaystyle \\lim\limits_{x \\to 0} \\frac{\\sin x}{x} = 1\\)",
             answer: "\\(\\displaystyle \\lim\limits_{x \\to 0} \\frac{\\sin 5x}{x} = \\lim\limits_{x \\to 0} \\frac{5 \\cdot \\sin 5x}{5x} = 5 \\cdot 1 = 5\\)"
         },
