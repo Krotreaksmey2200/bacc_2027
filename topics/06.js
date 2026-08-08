@@ -23,9 +23,9 @@ const TOPIC_06 = {
         },
         {
             id: 3,
-            question: "គណនា \\(\\displaystyle \\lim\limits_{x \\to 0} \\frac{e^x - 1}{x}\\)",
+            question: "គណនា \\(\\displaystyle \\lim\\limits_{x \\to 0} \\frac{e^x - 1}{x}\\)",
             hint: "ប្រើរូបមន្តពិសេស",
-            answer: "\\(\\displaystyle \\lim\limits_{x \\to 0} \\frac{e^x - 1}{x} = 1\\)"
+            answer: "\\(\\displaystyle \\lim\\limits_{x \\to 0} \\frac{e^x - 1}{x} = 1\\)"
         }
     ],
     content: `
@@ -63,7 +63,7 @@ const TOPIC_06 = {
 
         <div class="example-box">
             <h4>ឧទាហរណ៍៖</h4>
-            <p>គណនា \\(\\displaystyle \\lim\limits_{x \\to 0} \\frac{e^x - 1}{x} = 1\\)</p>
+            <p>គណនា \\(\\displaystyle \\lim\\limits_{x \\to 0} \\frac{e^x - 1}{x} = 1\\)</p>
             <p>គណនា \\(\\displaystyle \\frac{d}{dx}[e^{3x}] = 3e^{3x}\\)</p>
         </div>
     `

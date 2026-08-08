@@ -15,13 +15,13 @@ const TOPIC_03 = {
             id: 1,
             question: "ពិនិត្យភាពជាប់នៃ \\(\\displaystyle f(x) = \\frac{x^2 - 1}{x - 1}\\) នៅ \\(\\displaystyle x = 1\\)",
             hint: "ពិនិត្យមើលថាតើ f(1) មានតម្លៃទេ និង lim(x→1) f(x) មានតម្លៃទេ",
-            answer: "\\(\\displaystyle \\lim\limits_{x \\to 1} \\frac{(x+1)(x-1)}{x-1} = \\lim\limits_{x \\to 1} (x+1) = 2\\) ប៉ុន្តែ \\(\\displaystyle f(1)\\) គ្មាន → មិនជាប់ (removable)"
+            answer: "\\(\\displaystyle \\lim\\limits_{x \\to 1} \\frac{(x+1)(x-1)}{x-1} = \\lim\\limits_{x \\to 1} (x+1) = 2\\) ប៉ុន្តែ \\(\\displaystyle f(1)\\) គ្មាន → មិនជាប់ (removable)"
         },
         {
             id: 2,
             question: "ពិនិត្យភាពជាប់នៃ \\(\\displaystyle f(x) = \\begin{cases} x+1 & x < 2 \\\\ 3 & x = 2 \\\\ x^2-1 & x > 2 \\end{cases}\\) នៅ \\(\\displaystyle x = 2\\)",
             hint: "ពិនិត្យលីមីតឆ្វេង និងស្ដាំ",
-            answer: "\\(\\displaystyle \\lim\limits_{x \\to 2^-} f(x) = 3\\), \\(\\displaystyle \\lim\limits_{x \\to 2^+} f(x) = 3\\), \\(\\displaystyle f(2) = 3\\) → ជាប់"
+            answer: "\\(\\displaystyle \\lim\\limits_{x \\to 2^-} f(x) = 3\\), \\(\\displaystyle \\lim\\limits_{x \\to 2^+} f(x) = 3\\), \\(\\displaystyle f(2) = 3\\) → ជាប់"
         },
         {
             id: 3,
@@ -35,12 +35,12 @@ const TOPIC_03 = {
         <p>អនុគមន៍ f(x) ជាប់នៅចំណុច a ប្រសិនបើ៖</p>
         <ol>
             <li>\\(\\displaystyle f(a)\\) មានតម្លៃ</li>
-            <li>\\(\\displaystyle \\lim\limits_{x \\to a} f(x)\\) មានតម្លៃ</li>
-            <li>\\(\\displaystyle \\lim\limits_{x \\to a} f(x) = f(a)\\)</li>
+            <li>\\(\\displaystyle \\lim\\limits_{x \\to a} f(x)\\) មានតម្លៃ</li>
+            <li>\\(\\displaystyle \\lim\\limits_{x \\to a} f(x) = f(a)\\)</li>
         </ol>
 
         <div class="formula-box">
-            \\(\\displaystyle \\lim\limits_{x \\to a^-} f(x) = \\lim\limits_{x \\to a^+} f(x) = f(a)\\)
+            \\(\\displaystyle \\lim\\limits_{x \\to a^-} f(x) = \\lim\\limits_{x \\to a^+} f(x) = f(a)\\)
         </div>
 
         <h3>២. ប្រភេទភាពមិនជាប់</h3>
@@ -61,7 +61,7 @@ const TOPIC_03 = {
         <div class="example-box">
             <h4>ឧទាហរណ៍៖</h4>
             <p>ពិនិត្យភាពជាប់ \\(\\displaystyle f(x) = \\frac{x^2-1}{x-1}\\) នៅ \\(\\displaystyle x = 1\\)</p>
-            <p>\\(\\displaystyle \\lim\limits_{x \\to 1} \\frac{(x+1)(x-1)}{x-1} = \\lim\limits_{x \\to 1} (x+1) = 2\\) ប៉ុន្តែ \\(\\displaystyle f(1)\\) គ្មាន → មិនជាប់ (removable)</p>
+            <p>\\(\\displaystyle \\lim\\limits_{x \\to 1} \\frac{(x+1)(x-1)}{x-1} = \\lim\\limits_{x \\to 1} (x+1) = 2\\) ប៉ុន្តែ \\(\\displaystyle f(1)\\) គ្មាន → មិនជាប់ (removable)</p>
         </div>
     `
 };

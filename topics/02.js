@@ -23,26 +23,26 @@ const TOPIC_02 = {
         {
             id: 2,
             question: "គណនា \\(\\displaystyle \\lim\\limits_{x \\to 0} \\frac{\\sin 5x}{x}\\)",
-            hint: "ប្រើរូបមន្ត \\(\\displaystyle \\lim\limits_{x \\to 0} \\frac{\\sin x}{x} = 1\\)",
-            answer: "\\(\\displaystyle \\lim\limits_{x \\to 0} \\frac{\\sin 5x}{x} = \\lim\limits_{x \\to 0} \\frac{5 \\cdot \\sin 5x}{5x} = 5 \\cdot 1 = 5\\)"
+            hint: "ប្រើរូបមន្ត \\(\\displaystyle \\lim\\limits_{x \\to 0} \\frac{\\sin x}{x} = 1\\)",
+            answer: "\\(\\displaystyle \\lim\\limits_{x \\to 0} \\frac{\\sin 5x}{x} = \\lim\\limits_{x \\to 0} \\frac{5 \\cdot \\sin 5x}{5x} = 5 \\cdot 1 = 5\\)"
         },
         {
             id: 3,
-            question: "គណនា \\(\\displaystyle \\lim\limits_{x \\to \\infty} \\frac{3x^2 + 2x}{5x^2 - 1}\\)",
+            question: "គណនា \\(\\displaystyle \\lim\\limits_{x \\to \\infty} \\frac{3x^2 + 2x}{5x^2 - 1}\\)",
             hint: "ចែកគ្រប់ពាក្យដោយ \\(\\displaystyle x^2\\)",
-            answer: "\\(\\displaystyle \\lim\limits_{x \\to \\infty} \\frac{3 + \\frac{2}{x}}{5 - \\frac{1}{x^2}} = \\frac{3}{5}\\)"
+            answer: "\\(\\displaystyle \\lim\\limits_{x \\to \\infty} \\frac{3 + \\frac{2}{x}}{5 - \\frac{1}{x^2}} = \\frac{3}{5}\\)"
         },
         {
             id: 4,
-            question: "គណនា \\(\\displaystyle \\lim\limits_{x \\to 0} \\frac{e^x - 1}{x}\\)",
+            question: "គណនា \\(\\displaystyle \\lim\\limits_{x \\to 0} \\frac{e^x - 1}{x}\\)",
             hint: "ប្រើរូបមន្តពិសេស",
-            answer: "\\(\\displaystyle \\lim\limits_{x \\to 0} \\frac{e^x - 1}{x} = 1\\)"
+            answer: "\\(\\displaystyle \\lim\\limits_{x \\to 0} \\frac{e^x - 1}{x} = 1\\)"
         },
         {
             id: 5,
-            question: "គណនា \\(\\displaystyle \\lim\limits_{x \\to 0} \\frac{1 - \\cos x}{x^2}\\)",
+            question: "គណនា \\(\\displaystyle \\lim\\limits_{x \\to 0} \\frac{1 - \\cos x}{x^2}\\)",
             hint: "ប្រើរូបមន្ត \\(\\displaystyle 1 - \\cos x = 2\\sin^2(x/2)\\)",
-            answer: "\\(\\displaystyle \\lim\limits_{x \\to 0} \\frac{2\\sin^2(x/2)}{x^2} = \\lim\limits_{x \\to 0} \\frac{\\sin^2(x/2)}{2(x/2)^2} = \\frac{1}{2}\\)"
+            answer: "\\(\\displaystyle \\lim\\limits_{x \\to 0} \\frac{2\\sin^2(x/2)}{x^2} = \\lim\\limits_{x \\to 0} \\frac{\\sin^2(x/2)}{2(x/2)^2} = \\frac{1}{2}\\)"
         }
     ],
     content: `
@@ -172,7 +172,7 @@ const TOPIC_02 = {
             <p><strong>នៅពេល \\(\\displaystyle t\\) ខិតទៅជិត \\(\\displaystyle 2\\) តើអនុគមន៍មួយកំពុងខិតទៅជិតតម្លៃប៉ុន្មាន?</strong></p>
             <p>យើងអាចសរសេរជានិមិត្តសញ្ញា៖</p>
             <div class="formula-box">
-                \\(\\displaystyle \\boxed{\\lim\limits_{t\\to2}f(t)}\\)
+                \\(\\displaystyle \\boxed{\\lim\\limits_{t\\to2}f(t)}\\)
             </div>
             <p>នេះមានន័យថា៖ <strong>នៅពេល \\(\\displaystyle t\\) ខិតទៅជិត \\(\\displaystyle 2\\) តើ \\(\\displaystyle f(t)\\) កំពុងខិតទៅជិតតម្លៃប៉ុន្មាន?</strong></p>
             <p>នេះហើយជាអ្វីដែលយើងនឹងរៀននៅថ្ងៃនេះ។</p>
@@ -209,13 +209,13 @@ const TOPIC_02 = {
                 \\(\\displaystyle \\boxed{\\text{Limit}}\\)
             </div>
             <p>ដូច្នេះ សិស្សទាំងអស់គ្នា...</p>
-            <p>នៅពេលអ្នកឃើញ៖ \\(\\displaystyle \\lim\limits_{x\\to a}f(x)=L\\)</p>
+            <p>នៅពេលអ្នកឃើញ៖ \\(\\displaystyle \\lim\\limits_{x\\to a}f(x)=L\\)</p>
             <p>សូមកុំគិតថា វាគ្រាន់តែជារូបមន្តដែលត្រូវចាំ។</p>
             <p>សូមអានវាថា៖ <strong>"នៅពេល \\(\\displaystyle x\\) ខិតទៅជិត \\(\\displaystyle a\\) តើ \\(\\displaystyle f(x)\\) កំពុងខិតទៅជិត \\(\\displaystyle L\\) ឬ?"</strong></p>
             <p>នេះគឺជាសំណួរដ៏សាមញ្ញមួយ... ប៉ុន្តែវាជាសំណួរដែលបាននាំមនុស្សទៅរកពិភពដ៏អស្ចារ្យនៃ <strong>Calculus</strong>។</p>
             <p>ហើយថ្ងៃនេះ... យើងនឹងចាប់ផ្តើមស្វែងរកចម្លើយជាមួយគ្នា៖</p>
             <div class="formula-box">
-                \\(\\displaystyle \\boxed{\\lim\limits_{x\\to a}f(x)=?}\\)
+                \\(\\displaystyle \\boxed{\\lim\\limits_{x\\to a}f(x)=?}\\)
             </div>
             <p><strong>តើនៅពេល \\(\\displaystyle x\\) ខិតទៅជិត \\(\\displaystyle a\\) តើ \\(\\displaystyle f(x)\\) នឹងខិតទៅជិតអ្វី?</strong></p>
             <p>👉 <strong>នេះហើយជាអ្វីដែលយើងនឹងស្វែងយល់នៅក្នុងមេរៀន «លីមីតនៃអនុគមន៍»។</strong></p>
@@ -225,7 +225,7 @@ const TOPIC_02 = {
         <p>លីមីតអនុគមន៍ f(x) នៅពេល x → a គឺជាតម្លៃដែល f(x) ខិតជិតនៅពេល x ខិតជិត a</p>
 
         <div class="formula-box">
-            \\(\\displaystyle \\lim\limits_{x \\to a} f(x) = L\\)
+            \\(\\displaystyle \\lim\\limits_{x \\to a} f(x) = L\\)
         </div>
 
         <h3>២. ក្បួនគណនាលីមីត</h3>
@@ -237,7 +237,7 @@ const TOPIC_02 = {
 
         <h3>៣. លីមីតអនន្ត</h3>
         <div class="formula-box">
-            \\(\\displaystyle \\lim\limits_{x \\to \\infty} \\frac{a_n x^n + \\cdots}{b_m x^m + \\cdots}\\)
+            \\(\\displaystyle \\lim\\limits_{x \\to \\infty} \\frac{a_n x^n + \\cdots}{b_m x^m + \\cdots}\\)
         </div>
         <ul>
             <li>ប្រសិនបើ \\(\\displaystyle n < m\\) → លីមីត = 0</li>
@@ -247,16 +247,16 @@ const TOPIC_02 = {
 
         <h3>៤. លីមីតពិសេស</h3>
         <div class="formula-box">
-            \\(\\displaystyle \\lim\limits_{x \\to 0} \\frac{\\sin x}{x} = 1, \\quad \\lim\limits_{x \\to 0} \\frac{1 - \\cos x}{x} = 0\\)
+            \\(\\displaystyle \\lim\\limits_{x \\to 0} \\frac{\\sin x}{x} = 1, \\quad \\lim\\limits_{x \\to 0} \\frac{1 - \\cos x}{x} = 0\\)
         </div>
         <div class="formula-box">
-            \\(\\displaystyle \\lim\limits_{x \\to 0} \\frac{e^x - 1}{x} = 1, \\quad \\lim\limits_{x \\to 0} \\frac{\\ln(1+x)}{x} = 1\\)
+            \\(\\displaystyle \\lim\\limits_{x \\to 0} \\frac{e^x - 1}{x} = 1, \\quad \\lim\\limits_{x \\to 0} \\frac{\\ln(1+x)}{x} = 1\\)
         </div>
 
         <div class="example-box">
             <h4>ឧទាហរណ៍៖</h4>
-            <p>គណនា \\(\\displaystyle \\lim\limits_{x \\to 2} \\frac{x^2 - 4}{x - 2}\\)</p>
-            <p>\\(\\displaystyle = \\lim\limits_{x \\to 2} \\frac{(x+2)(x-2)}{x-2} = \\lim\limits_{x \\to 2} (x+2) = 4\\)</p>
+            <p>គណនា \\(\\displaystyle \\lim\\limits_{x \\to 2} \\frac{x^2 - 4}{x - 2}\\)</p>
+            <p>\\(\\displaystyle = \\lim\\limits_{x \\to 2} \\frac{(x+2)(x-2)}{x-2} = \\lim\\limits_{x \\to 2} (x+2) = 4\\)</p>
         </div>
     `
 };
