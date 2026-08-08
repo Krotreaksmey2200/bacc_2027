@@ -78,7 +78,8 @@ const TOPIC_09 = {
         <div class="example-box">
             <h4>ឧទាហរណ៍៖</h4>
             <p>រកប្រវែង AB ដែល A(1,2,3) និង B(4,6,8)</p>
-            <p>\\(\\displaystyle d = \\sqrt{(4-1)^2 + (6-2)^2 + (8-3)^2} = \\sqrt{9+16+25} = \\sqrt{50} = 5\\sqrt{2}\\)</p>
+            <p>\\(\\displaystyle d = \\sqrt{(4-1)^2 + (6-2)^2 + (8-3)^2} \\)</p>
+            <p>\\(\\displaystyle = \\sqrt{9+16+25} = \\sqrt{50} = 5\\sqrt{2}\\)</p>
         </div>
     `
 };
